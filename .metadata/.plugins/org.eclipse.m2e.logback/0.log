@@ -1,0 +1,11 @@
+2024-06-05 17:11:02,139 [Worker-10: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-06-05 17:59:52,783 [Worker-54: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: org.visionplus_android:visionplus_android:0.0.1-SNAPSHOT @ /Users/visionplus/Automation/automation-android/pom.xml.
+2024-06-05 17:59:55,061 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-06-05 17:59:55,061 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/visionplus/Automation/automation-android/src/main/resources
+2024-06-05 17:59:55,069 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-06-05 17:59:55,069 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/visionplus/Automation/automation-android/src/test/resources
+2024-06-05 17:59:59,234 [Worker-55: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: AutomationIOS:IOS:0.0.1-SNAPSHOT @ /Users/visionplus/Automation/IOS/pom.xml.
+2024-06-05 18:00:00,050 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-06-05 18:00:00,051 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/visionplus/Automation/IOS/src/main/resources
+2024-06-05 18:00:00,057 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-06-05 18:00:00,057 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/visionplus/Automation/IOS/src/test/resources
