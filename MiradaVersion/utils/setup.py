@@ -25,7 +25,7 @@ class SetupAppium:
         # options.set_capability("chromedriverExecutable", chromedriver_path)
 
         # Set the app path
-        app_path = "/Users/visionplus/Automation/automation-android-python/MiradaVersion/utils/mirada.apk"
+        app_path = "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/mirada.apk"
         # app_path = "/Users/fatahalim/Documents/VisualStudio/automation-android-visionplus/utils/mirada.apk"
         if not os.path.exists(app_path):
             raise FileNotFoundError(f"APK file not found at {app_path}")
