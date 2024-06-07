@@ -17,7 +17,7 @@ def driver():
 @pytest.fixture
 def login_data():
     with open(
-        "/Users/fatahalim/Documents/Vision/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/premiumSport_email.json"
+        "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/premiumSport_email.json"
     ) as file:
         data = json.load(file)
     print("Loaded login data:", data)

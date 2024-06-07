@@ -32,7 +32,7 @@ class Profiles:
             )
             print("Assert Success : Assert Profile Pages Success")
             return element
-        except TimeoutException:
+        except AssertionError:
             print("Assert Failed : Assert Profile Pages Success")
             return element
 

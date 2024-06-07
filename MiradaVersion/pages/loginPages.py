@@ -17,7 +17,7 @@ class PagesLogin:
         self.homeObj = homeObject()
 
     def clickLogin(self):
-       
+
         btn_Login = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.ID, self.loginObj.btn_login))
         )
@@ -33,15 +33,17 @@ class PagesLogin:
         self.wait = WebDriverWait(self.driver, 20)
 
         txt_fld_email = self.driver.find_element(By.XPATH, self.loginObj.txt_fld_email)
-       
+
         txt_fld_email.click()
         txt_fld_email.send_keys(email)
-    
+
     def inputPass(self, password):
         self.wait = WebDriverWait(self.driver, 20)
 
-        txt_fld_password = self.driver.find_element(By.XPATH, self.loginObj.txt_fld_password)
-       
+        txt_fld_password = self.driver.find_element(
+            By.XPATH, self.loginObj.txt_fld_password
+        )
+
         txt_fld_password.click()
         txt_fld_password.send_keys(password)
         self.driver.press_keycode(4)
@@ -58,23 +60,27 @@ class PagesLogin:
         return self.wait.until(
             EC.visibility_of_element_located((By.ID, self.loginObj.txt_welcome))
         )
-        
+
     def assertLoginPage(self):
         self.wait = WebDriverWait(self.driver, 20)
         try:
             self.wait.until(
-            EC.visibility_of_element_located((By.XPATH, self.loginObj.txt_login_page))
-        )
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.txt_login_page)
+                )
+            )
             print("Assert Success : Assert Login Page Success")
-        except TimeoutException:
+        except AssertionError:
             print("Assert Failed : Assert Login Page Failed")
-            
+
     def assertEmailSection(self):
         self.wait = WebDriverWait(self.driver, 20)
         try:
             self.wait.until(
-            EC.visibility_of_element_located((By.XPATH, self.loginObj.txt_email_section))
-        )
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.txt_email_section)
+                )
+            )
             print("Assert Success : Assert Email Section Success")
-        except TimeoutException:
+        except AssertionError:
             print("Assert Failed : Assert Email Section Failed")

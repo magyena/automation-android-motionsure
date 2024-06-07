@@ -16,17 +16,12 @@ class HomePage:
         self.loginObj = loginObject()
         self.homeObj = homeObject()
 
-        
     def assertHomePage(self):
         self.wait = WebDriverWait(self.driver, 20)
         try:
             self.wait.until(
-            EC.visibility_of_element_located((By.ID, self.homeObj.txt_vision_logo))
-        )
+                EC.visibility_of_element_located((By.ID, self.homeObj.txt_vision_logo))
+            )
             print("Assert Success : Assert Homepage Logo Success")
-        except TimeoutException:
+        except AssertionError:
             print("Assert Failed : Assert Homepage Logo Failed")
-       
-    
-        
-        
