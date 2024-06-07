@@ -17,7 +17,7 @@ def driver():
 @pytest.fixture
 def login_data():
     with open(
-        "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/free_email.json"
+        "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/loginPremium.json"
     ) as file:
         data = json.load(file)
     print("Loaded login data:", data)
@@ -35,7 +35,7 @@ def test_loginByEmailSuccess(driver: WebDriver, login_data):
         login_action.assertLoginPage()
         login_action.clickEmailSection()
         login_action.assertEmailSection()
-        login_action.inputEmail(login_data[0]["username"])
+        login_action.inputEmail(login_data[0]["email"])
         login.inputPassword(login_data[0]["password"])
         login_action.clickSubmitLogin()
         profile.assertProfilesPages()
