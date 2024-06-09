@@ -24,11 +24,12 @@ def login_data():
     return data
 
 
-def test_loginPremiumbyPhone(driver: WebDriver, login_data):
+def test_loginSportbyPhone(driver: WebDriver, login_data):
     if isinstance(login_data, list) and len(login_data) > 0:
         login_action = PagesLogin(driver)
         login = SignUp(driver)
         profile = Profiles(driver)
+        homepage = HomePage(driver)
 
         login_action.clickLogin()
         login_action.assertLoginPage()
@@ -37,11 +38,6 @@ def test_loginPremiumbyPhone(driver: WebDriver, login_data):
         login_action.clickSubmitLogin()
         profile.assertProfilesPages()
         profile.clickFirstProfile()
-
+        homepage.assertHomePage()
     else:
         raise ValueError("login_data is not a non-empty list as expected.")
-
-
-def test_homepage(driver: WebDriver):
-    homepage = HomePage(driver)
-    homepage.assertHomePage()

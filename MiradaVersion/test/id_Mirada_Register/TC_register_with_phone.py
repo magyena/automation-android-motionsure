@@ -21,7 +21,7 @@ def driver():
     yield setup_appium.driver
 
 
-def test_Register(driver: WebDriver):
+def test_Register_with_phone(driver: WebDriver):
     register = SignUp(driver)
     homepage = HomePage(driver)
 
@@ -39,5 +39,4 @@ def test_Register(driver: WebDriver):
     register.clickBtnSkipDiscoverProfiles()
     register.assertSkipProfile()
     register.clickBtnContinueSkipProfile()
-
     homepage.assertHomePage()
