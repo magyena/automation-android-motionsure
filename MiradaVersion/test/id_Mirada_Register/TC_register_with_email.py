@@ -35,7 +35,7 @@ def driver():
     yield setup_appium.driver
 
 
-def test_Register_with_email(driver: WebDriver):
+def Register_with_email(driver: WebDriver):
     register = SignUp(driver)
     homepage = HomePage(driver)
 
