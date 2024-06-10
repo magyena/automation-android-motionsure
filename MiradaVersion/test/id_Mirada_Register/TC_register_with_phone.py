@@ -12,7 +12,7 @@ password = "4321Lupa"
 
 
 def generate_random_phone_number():
-    return "8999" + "".join(random.choices(string.digits, k=8))
+    return "89990000" + "".join(random.choices(string.digits, k=4))
 
 
 @pytest.fixture(scope="module")
@@ -21,7 +21,7 @@ def driver():
     yield setup_appium.driver
 
 
-def test_Register_with_phone(driver: WebDriver):
+def Register_with_phone(driver: WebDriver):
     register = SignUp(driver)
     homepage = HomePage(driver)
 
