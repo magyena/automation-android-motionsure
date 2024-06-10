@@ -1,6 +1,6 @@
 import os
 import pytest
-from requests import post
+from requests import post  # Import post function directly
 
 failed_tests = []
 
@@ -12,14 +12,14 @@ def pytest_runtest_makereport(item, call):
 
     if result.when == "call" and result.failed:
         failed_tests.append((item.nodeid, str(call.excinfo.value)))
-        test_name = item.nodeid.split("::")[-1]  # Extract test name
-        error_message = str(call.excinfo.value)  # Get the error message
+        test_name = item.nodeid.split("::")[-1]
+        error_message = str(call.excinfo.value)
 
 
 def send_to_discord(message):
-    webhook_url = "https://discord.com/api/webhooks/1248465866132029473/5p-uFE-P_Ei7s0HdUPAeg0dHvjHD6BDP8flB8okmLB8jijOqwZz-zI63jC2F82HAoowM"
+    webhook_url = "https://discord.com/api/webhooks/1249636655506391140/IIEYN3oLd7iUkBirCAuyEmi5RMmev94HJmSLXdJWFSRnK9aj18RA4xqvLuzSmTcb43bK"
     data = {"content": message}
-    post(webhook_url, json=data)
+    post(webhook_url, json=data)  # Use post function directly
 
 
 def pytest_sessionfinish(session, exitstatus):
@@ -27,6 +27,7 @@ def pytest_sessionfinish(session, exitstatus):
     failed_count = len(failed_tests)
     passed_count = total_tests - failed_count
 
+    # Get the test script or directory pattern executed from the command line arguments
     args = session.config.args
     if len(args) == 1 and os.path.isdir(args[0]):
         test_suite_name = args[0]
@@ -51,10 +52,15 @@ def pytest_sessionfinish(session, exitstatus):
             for test, error_message in failed_tests:
                 script_name = test.split("::")[0]  # Extract script name
                 test_name = test.split("::")[-1]  # Extract test name
-                if len(error_message) > 50:
-                    error_message = error_message[:50] + "..."
-                message += f"- [FAILED]{script_name} in {test_name} with error: {error_message}\n"
 
-        # message += "CC: <@1077483182942863470> <@1161584629011197972>\n"
+                if len(error_message) > 100:
+                    error_message = error_message[:100] + "..."
+
+                # Removing New Line
+                error_message = error_message.replace("\n", "")
+
+                message += f"- [FAILED] {test_name} in {script_name}\n"
+                message += f"  - {error_message}\n"
+            message += "CC: <@1077483182942863470> <@771451525331025941>\n"
 
     send_to_discord(message)
