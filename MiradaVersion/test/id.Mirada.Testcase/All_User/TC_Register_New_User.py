@@ -46,7 +46,6 @@ def test_TC_User_Click_Privacy_Policy(driver: WebDriver):
 
 def test_TC_Unverified_Account(driver: WebDriver):
     register = SignUp(driver)
-    homepage = HomePage(driver)
 
     register.clickSignUp()
     register.assertRegisterPage()
@@ -55,7 +54,67 @@ def test_TC_Unverified_Account(driver: WebDriver):
     register.clickButtonSendOtp()
     register.clickSendViaSms()
     register.assertRegisterHasBeenRegistered()
-    driver.quit()
+    driver.press_keycode(4)
+
+
+def test_Register_with_phone_Number_and_user_can_select_Country(driver: WebDriver):
+    register = SignUp(driver)
+
+    register.clickCountry()
+    register.assertCountryCode()
+    register.clickCountryMalaysia()
+    register.assertCountryCodeAfterChooseMalaysia()
+
+
+def test_Register_with_phone_Number_and_user_can_search_Country(driver: WebDriver):
+    register = SignUp(driver)
+
+    register.clickCountry()
+    register.assertCountryCode()
+    register.inputCountryCodeNetherlands("Netherland")
+    register.clickResultSearchCountry()
+    register.assertCountryCodeAfterChooseNetherland()
+
+
+def test_Register_with_phone_Number_and_user_can_search_Country_back_Default(
+    driver: WebDriver,
+):
+    register = SignUp(driver)
+
+    register.clickCountry()
+    register.assertCountryCode()
+    register.clickCountryIndonesia()
+    register.assertCountryCodeAfterChooseIndonesia()
+
+
+def test_Register_with_phone_Number_and_User_Input_Wrong_Keyword(
+    driver: WebDriver,
+):
+    register = SignUp(driver)
+
+    register.clickCountry()
+    register.assertCountryCode()
+    register.inputCountryCodeNetherlands("asdadqe213f")
+    register.assertNoCountryFound()
+    register.clickBtnCloseCountryCode()
+
+
+def test_Register_with_phone_Number_Incorrect(
+    driver: WebDriver,
+):
+    register = SignUp(driver)
+
+    register.inputPhoneNumber("11111")
+    register.assertPhoneNumberIncorrect()
+
+
+def test_Register_with_phone_Number_Special_Character(driver: WebDriver):
+    Firstpage = SignUp(driver)
+
+    register = SignUp(driver)
+
+    register.inputPhoneNumber("22232")
+    register.assertPhoneNumberIncorrect()
 
 
 def test_TC_Register_New_User_Phone_Number(reopendriver: WebDriver):
