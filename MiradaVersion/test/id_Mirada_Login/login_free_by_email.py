@@ -24,7 +24,7 @@ def login_data():
     return data
 
 
-def test_loginFreeByEmail(driver: WebDriver, login_data):
+def loginFreeByEmail(driver: WebDriver, login_data):
     if isinstance(login_data, list) and len(login_data) > 0:
         login_action = PagesLogin(driver)
         login = SignUp(driver)
