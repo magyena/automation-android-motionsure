@@ -5,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from MiradaVersion.utils.handler import HandlerRemote
 from selenium.common.exceptions import TimeoutException
 import time
+import subprocess
 from MiradaVersion.object.profileObject import profileObject
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.actions.pointer_input import PointerInput
@@ -40,6 +41,26 @@ class Profiles:
         actions.w3c_actions.pointer_action.pointer_up()
 
         actions.perform()
+
+    def disable_wifi_connection(self):
+        adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
+        # adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
+
+        try:
+            subprocess.run([adb_path, "shell", "svc", "wifi", "disable"], check=True)
+            print("Wifi data disabled successfully.")
+        except subprocess.CalledProcessError as e:
+            print("Error disabling Wifi data:", e)
+
+    def enable_wifi_connection(self):
+        adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
+        # adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
+
+        try:
+            subprocess.run([adb_path, "shell", "svc", "wifi", "enable"], check=True)
+            print("Wifi data enabled successfully.")
+        except subprocess.CalledProcessError as e:
+            print("Error enabling Wifi data:", e)
 
     def clickFirstProfile(self):
 
