@@ -6,6 +6,10 @@ from MiradaVersion.utils.handler import HandlerRemote
 from selenium.common.exceptions import TimeoutException
 import time
 from MiradaVersion.object.profileObject import profileObject
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.actions.pointer_input import PointerInput
+from selenium.webdriver.common.actions import interaction
+from selenium.webdriver.remote.webdriver import WebDriver
 
 
 class Profiles:
@@ -14,6 +18,28 @@ class Profiles:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 20)
         self.profileobj = profileObject()
+
+    def scrollDown(self):
+        finger = PointerInput(interaction.POINTER_TOUCH, "finger")
+        actions = ActionChains(self.driver)
+
+        actions.w3c_actions.pointer_action.move_to_location(587, 1733)
+        actions.w3c_actions.pointer_action.pointer_down()
+        actions.w3c_actions.pointer_action.move_to_location(587, 599)
+        actions.w3c_actions.pointer_action.pointer_up()
+
+        actions.perform()
+
+    def scrollUp(self):
+        finger = PointerInput(interaction.POINTER_TOUCH, "finger")
+        actions = ActionChains(self.driver)
+
+        actions.w3c_actions.pointer_action.move_to_location(507, 350)
+        actions.w3c_actions.pointer_action.pointer_down()
+        actions.w3c_actions.pointer_action.move_to_location(487, 1777)
+        actions.w3c_actions.pointer_action.pointer_up()
+
+        actions.perform()
 
     def clickFirstProfile(self):
 
