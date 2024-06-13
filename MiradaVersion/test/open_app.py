@@ -17,7 +17,8 @@ def driver():
 @pytest.fixture
 def free_email_data():
     with open(
-        "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/free_email.json"
+        "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/free_email.json"
+        # "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/free_email.json"
     ) as file:
         data = json.load(file)
     print("Loaded free email data:", data)
@@ -27,7 +28,8 @@ def free_email_data():
 @pytest.fixture
 def premium_email_data():
     with open(
-        "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/loginPremium.json"
+        "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/loginPremium.json"
+        # "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/loginPremium.json"
     ) as file:
         data = json.load(file)
     print("Loaded premium email data:", data)
@@ -37,7 +39,8 @@ def premium_email_data():
 @pytest.fixture
 def premium_sport_email_data():
     with open(
-        "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/premiumSport_email.json"
+        "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/premiumSport_email.json"
+        # "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/premiumSport_email.json"
     ) as file:
         data = json.load(file)
     print("Loaded premium sport email data:", data)
@@ -47,7 +50,8 @@ def premium_sport_email_data():
 @pytest.fixture
 def free_phone_data():
     with open(
-        "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/free_phone.json"
+        "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/free_phone.json"
+        # "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/free_phone.json"
     ) as file:
         data = json.load(file)
     print("Loaded login data:", data)
@@ -57,7 +61,8 @@ def free_phone_data():
 @pytest.fixture
 def premium_phone_data():
     with open(
-        "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/premium_phone.json"
+        "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/premium_phone.json"
+        # "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/premium_phone.json"
     ) as file:
         data = json.load(file)
     print("Loaded login data:", data)
@@ -67,7 +72,8 @@ def premium_phone_data():
 @pytest.fixture
 def premium_sport_phone_data():
     with open(
-        "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/sport_phone.json"
+        "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/sport_phone.json"
+        # "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/sport_phone.json"
     ) as file:
         data = json.load(file)
     print("Loaded login data:", data)
