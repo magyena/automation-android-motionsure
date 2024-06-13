@@ -13,6 +13,7 @@ class loginObject:
         self.resend_otp = "//*[contains(@text,'Resend in')]"
         self.btn_register = "//*/android.view.View[2]/android.widget.Button"
         self.email_section = "//*/android.widget.TextView[contains(@text, 'Email')]"
+        self.phone_section = '(//android.widget.TextView[@text="Phone Number"])[1]'
         self.txt_discover_profiles = (
             "com.zte.iptvclient.android.idmnc:id/profiles_discover"
         )
@@ -50,3 +51,10 @@ class loginObject:
         self.txt_phone_number_inccorrect = (
             '//android.widget.TextView[@text="Phone number incorrect."]'
         )
+        self.btn_visible_password = '//android.widget.EditText[@text="••••••••"]/android.view.View/android.view.View[1]/android.widget.Button'
+        self.txt_password_does_not_criteria = (
+            "//*[contains(@text,'Password does not match the criteria.')]"
+        )
+        self.txt_wrong_otp = "//*[contains(@text,'Wrong OTP code')]"
+        self.txt_otp_expired = "//*[contains(@text,'OTP Expired')]"
+        self.resend_second_otp = "//*[contains(@text,'Resend in 04')]"
