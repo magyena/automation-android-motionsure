@@ -103,6 +103,12 @@ class SignUp:
         )
         btn_email.click()
 
+    def clickPhoneNumberSection(self):
+        btn_phone_number = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.loginObj.phone_section))
+        )
+        btn_phone_number.click()
+
     def inputEmail(self, email):
         self.wait = WebDriverWait(self.driver, 20)
 
@@ -312,3 +318,59 @@ class SignUp:
             print("Assert Success : Assert Phone Number Incorrect Success")
         except AssertionError:
             print("Assert Failed : Assert Phone Number Incorrect Failed")
+
+    def clickInvisiblePassword(self):
+        btn_visible_password = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.loginObj.btn_visible_password))
+        )
+        btn_visible_password.click()
+
+    def assertPasswordDoesntMatch(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.txt_password_does_not_criteria)
+                )
+            )
+            print(
+                "Assert Success : Assert Password does not match the criteria Success"
+            )
+        except AssertionError:
+            print("Assert Failed : Assert Password does not match the criteria Failed")
+
+    def assertWrongOtp(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.txt_wrong_otp)
+                )
+            )
+            print("Assert Success : Assert Wrong Otp Success")
+        except AssertionError:
+            print("Assert Failed : Assert Wrong Otp Failed")
+
+    def assertOTPExpired(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.txt_otp_expired)
+                )
+            )
+            print("Assert Success : Assert OTP Expired Success")
+        except AssertionError:
+            print("Assert Failed : Assert OTP Expired Failed")
+
+    def assertSendOtpSecondTime(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.resend_second_otp)
+                )
+            )
+            print("Assert Success : Assert Resend Second OTP Success")
+        except AssertionError:
+            print("Assert Failed : Assert Resend Second OTP Failed")
