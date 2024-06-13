@@ -15,8 +15,8 @@ class SetupAppium:
         options = UiAutomator2Options()
 
         # Set device name from property or environment variable
-        # device_name = os.getenv("ANDROID_DEVICE_NAME", "cisoeqnjnnhqmr5l")
-        device_name = os.getenv("ANDROID_DEVICE_NAME", "emulator-5544")
+        device_name = os.getenv("ANDROID_DEVICE_NAME", "cisoeqnjnnhqmr5l")
+        # device_name = os.getenv("ANDROID_DEVICE_NAME", "emulator-5544")
         options.set_capability("deviceName", device_name)
 
         # chromedriver_path = "/Users/michaelliong/Documents/automation_android_visionplus/utils/chromedriver.exe"
@@ -25,8 +25,8 @@ class SetupAppium:
         # options.set_capability("chromedriverExecutable", chromedriver_path)
 
         # Set the app path
-        app_path = "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/mirada.apk"
-        # app_path = "/Users/fatahalim/Documents/VisualStudio/automation-android-visionplus/utils/mirada.apk"
+        # app_path = "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/mirada.apk"
+        app_path = "/Users/fatahalim/Documents/VisualStudio/automation-android-visionplus/utils/mirada.apk"
         if not os.path.exists(app_path):
             raise FileNotFoundError(f"APK file not found at {app_path}")
 
