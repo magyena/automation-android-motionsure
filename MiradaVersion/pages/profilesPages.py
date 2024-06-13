@@ -5,7 +5,12 @@ from selenium.webdriver.common.keys import Keys
 from MiradaVersion.utils.handler import HandlerRemote
 from selenium.common.exceptions import TimeoutException
 import time
+import subprocess
 from MiradaVersion.object.profileObject import profileObject
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.actions.pointer_input import PointerInput
+from selenium.webdriver.common.actions import interaction
+from selenium.webdriver.remote.webdriver import WebDriver
 
 
 class Profiles:
@@ -14,6 +19,48 @@ class Profiles:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 20)
         self.profileobj = profileObject()
+
+    def scrollDown(self):
+        finger = PointerInput(interaction.POINTER_TOUCH, "finger")
+        actions = ActionChains(self.driver)
+
+        actions.w3c_actions.pointer_action.move_to_location(587, 1733)
+        actions.w3c_actions.pointer_action.pointer_down()
+        actions.w3c_actions.pointer_action.move_to_location(587, 599)
+        actions.w3c_actions.pointer_action.pointer_up()
+
+        actions.perform()
+
+    def scrollUp(self):
+        finger = PointerInput(interaction.POINTER_TOUCH, "finger")
+        actions = ActionChains(self.driver)
+
+        actions.w3c_actions.pointer_action.move_to_location(507, 350)
+        actions.w3c_actions.pointer_action.pointer_down()
+        actions.w3c_actions.pointer_action.move_to_location(487, 1777)
+        actions.w3c_actions.pointer_action.pointer_up()
+
+        actions.perform()
+
+    def disable_wifi_connection(self):
+        # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
+        adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
+
+        try:
+            subprocess.run([adb_path, "shell", "svc", "wifi", "disable"], check=True)
+            print("Wifi data disabled successfully.")
+        except subprocess.CalledProcessError as e:
+            print("Error disabling Wifi data:", e)
+
+    def enable_wifi_connection(self):
+        # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
+        adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
+
+        try:
+            subprocess.run([adb_path, "shell", "svc", "wifi", "enable"], check=True)
+            print("Wifi data enabled successfully.")
+        except subprocess.CalledProcessError as e:
+            print("Error enabling Wifi data:", e)
 
     def clickFirstProfile(self):
 
