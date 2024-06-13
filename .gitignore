@@ -1,7 +1,4 @@
 test.py
-__pycache__
 .pytest_cache
 as.py
 .README
-.DS_Store
-setup.py
