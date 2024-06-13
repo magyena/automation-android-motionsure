@@ -43,8 +43,8 @@ class Profiles:
         actions.perform()
 
     def disable_wifi_connection(self):
-        adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
-        # adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
+        # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
+        adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
 
         try:
             subprocess.run([adb_path, "shell", "svc", "wifi", "disable"], check=True)
@@ -53,8 +53,8 @@ class Profiles:
             print("Error disabling Wifi data:", e)
 
     def enable_wifi_connection(self):
-        adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
-        # adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
+        # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
+        adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
 
         try:
             subprocess.run([adb_path, "shell", "svc", "wifi", "enable"], check=True)
