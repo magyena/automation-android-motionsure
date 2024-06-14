@@ -38,7 +38,7 @@ class loginObject:
         )
         self.txt_terms_of_use = "com.zte.iptvclient.android.idmnc:id/terms_of_use"
         self.txt_privacy_policy = "com.zte.iptvclient.android.idmnc:id/privacy_policy"
-        self.txt_send_otp_via_whatsapp = "//*[contains(@text,'Send OTP via Whatsapp')]"
+        self.txt_send_otp_via_whatsapp = "//*[contains(@text,'Send OTP ')]"
         self.drop_country = "//android.widget.ScrollView/android.widget.EditText[1]/android.view.View/android.view.View"
         self.fld_country_code = "/hierarchy/android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.widget.EditText"
         self.country_code_indonesia = '//android.widget.TextView[@text="+62"]'
