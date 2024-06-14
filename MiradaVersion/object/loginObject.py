@@ -36,6 +36,7 @@ class loginObject:
         self.txt_account_has_been_registered = (
             '//android.widget.TextView[@text="This account has been registered"]'
         )
+        
         self.txt_terms_of_use = "com.zte.iptvclient.android.idmnc:id/terms_of_use"
         self.txt_privacy_policy = "com.zte.iptvclient.android.idmnc:id/privacy_policy"
         self.txt_send_otp_via_whatsapp = "//*[contains(@text,'Send OTP ')]"
