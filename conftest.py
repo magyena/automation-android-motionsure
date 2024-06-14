@@ -3,6 +3,7 @@ import pytest
 from requests import post  # Import post function directly
 
 failed_tests = []
+total_tests = 0  # To count the total number of tests executed
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
@@ -10,10 +11,11 @@ def pytest_runtest_makereport(item, call):
     outcome = yield
     result = outcome.get_result()
 
-    if result.when == "call" and result.failed:
-        failed_tests.append((item.nodeid, str(call.excinfo.value)))
-        test_name = item.nodeid.split("::")[-1]
-        error_message = str(call.excinfo.value)
+    if result.when == "call":
+        global total_tests
+        total_tests += 1  # Increment total test count for every test
+        if result.failed:
+            failed_tests.append((item.nodeid, str(call.excinfo.value)))
 
 
 def send_to_discord(message):
@@ -23,7 +25,7 @@ def send_to_discord(message):
 
 
 def pytest_sessionfinish(session, exitstatus):
-    total_tests = session.testscollected
+    global total_tests
     failed_count = len(failed_tests)
     passed_count = total_tests - failed_count
 
@@ -38,6 +40,7 @@ def pytest_sessionfinish(session, exitstatus):
         message = f"{'=' * 70}\n"
         message += f"**Test Case: `{test_suite_name}` was not executed**\n"
         message += "=" * 70
+        message += "CC: <@1077483182942863470> <@771451525331025941>\n"
     else:
         message = f"{'=' * 70}\n"
         message += f"**Test Suite Name: Android - `{test_suite_name}`**\n"
@@ -52,12 +55,11 @@ def pytest_sessionfinish(session, exitstatus):
             for test, error_message in failed_tests:
                 script_name = test.split("::")[0]  # Extract script name
                 test_name = test.split("::")[-1]  # Extract test name
-
                 if len(error_message) > 100:
                     error_message = error_message[:100] + "..."
 
-                # Removing New Line
-                error_message = error_message.replace("\n", "")
+                # Removing New Line for better readability
+                error_message = error_message.replace("\n", " ")
 
                 message += f"- [FAILED] {test_name} in {script_name}\n"
                 message += f"  - {error_message}\n"
