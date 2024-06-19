@@ -36,7 +36,6 @@ class loginObject:
         self.txt_account_has_been_registered = (
             '//android.widget.TextView[@text="This account has been registered"]'
         )
-        
         self.txt_terms_of_use = "com.zte.iptvclient.android.idmnc:id/terms_of_use"
         self.txt_privacy_policy = "com.zte.iptvclient.android.idmnc:id/privacy_policy"
         self.txt_send_otp_via_whatsapp = "//*[contains(@text,'Send OTP ')]"
@@ -59,3 +58,8 @@ class loginObject:
         self.txt_wrong_otp = "//*[contains(@text,'Wrong OTP code')]"
         self.txt_otp_expired = "//*[contains(@text,'OTP Expired')]"
         self.resend_second_otp = "//*[contains(@text,'Resend in 04')]"
+        self.txt_invalid_phone_number = "//*[contains(@text,'Phone number incorrect.')]"
+        self.txt_invisible_password = '//android.widget.EditText[@text="4321Lupa"]/android.view.View/android.view.View[2]'
+        self.txt_invalid_email = (
+            "//*[contains(@text,'Email address format incorrect.')]"
+        )

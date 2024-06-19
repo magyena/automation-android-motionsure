@@ -44,15 +44,17 @@ def test_TC_User_Click_Terms_of_Use(driver: WebDriver, action: SignUp):
     action.clickTermsOfUse()
     time.sleep(2)
     driver.press_keycode(4)
+    driver.press_keycode(4)
 
 
 def test_TC_User_Click_Privacy_Policy(driver: WebDriver, action: SignUp):
     action.clickPrivacyPolicy()
     time.sleep(2)
     driver.press_keycode(4)
+    driver.press_keycode(4)
 
 
-def test_TC_Unverified_Account(driver: WebDriver, action: SignUp):
+def test_TC_Unverified_Account_Phone_Number(driver: WebDriver, action: SignUp):
 
     action.clickSignUp()
     action.assertRegisterPage()
@@ -128,6 +130,7 @@ def test_Register_with_Phone_Number_User_fill_Create_Password_field_with_by_8_ch
     action.inputPhoneNumber("888111222333")
     action.inputPassword(password)
     action.clickInvisiblePassword()
+    action.assertInvisiblePassword()
 
 
 def test_Register_with_Phone_Number_User_fill_Create_Password_field_less_than_8_character(
@@ -173,6 +176,22 @@ def test_Register_with_Phone_Number_OTP_Expired_After_2_minutes(
 ):
     action.clickSubmitRegister()
     action.assertOTPExpired()
+
+
+def test_Register_with_Phone_Number_Input_Invalid_Phone_Number(
+    driver: WebDriver, action: SignUp
+):
+    action.inputPhoneNumber("11111")
+    action.assertInvalidPhoneNumber()
+
+
+def test_Register_with_Phone_Number_Click_Icon_Eyes_Password(
+    driver: WebDriver, action: SignUp
+):
+    action.inputPhoneNumber("111111111")
+    action.inputPassword("4321Lupa")
+    action.clickInvisiblePassword()
+    action.assertInvisiblePassword()
 
 
 def test_TC_Register_New_User_Phone_Number(reopendriver: WebDriver):

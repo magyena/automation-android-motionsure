@@ -374,3 +374,39 @@ class SignUp:
             print("Assert Success : Assert Resend Second OTP Success")
         except AssertionError:
             print("Assert Failed : Assert Resend Second OTP Failed")
+
+    def assertInvalidPhoneNumber(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.txt_invalid_phone_number)
+                )
+            )
+            print("Assert Success : Assert Invalid Phone Number Success")
+        except AssertionError:
+            print("Assert Failed : Assert Invalid Phone Number Failed")
+
+    def assertInvisiblePassword(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.txt_invisible_password)
+                )
+            )
+            print("Assert Success : Assert Invisible Password Success")
+        except AssertionError:
+            print("Assert Failed : Assert Invisible Password Failed")
+
+    def assertEmailInvalidFormat(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.txt_invalid_email)
+                )
+            )
+            print("Assert Success : Assert Invalid Format Email Success")
+        except AssertionError:
+            print("Assert Failed : Assert Invalid Format Email Failed")
