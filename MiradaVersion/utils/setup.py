@@ -14,7 +14,7 @@ class SetupAppium:
         options = UiAutomator2Options()
 
         # device_name = os.getenv("ANDROID_DEVICE_NAME", "cisoeqnjnnhqmr5l")
-        device_name = os.getenv("ANDROID_DEVICE_NAME", "emulator-5544")
+        device_name = os.getenv("ANDROID_DEVICE_NAME", "emulator-5556")
         options.set_capability("deviceName", device_name)
 
         # Set the app path
