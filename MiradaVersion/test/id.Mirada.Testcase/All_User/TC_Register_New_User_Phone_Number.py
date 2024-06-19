@@ -44,14 +44,14 @@ def test_TC_User_Click_Terms_of_Use(driver: WebDriver, action: SignUp):
     action.clickTermsOfUse()
     time.sleep(2)
     driver.press_keycode(4)
-    driver.press_keycode(4)
+    # driver.press_keycode(4)
 
 
 def test_TC_User_Click_Privacy_Policy(driver: WebDriver, action: SignUp):
     action.clickPrivacyPolicy()
     time.sleep(2)
     driver.press_keycode(4)
-    driver.press_keycode(4)
+    # driver.press_keycode(4)
 
 
 def test_TC_Unverified_Account_Phone_Number(driver: WebDriver, action: SignUp):
