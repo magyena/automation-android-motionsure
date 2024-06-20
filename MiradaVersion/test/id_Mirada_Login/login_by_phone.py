@@ -4,6 +4,7 @@ from MiradaVersion.test.open_app import (
     free_phone_data,
     premium_phone_data,
     premium_sport_phone_data,
+    wrong_phone_data,
     Choose_Login_As,
 )
 
@@ -20,3 +21,7 @@ def login_premium_sport_by_phone(driver, premium_sport_phone_data):
     Choose_Login_As(
         driver, "PREMIUM_SPORT", premium_sport_phone_data=premium_sport_phone_data
     )
+
+
+def login_with_wrong_phone(driver, wrong_phone_data):
+    Choose_Login_As(driver, "WRONG_LOGIN", wrong_phone_data=wrong_phone_data)
