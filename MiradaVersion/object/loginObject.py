@@ -57,9 +57,13 @@ class loginObject:
         )
         self.txt_wrong_otp = "//*[contains(@text,'Wrong OTP code')]"
         self.txt_otp_expired = "//*[contains(@text,'OTP Expired')]"
-        self.resend_second_otp = "//*[contains(@text,'Resend in 04')]"
+        self.resend_second_otp = "//*[contains(@text,'Resend in 04:')]"
         self.txt_invalid_phone_number = "//*[contains(@text,'Phone number incorrect.')]"
-        self.txt_invisible_password = '//android.widget.EditText[@text="4321Lupa"]/android.view.View/android.view.View[2]'
+        self.txt_invisible_password = "//*[contains(@text,'4321Lupa')]"
         self.txt_invalid_email = (
             "//*[contains(@text,'Email address format incorrect.')]"
+        )
+        self.btn_login_from_register = "//*[contains(@text,'Login')]"
+        self.txt_this_account_has_Not_been_registered = (
+            "//*[contains(@text,'This account has not been registered.')]"
         )

@@ -84,3 +84,17 @@ class PagesLogin:
             print("Assert Success : Assert Email Section Success")
         except AssertionError:
             print("Assert Failed : Assert Email Section Failed")
+
+    def assertAccountHasNotBeenRegistered(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.txt_this_account_has_Not_been_registered)
+                )
+            )
+            print(
+                "Assert Success : Assert This account has not been registered Success"
+            )
+        except AssertionError:
+            print("Assert Failed : Assert This account has not been registered Failed")

@@ -5,6 +5,7 @@ from appium.webdriver.webdriver import WebDriver
 from MiradaVersion.utils.setup import SetupAppium
 from MiradaVersion.pages.signUpPage import SignUp
 from MiradaVersion.pages.homepagePages import HomePage
+from MiradaVersion.pages.loginPages import PagesLogin
 from MiradaVersion.test.id_Mirada_Register.TC_register_with_phone import (
     Register_with_phone,
 )
@@ -38,6 +39,11 @@ def reopendriver():
 @pytest.fixture(scope="module")
 def action(driver):
     return SignUp(driver)
+
+
+@pytest.fixture(scope="module")
+def action2(driver):
+    return PagesLogin(driver)
 
 
 def test_TC_User_Click_Terms_of_Use(driver: WebDriver, action: SignUp):
@@ -192,6 +198,26 @@ def test_Register_with_Phone_Number_Click_Icon_Eyes_Password(
     action.inputPassword("4321Lupa")
     action.clickInvisiblePassword()
     action.assertInvisiblePassword()
+
+
+def test_Register_with_Phone_Number_Account_has_Been_Registered(
+    driver: WebDriver, action: SignUp
+):
+    driver.press_keycode(4)
+    action.clickSignUp()
+    action.assertRegisterPage()
+    action.inputPhoneNumber("888111222333")
+    action.inputPassword(password)
+    action.clickButtonSendOtp()
+    action.clickSendViaSms()
+    action.assertRegisterHasBeenRegistered()
+
+
+def test_TC_Register_with_Phone_Number_Account_has_Been_Registered_Click_Login(
+    driver: WebDriver, action: SignUp, action2: PagesLogin
+):
+    action.clickBtnLoginFromRegister()
+    action2.assertLoginPage()
 
 
 def test_TC_Register_New_User_Phone_Number(reopendriver: WebDriver):

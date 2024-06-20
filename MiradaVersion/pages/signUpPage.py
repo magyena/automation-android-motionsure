@@ -114,6 +114,7 @@ class SignUp:
 
         input_email = self.driver.find_element(By.XPATH, self.loginObj.txt_fld_email)
 
+        input_email.clear()
         input_email.click()
         input_email.send_keys(email)
 
@@ -410,3 +411,11 @@ class SignUp:
             print("Assert Success : Assert Invalid Format Email Success")
         except AssertionError:
             print("Assert Failed : Assert Invalid Format Email Failed")
+
+    def clickBtnLoginFromRegister(self):
+        btn_login_from_register = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.loginObj.btn_login_from_register)
+            )
+        )
+        btn_login_from_register.click()
