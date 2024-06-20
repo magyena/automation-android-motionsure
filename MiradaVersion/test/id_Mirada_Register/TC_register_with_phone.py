@@ -34,6 +34,7 @@ def Register_with_phone(driver: WebDriver):
     register.assertSendOtpViaMessage()
     register.clickSendViaSms()
     otp = print_last_otp(phone_number)
+    time.sleep(2)
     register.inputOTP(otp)
     register.clickSubmitRegister()
     register.assertDiscoverProfiles()
