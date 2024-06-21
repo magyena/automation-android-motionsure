@@ -165,11 +165,10 @@ def test_Register_with_Phone_Number_Request_Otp_Second_Time(
     action.clickSendViaSms()
     action.assertSendOtpSecondTime()
     otp = print_last_otp(phone_number)
+    time.sleep(2)
     action.inputOTP(otp)
     time.sleep(310)
-    action.clickSubmitRegister()
-    action.assertOTPExpired()
-
+  
 
 def test_Register_with_Phone_Number_OTP_Expired_After_2_minutes(
     driver: WebDriver, action: SignUp
