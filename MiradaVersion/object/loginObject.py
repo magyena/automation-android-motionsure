@@ -67,3 +67,6 @@ class loginObject:
         self.txt_this_account_has_Not_been_registered = (
             "//*[contains(@text,'This account has not been registered.')]"
         )
+        self.btn_forgot_password = "//*[contains(@text,'Forgot Password?')]"
+        self.txt_forgot_password = "//*[contains(@text,'Forgot Password')]"
+        self.btn_save_password = "//*[contains(@text,'Save Password')]"

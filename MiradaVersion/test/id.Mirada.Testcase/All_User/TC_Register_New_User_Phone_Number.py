@@ -37,187 +37,191 @@ def reopendriver():
 
 
 @pytest.fixture(scope="module")
-def action(driver):
+def sign_up_action(driver):
     return SignUp(driver)
 
 
 @pytest.fixture(scope="module")
-def action2(driver):
+def login_action(driver):
     return PagesLogin(driver)
 
 
-def test_TC_User_Click_Terms_of_Use(driver: WebDriver, action: SignUp):
-    action.clickTermsOfUse()
+def test_TC_User_Click_Terms_of_Use(driver: WebDriver, sign_up_action: SignUp):
+    sign_up_action.clickTermsOfUse()
     time.sleep(2)
     driver.press_keycode(4)
     # driver.press_keycode(4)
 
 
-def test_TC_User_Click_Privacy_Policy(driver: WebDriver, action: SignUp):
-    action.clickPrivacyPolicy()
+def test_TC_User_Click_Privacy_Policy(driver: WebDriver, sign_up_action: SignUp):
+    sign_up_action.clickPrivacyPolicy()
     time.sleep(2)
     driver.press_keycode(4)
     # driver.press_keycode(4)
 
 
-def test_TC_Unverified_Account_Phone_Number(driver: WebDriver, action: SignUp):
+def test_TC_Unverified_Account_Phone_Number(driver: WebDriver, sign_up_action: SignUp):
 
-    action.clickSignUp()
-    action.assertRegisterPage()
-    action.inputPhoneNumber("888111222333")
-    action.inputPassword(password)
-    action.clickButtonSendOtp()
-    action.clickSendViaSms()
-    action.assertRegisterHasBeenRegistered()
+    sign_up_action.clickSignUp()
+    sign_up_action.assertRegisterPage()
+    sign_up_action.inputPhoneNumber("888111222333")
+    sign_up_action.inputPassword(password)
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.clickSendViaSms()
+    sign_up_action.assertRegisterHasBeenRegistered()
     driver.press_keycode(4)
 
 
 def test_Register_with_phone_Number_and_user_can_select_Country(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
 
-    action.clickCountry()
-    action.assertCountryCode()
-    action.clickCountryMalaysia()
-    action.assertCountryCodeAfterChooseMalaysia()
+    sign_up_action.clickCountry()
+    sign_up_action.assertCountryCode()
+    sign_up_action.clickCountryMalaysia()
+    sign_up_action.assertCountryCodeAfterChooseMalaysia()
 
 
 def test_Register_with_phone_Number_and_user_can_search_Country(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
 
-    action.clickCountry()
-    action.assertCountryCode()
-    action.inputCountryCodeNetherlands("Netherland")
-    action.clickResultSearchCountry()
-    action.assertCountryCodeAfterChooseNetherland()
+    sign_up_action.clickCountry()
+    sign_up_action.assertCountryCode()
+    sign_up_action.inputCountryCodeNetherlands("Netherland")
+    sign_up_action.clickResultSearchCountry()
+    sign_up_action.assertCountryCodeAfterChooseNetherland()
 
 
 def test_Register_with_phone_Number_and_user_can_search_Country_back_Default(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
 
-    action.clickCountry()
-    action.assertCountryCode()
-    action.clickCountryIndonesia()
-    action.assertCountryCodeAfterChooseIndonesia()
+    sign_up_action.clickCountry()
+    sign_up_action.assertCountryCode()
+    sign_up_action.clickCountryIndonesia()
+    sign_up_action.assertCountryCodeAfterChooseIndonesia()
 
 
 def test_Register_with_phone_Number_and_User_Input_Wrong_Keyword(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
 
-    action.clickCountry()
-    action.assertCountryCode()
-    action.inputCountryCodeNetherlands("asdadqe213f")
-    action.assertNoCountryFound()
-    action.clickBtnCloseCountryCode()
+    sign_up_action.clickCountry()
+    sign_up_action.assertCountryCode()
+    sign_up_action.inputCountryCodeNetherlands("asdadqe213f")
+    sign_up_action.assertNoCountryFound()
+    sign_up_action.clickBtnCloseCountryCode()
 
 
-def test_Register_with_phone_Number_Incorrect(driver: WebDriver, action: SignUp):
+def test_Register_with_phone_Number_Incorrect(
+    driver: WebDriver, sign_up_action: SignUp
+):
 
-    action.inputPhoneNumber("11111")
-    action.assertPhoneNumberIncorrect()
+    sign_up_action.inputPhoneNumber("11111")
+    sign_up_action.assertPhoneNumberIncorrect()
 
 
 def test_Register_with_phone_Number_Special_Character(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
 
-    action.inputPhoneNumber("22232")
-    action.assertPhoneNumberIncorrect()
+    sign_up_action.inputPhoneNumber("22232")
+    sign_up_action.assertPhoneNumberIncorrect()
 
 
 def test_Register_with_Phone_Number_User_fill_Create_Password_field_with_by_8_character(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
-    action.clickEmailSection()
-    action.clickPhoneNumberSection()
-    action.inputPhoneNumber("888111222333")
-    action.inputPassword(password)
-    action.clickInvisiblePassword()
-    action.assertInvisiblePassword()
+    sign_up_action.clickEmailSection()
+    sign_up_action.clickPhoneNumberSection()
+    sign_up_action.inputPhoneNumber("888111222333")
+    sign_up_action.inputPassword(password)
+    sign_up_action.clickInvisiblePassword()
+    sign_up_action.assertInvisiblePassword()
 
 
 def test_Register_with_Phone_Number_User_fill_Create_Password_field_less_than_8_character(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
-    action.clickEmailSection()
-    action.clickPhoneNumberSection()
-    action.inputPhoneNumber("888111222333")
-    action.inputPassword(wrong_password)
-    action.assertPasswordDoesntMatch()
+    sign_up_action.clickEmailSection()
+    sign_up_action.clickPhoneNumberSection()
+    sign_up_action.inputPhoneNumber("888111222333")
+    sign_up_action.inputPassword(wrong_password)
+    sign_up_action.assertPasswordDoesntMatch()
 
 
-def test_Register_with_Phone_Number_Wrong_OTP(driver: WebDriver, action: SignUp):
+def test_Register_with_Phone_Number_Wrong_OTP(
+    driver: WebDriver, sign_up_action: SignUp
+):
 
-    action.inputPhoneNumber(phone_number)
-    action.inputPassword(password)
-    action.clickButtonSendOtp()
-    action.assertSendOtpViaMessage()
-    action.clickSendViaSms()
+    sign_up_action.inputPhoneNumber(phone_number)
+    sign_up_action.inputPassword(password)
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.assertSendOtpViaMessage()
+    sign_up_action.clickSendViaSms()
     time.sleep(2)
-    action.inputOTP("0000")
-    action.clickSubmitRegister()
-    action.assertWrongOtp()
+    sign_up_action.inputOTP("0000")
+    sign_up_action.clickSubmitRegister()
+    sign_up_action.assertWrongOtp()
 
 
 def test_Register_with_Phone_Number_Request_Otp_Second_Time(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
 
     time.sleep(125)
-    action.clickButtonSendOtp()
-    action.assertSendOtpViaMessage()
-    action.clickSendViaSms()
-    action.assertSendOtpSecondTime()
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.assertSendOtpViaMessage()
+    sign_up_action.clickSendViaSms()
+    sign_up_action.assertSendOtpSecondTime()
     otp = print_last_otp(phone_number)
-    time.sleep(2)
-    action.inputOTP(otp)
+    time.sleep(3)
+    sign_up_action.inputOTP(otp)
     time.sleep(310)
-  
+
 
 def test_Register_with_Phone_Number_OTP_Expired_After_2_minutes(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
-    action.clickSubmitRegister()
-    action.assertOTPExpired()
+    sign_up_action.clickSubmitRegister()
+    sign_up_action.assertOTPExpired()
 
 
 def test_Register_with_Phone_Number_Input_Invalid_Phone_Number(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
-    action.inputPhoneNumber("11111")
-    action.assertInvalidPhoneNumber()
+    sign_up_action.inputPhoneNumber("11111")
+    sign_up_action.assertInvalidPhoneNumber()
 
 
 def test_Register_with_Phone_Number_Click_Icon_Eyes_Password(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
-    action.inputPhoneNumber("111111111")
-    action.inputPassword("4321Lupa")
-    action.clickInvisiblePassword()
-    action.assertInvisiblePassword()
+    sign_up_action.inputPhoneNumber("111111111")
+    sign_up_action.inputPassword("4321Lupa")
+    sign_up_action.clickInvisiblePassword()
+    sign_up_action.assertInvisiblePassword()
 
 
 def test_Register_with_Phone_Number_Account_has_Been_Registered(
-    driver: WebDriver, action: SignUp
+    driver: WebDriver, sign_up_action: SignUp
 ):
     driver.press_keycode(4)
-    action.clickSignUp()
-    action.assertRegisterPage()
-    action.inputPhoneNumber("888111222333")
-    action.inputPassword(password)
-    action.clickButtonSendOtp()
-    action.clickSendViaSms()
-    action.assertRegisterHasBeenRegistered()
+    sign_up_action.clickSignUp()
+    sign_up_action.assertRegisterPage()
+    sign_up_action.inputPhoneNumber("888111222333")
+    sign_up_action.inputPassword(password)
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.clickSendViaSms()
+    sign_up_action.assertRegisterHasBeenRegistered()
 
 
 def test_TC_Register_with_Phone_Number_Account_has_Been_Registered_Click_Login(
-    driver: WebDriver, action: SignUp, action2: PagesLogin
+    driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin
 ):
-    action.clickBtnLoginFromRegister()
-    action2.assertLoginPage()
+    sign_up_action.clickBtnLoginFromRegister()
+    login_action.assertLoginPage()
 
 
 def test_TC_Register_New_User_Phone_Number(reopendriver: WebDriver):

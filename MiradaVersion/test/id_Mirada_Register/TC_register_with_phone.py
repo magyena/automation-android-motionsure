@@ -42,3 +42,5 @@ def Register_with_phone(driver: WebDriver):
     register.assertSkipProfile()
     register.clickBtnContinueSkipProfile()
     homepage.assertHomePage()
+
+    return phone_number

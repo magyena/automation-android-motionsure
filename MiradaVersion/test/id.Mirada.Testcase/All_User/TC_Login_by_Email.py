@@ -32,25 +32,25 @@ def reopendriver():
 
 
 @pytest.fixture(scope="module")
-def action(driver):
+def sign_up_action(driver):
     return SignUp(driver)
 
 
 @pytest.fixture(scope="module")
-def action2(driver):
+def login_action(driver):
     return PagesLogin(driver)
 
 
 def test_TC_Login_Email_User_not_able_login_User_Not_Registered(
-    driver: WebDriver, action: SignUp, action2: PagesLogin
+    driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin
 ):
 
-    action2.clickLogin()
-    action2.clickEmailSection()
-    action.inputEmail(email_not_registered)
-    action.inputPassword("4321Lupa")
-    action2.clickSubmitLogin()
-    action2.assertAccountHasNotBeenRegistered()
+    login_action.clickLogin()
+    login_action.clickEmailSection()
+    sign_up_action.inputEmail(email_not_registered)
+    sign_up_action.inputPassword("4321Lupa")
+    login_action.clickSubmitLogin()
+    login_action.assertAccountHasNotBeenRegistered()
     driver.press_keycode(4)
     driver.press_keycode(4)
 

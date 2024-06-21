@@ -87,6 +87,7 @@ class SignUp:
 
         fld_otp = self.driver.find_element(By.XPATH, self.loginObj.fld_otp)
 
+        fld_otp.clear()
         fld_otp.click()
         fld_otp.send_keys(otp)
         self.driver.press_keycode(4)

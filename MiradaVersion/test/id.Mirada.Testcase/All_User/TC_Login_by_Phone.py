@@ -28,29 +28,27 @@ def reopendriver():
 
 
 @pytest.fixture(scope="module")
-def action(driver):
+def sign_up_action(driver):
     return SignUp(driver)
 
 
 @pytest.fixture(scope="module")
-def action2(driver):
+def login_action(driver):
     return PagesLogin(driver)
 
 
 def test_TC_Login_Phone_Number_User_not_able_login_User_Not_Registered(
-    driver: WebDriver, action: SignUp, action2: PagesLogin
+    driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin
 ):
 
-    action2.clickLogin()
-    action.inputPhoneNumber(phone_not_registered)
-    action.inputPassword("4321Lupa")
-    action2.clickSubmitLogin()
-    action2.assertAccountHasNotBeenRegistered()
+    login_action.clickLogin()
+    sign_up_action.inputPhoneNumber(phone_not_registered)
+    sign_up_action.inputPassword("4321Lupa")
+    login_action.clickSubmitLogin()
+    login_action.assertAccountHasNotBeenRegistered()
     driver.press_keycode(4)
     driver.press_keycode(4)
 
 
-def test_TC_Login_Phone_Number_User_able_login(
-    driver: WebDriver, action: SignUp, action2: PagesLogin, free_phone_data
-):
+def test_TC_Login_Phone_Number_User_able_login(driver: WebDriver, free_phone_data):
     login_free_by_phone(driver, free_phone_data)
