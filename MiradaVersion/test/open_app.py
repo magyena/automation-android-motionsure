@@ -80,6 +80,62 @@ def premium_sport_phone_data():
     return data
 
 
+@pytest.fixture
+def wrong_email_data():
+    with open(
+        "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/WrongEmail.json"
+        # "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/WrongEmail.json"
+    ) as file:
+        data = json.load(file)
+    print("Loaded wrong email data:", data)
+    return data
+
+
+@pytest.fixture
+def wrong_phone_data():
+    with open(
+        "/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/WrongPhone.json"
+        # "/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/id_Mirada_TestData_Login/WrongPhone.json"
+    ) as file:
+        data = json.load(file)
+    print("Loaded wrong phone data:", data)
+    return data
+
+
+def loginWrongDataEmail(driver: WebDriver, login_data):
+    if isinstance(login_data, list) and len(login_data) > 0:
+        login_action = PagesLogin(driver)
+        login = SignUp(driver)
+        profile = Profiles(driver)
+        homepage = HomePage(driver)
+
+        login_action.clickLogin()
+        login_action.assertLoginPage()
+        login_action.clickEmailSection()
+        login_action.assertEmailSection()
+        login_action.inputEmail(login_data[0]["username"])
+        login.inputPassword(login_data[0]["password"])
+        login_action.clickSubmitLogin()
+    else:
+        raise ValueError("login_data is not a non-empty list as expected.")
+
+
+def loginWrongDataPhone(driver: WebDriver, login_data):
+    if isinstance(login_data, list) and len(login_data) > 0:
+        login_action = PagesLogin(driver)
+        login = SignUp(driver)
+        profile = Profiles(driver)
+        homepage = HomePage(driver)
+
+        login_action.clickLogin()
+        login_action.assertLoginPage()
+        login.inputPhoneNumber(login_data[0]["phone"])
+        login.inputPassword(login_data[0]["password"])
+        login_action.clickSubmitLogin()
+    else:
+        raise ValueError("login_data is not a non-empty list as expected.")
+
+
 def loginFreeByEmail(driver: WebDriver, login_data):
     if isinstance(login_data, list) and len(login_data) > 0:
         login_action = PagesLogin(driver)
@@ -211,6 +267,8 @@ def Choose_Login_As(
     free_phone_data=None,
     premium_phone_data=None,
     premium_sport_phone_data=None,
+    wrong_email_data=None,
+    wrong_phone_data=None,
 ):
     if login_type == "FREE":
         if free_phone_data:
@@ -221,6 +279,7 @@ def Choose_Login_As(
             raise ValueError(
                 "Free phone data or free email data is required for FREE login"
             )
+
     elif login_type == "PREMIUM":
         if premium_email_data:
             loginPremiumbyEmail(driver, premium_email_data)
@@ -230,6 +289,7 @@ def Choose_Login_As(
             raise ValueError(
                 "Premium phone data or Premium email data is required for Premium login"
             )
+
     elif login_type == "PREMIUM_SPORT":
         if premium_sport_email_data:
             loginSportbyEmail(driver, premium_sport_email_data)
@@ -237,7 +297,18 @@ def Choose_Login_As(
             loginSportbyPhone(driver, premium_sport_phone_data)
         else:
             raise ValueError(
-                "Premium Sport phone data or Premium Sport email data is required for Premium  Sport login"
+                "Premium Sport phone data or Premium Sport email data is required for Premium Sport login"
             )
+
+    elif login_type == "WRONG_LOGIN":
+        if wrong_email_data:
+            loginWrongDataEmail(driver, wrong_email_data)
+        elif wrong_phone_data:
+            loginWrongDataPhone(driver, wrong_phone_data)
+        else:
+            raise ValueError(
+                "Wrong email data or wrong phone data is required for WRONG_LOGIN"
+            )
+
     else:
         raise ValueError("Invalid login type")

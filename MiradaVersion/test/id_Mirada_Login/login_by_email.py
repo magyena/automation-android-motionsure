@@ -4,6 +4,7 @@ from MiradaVersion.test.open_app import (
     free_email_data,
     premium_email_data,
     premium_sport_email_data,
+    wrong_email_data,
     Choose_Login_As,
 )
 
@@ -18,3 +19,7 @@ def login_premium_by_email(driver, premium_email_data):
 
 def login_premium_sport_by_email(driver, premium_sport_email_data):
     Choose_Login_As(driver, "PREMIUM_SPORT", None, None, premium_sport_email_data)
+
+
+def login_with_wrong_email(driver, wrong_email_data):
+    Choose_Login_As(driver, "WRONG_LOGIN", wrong_email_data=wrong_email_data)

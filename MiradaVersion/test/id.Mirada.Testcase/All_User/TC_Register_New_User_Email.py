@@ -3,6 +3,7 @@ import time
 from appium.webdriver.webdriver import WebDriver
 from MiradaVersion.utils.setup import SetupAppium
 from MiradaVersion.pages.signUpPage import SignUp
+from MiradaVersion.pages.loginPages import PagesLogin
 from MiradaVersion.pages.homepagePages import HomePage
 from MiradaVersion.test.id_Mirada_Register.TC_register_with_email import (
     Register_with_email,
@@ -37,25 +38,99 @@ def reopendriver():
 
 
 @pytest.fixture(scope="module")
-def action(driver):
+def sign_up_action(driver):
     return SignUp(driver)
 
 
-def test_TC_Unverified_Account_Email(driver: WebDriver, action: SignUp):
+@pytest.fixture(scope="module")
+def login_action(driver):
+    return PagesLogin(driver)
 
-    action.clickSignUp()
-    action.assertRegisterPage()
-    action.clickEmailSection()
-    action.inputEmail("freetest38@visionplus.id")
-    action.inputPassword(password)
-    action.clickButtonSendOtp()
-    action.assertRegisterHasBeenRegistered()
+
+def test_TC_Unverified_Account_Email(driver: WebDriver, sign_up_action: SignUp):
+
+    sign_up_action.clickSignUp()
+    sign_up_action.assertRegisterPage()
+    sign_up_action.clickEmailSection()
+    sign_up_action.inputEmail("freetest38@visionplus.id")
+    sign_up_action.inputPassword(password)
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.assertRegisterHasBeenRegistered()
     driver.press_keycode(4)
 
 
-def test_TC_Register_with_Email_Invalid_Format(driver: WebDriver, action: SignUp):
-    action.inputEmail(wrong_email)
-    action.assertEmailInvalidFormat()
+def test_TC_Register_with_Email_Invalid_Format(
+    driver: WebDriver, sign_up_action: SignUp
+):
+    sign_up_action.inputEmail(wrong_email)
+    sign_up_action.assertEmailInvalidFormat()
+
+
+def test_TC_Register_with_Email_User_fill_Create_Password_field_with_by_8_character(
+    driver: WebDriver, sign_up_action: SignUp
+):
+    time.sleep(3)
+    sign_up_action.inputEmail("freetest40@visionplus.id")
+    sign_up_action.clickInvisiblePassword()
+    sign_up_action.assertInvisiblePassword()
+
+
+def test_TC_Register_with_Email_User_fill_Create_Password_field_less_than_8_character(
+    driver: WebDriver, sign_up_action: SignUp
+):
+    sign_up_action.clickPhoneNumberSection()
+    sign_up_action.clickEmailSection()
+    sign_up_action.inputEmail("freetest40@visionplus.id")
+    sign_up_action.inputPassword(wrong_password)
+    sign_up_action.assertPasswordDoesntMatch()
+
+
+def test_TC_Register_with_Email_Wrong_OTP(driver: WebDriver, sign_up_action: SignUp):
+    sign_up_action.clickPhoneNumberSection()
+    sign_up_action.clickEmailSection()
+    sign_up_action.inputEmail(email)
+    sign_up_action.inputPassword(password)
+    sign_up_action.clickButtonSendOtp()
+    time.sleep(2)
+    sign_up_action.inputOTP("0000")
+    sign_up_action.clickSubmitRegister()
+    sign_up_action.assertWrongOtp()
+
+
+def test_TC_Register_with_Email_Request_Otp_Second_Time(
+    driver: WebDriver, sign_up_action: SignUp
+):
+
+    time.sleep(125)
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.assertSendOtpSecondTime()
+    otp = print_last_otp(email)
+    time.sleep(2)
+    sign_up_action.inputOTP(otp)
+    time.sleep(310)
+    sign_up_action.clickSubmitRegister()
+    sign_up_action.assertOTPExpired()
+
+
+def test_TC_Register_with_Email_Account_has_Been_Registered(
+    driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin
+):
+    driver.press_keycode(4)
+    sign_up_action.clickSignUp()
+    sign_up_action.assertRegisterPage()
+    sign_up_action.clickEmailSection()
+    sign_up_action.inputEmail("freetest38@visionplus.id")
+    sign_up_action.inputPassword(password)
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.assertRegisterHasBeenRegistered()
+
+
+def test_TC_Register_with_Email_Account_has_Been_Registered_Click_Login(
+    driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin
+):
+    sign_up_action.clickBtnLoginFromRegister()
+    login_action.assertLoginPage()
+    time.sleep(6)
 
 
 def test_TC_Register_New_User_Email(reopendriver: WebDriver):
