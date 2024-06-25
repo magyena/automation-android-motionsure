@@ -37,7 +37,7 @@ def driver():
     driver.quit()
 
 
-def Register_with_email(driver: WebDriver):
+def test_Register_with_email(driver: WebDriver):
     register = SignUp(driver)
     homepage = HomePage(driver)
 
