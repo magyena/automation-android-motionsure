@@ -32,7 +32,9 @@ print(random_email)
 @pytest.fixture(scope="module")
 def driver():
     setup_appium = SetupAppium()
-    yield setup_appium.driver
+    driver = setup_appium.driver
+    yield driver
+    driver.quit()
 
 
 def Register_with_email(driver: WebDriver):

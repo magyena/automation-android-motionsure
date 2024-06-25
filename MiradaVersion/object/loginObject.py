@@ -58,6 +58,7 @@ class loginObject:
         self.txt_wrong_otp = "//*[contains(@text,'Wrong OTP code')]"
         self.txt_otp_expired = "//*[contains(@text,'OTP Expired')]"
         self.resend_second_otp = "//*[contains(@text,'Resend in 04:')]"
+        self.txt_first_otp = "//*[contains(@text,'Resend in 01:')]"
         self.txt_invalid_phone_number = "//*[contains(@text,'Phone number incorrect.')]"
         self.txt_invisible_password = "//*[contains(@text,'4321Lupa')]"
         self.txt_invalid_email = (
