@@ -420,3 +420,15 @@ class SignUp:
             )
         )
         btn_login_from_register.click()
+
+    def assertSendOtpFirstTime(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.loginObj.txt_first_otp)
+                )
+            )
+            print("Assert Success : Assert Send First OTP Success")
+        except AssertionError:
+            print("Assert Failed : Assert Send First OTP Failed")
