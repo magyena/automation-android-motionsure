@@ -42,5 +42,12 @@ def Register_with_phone(driver: WebDriver):
     register.assertSkipProfile()
     register.clickBtnContinueSkipProfile()
     homepage.assertHomePage()
+    homepage.clickMenuButton()
+    homepage.assertMenu()
+    homepage.clickSettingsButton()
+    homepage.assertSettingsPage()
+    homepage.clickSettingsProfile()
+    homepage.assertSettingsAccountPage()
+    homepage.clickLogoutButton()
 
     return phone_number

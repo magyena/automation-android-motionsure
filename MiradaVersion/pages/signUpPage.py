@@ -61,7 +61,7 @@ class SignUp:
         txt_fld_password = self.driver.find_element(
             By.XPATH, self.loginObj.txt_fld_password
         )
-
+        txt_fld_password.clear()
         txt_fld_password.click()
         txt_fld_password.send_keys(password)
 

@@ -26,7 +26,6 @@ domains = ["visionplus.id"]
 first_names = ["Testing"]
 
 random_email = generate_random_email(domains, first_names)
-print(random_email)
 
 
 @pytest.fixture(scope="module")
@@ -57,3 +56,11 @@ def Register_with_email(driver: WebDriver):
     register.assertSkipProfile()
     register.clickBtnContinueSkipProfile()
     homepage.assertHomePage()
+    homepage.clickMenuButton()
+    homepage.assertMenu()
+    homepage.clickSettingsButton()
+    homepage.assertSettingsPage()
+    homepage.clickSettingsProfile()
+    homepage.assertSettingsAccountPage()
+    homepage.clickLogoutButton()
+    return random_email
