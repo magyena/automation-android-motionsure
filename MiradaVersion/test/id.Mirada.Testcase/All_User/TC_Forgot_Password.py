@@ -52,169 +52,117 @@ def login_action(driver):
     return PagesLogin(driver)
 
 
-# def test_TC_Forgot_Password_Phone_Number_Less_Than_8_character(
-#     reopendriver: WebDriver, cache
-# ):
-#     try:
-#         phone_number = Register_with_phone(reopendriver)
-#     except Exception as e:
-#         pytest.fail(f"Failed during phone registration: {e}")
-#     finally:
-#         reopendriver.quit()
+def test_TC_Forgot_Password_Phone_Number_Less_Than_8_character(
+    driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin, cache
+):
 
-#     try:
-#         new_driver = SetupAppium().driver
-#         if not new_driver:
-#             pytest.fail("Failed to reinitialize driver.")
-#         time.sleep(3)
-#         login_action = PagesLogin(new_driver)
-#         sign_up_action = SignUp(new_driver)
-#         login_action.clickLogin()
-#         login_action.assertLoginPage()
-#         login_action.clickBtnForgotPassword()
-#         login_action.assertForgotPasswordPage()
-#         sign_up_action.inputPhoneNumber(phone_number)
-#         sign_up_action.inputPassword("432Aaa")
-#         sign_up_action.assertPasswordDoesntMatch()
-#         cache.set("phone_number1", phone_number)
-#     except Exception as e:
-#         pytest.fail(f"Test execution failed: {e}")
-#     finally:
-#         print("This phone number for next step " + phone_number)
-#         print("test_TC_Forgot_Password_Phone_Number_Less_Than_8_character DONE")
+    phone_number = Register_with_phone(driver)
+    time.sleep(3)
+    login_action.clickLogin()
+    login_action.assertLoginPage()
+    login_action.clickBtnForgotPassword()
+    login_action.assertForgotPasswordPage()
+    sign_up_action.inputPhoneNumber(phone_number)
+    sign_up_action.inputPassword("432Aaa")
+    sign_up_action.assertPasswordDoesntMatch()
+    cache.set("phone_number1", phone_number)
+    print("This phone number for next step " + phone_number)
+    print("test_TC_Forgot_Password_Phone_Number_Less_Than_8_character DONE")
 
 
-# def test_TC_Forgot_Password_Phone_Number_and_Input_Wrong_OTP(
-#     sign_up_action: SignUp, login_action: PagesLogin, cache
-# ):
-#     phone_number1 = cache.get("phone_number1", None)
-#     login_action.clickLogin()
-#     login_action.assertLoginPage()
-#     login_action.clickBtnForgotPassword()
-#     login_action.assertForgotPasswordPage()
-#     sign_up_action.inputPhoneNumber(phone_number1)
-#     sign_up_action.inputPassword("4321Lupaa")
-#     sign_up_action.clickButtonSendOtp()
-#     sign_up_action.assertSendOtpViaMessage()
-#     sign_up_action.clickSendViaSms()
-#     otp = print_last_otp(phone_number1)
-#     time.sleep(2)
-#     sign_up_action.inputOTP("0000")
-#     login_action.clickBtnSavePassword()
-#     sign_up_action.assertWrongOtp()
-#     cache.set("otp", otp)
-#     time.sleep(130)
-#     print("test_TC_Forgot_Password_Phone_Number_and_Input_Wrong_OTP DONE")
+def test_TC_Forgot_Password_Phone_Number_and_Input_Wrong_OTP(
+    sign_up_action: SignUp, login_action: PagesLogin, cache
+):
+    phone_number1 = cache.get("phone_number1", None)
+    sign_up_action.inputPhoneNumber(phone_number1)
+    sign_up_action.inputPassword("4321Lupaa")
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.assertSendOtpViaMessage()
+    sign_up_action.clickSendViaSms()
+    otp = print_last_otp(phone_number1)
+    time.sleep(2)
+    sign_up_action.inputOTP("0000")
+    login_action.clickBtnSavePassword()
+    sign_up_action.assertWrongOtp()
+    cache.set("otp", otp)
+    time.sleep(130)
+    print("test_TC_Forgot_Password_Phone_Number_and_Input_Wrong_OTP DONE")
 
 
-# def test_TC_Forgot_Password_Request_OTP_First_Time(
-#     sign_up_action: SignUp, login_action: PagesLogin, cache
-# ):
-#     otp = cache.get("otp", None)
-#     if otp is None:
-#         pytest.fail("OTP not found in cache.")
+def test_TC_Forgot_Password_Request_OTP_First_Time(
+    sign_up_action: SignUp, login_action: PagesLogin, cache
+):
+    otp = cache.get("otp", None)
+    if otp is None:
+        pytest.fail("OTP not found in cache.")
 
-#     sign_up_action.clickButtonSendOtp()
-#     sign_up_action.assertSendOtpViaMessage()
-#     sign_up_action.clickSendViaSms()
-#     time.sleep(2)
-#     sign_up_action.inputOTP(otp)
-#     print("test_TC_Forgot_Password_Request_OTP_First_Time DONE")
-
-
-# def test_TC_Forgot_Password_OTP_Expired_2minutes(
-#     sign_up_action: SignUp, login_action: PagesLogin
-# ):
-#     login_action.clickBtnSavePassword()
-#     time.sleep(3)
-#     sign_up_action.assertWrongOtp()
-#     print("test_TC_Forgot_Password_OTP_Expired_2minutes DONE")
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.assertSendOtpViaMessage()
+    sign_up_action.clickSendViaSms()
+    time.sleep(2)
+    sign_up_action.inputOTP(otp)
+    print("test_TC_Forgot_Password_Request_OTP_First_Time DONE")
 
 
-# def test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number(
-#     driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin, cache
-# ):
-#     driver.quit()
+def test_TC_Forgot_Password_OTP_Expired_2minutes(
+    sign_up_action: SignUp, login_action: PagesLogin
+):
+    login_action.clickBtnSavePassword()
+    time.sleep(3)
+    sign_up_action.assertWrongOtp()
+    print("test_TC_Forgot_Password_OTP_Expired_2minutes DONE")
 
-#     # Reopen the driver
-#     driver = SetupAppium().driver
-#     if not driver:
-#         pytest.fail("Failed to reinitialize driver.")
 
-#     phone_number1 = cache.get("phone_number1", None)
-#     login_action = PagesLogin(driver)  # Re-initialize with the new driver
-#     sign_up_action = SignUp(driver)  # Re-initialize with the new driver
+def test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number(
+    sign_up_action: SignUp, login_action: PagesLogin, cache
+):
 
-#     login_action.clickLogin()
-#     login_action.assertLoginPage()
-# login_action.clickBtnForgotPassword()
-# login_action.assertForgotPasswordPage()
-# sign_up_action.inputPhoneNumber(phone_number1)
-# sign_up_action.inputPassword("4321Lupaa")
-# time.sleep(300)
-# sign_up_action.clickButtonSendOtp()
-# sign_up_action.assertSendOtpViaMessage()
-# sign_up_action.clickSendViaSms()
-# otp = print_last_otp(phone_number1)
-# time.sleep(2)
-# sign_up_action.inputOTP(otp)
-# login_action.clickBtnSavePassword()
-# time.sleep(5)
-# login_action.assertLoginPage()
-# sign_up_action.inputPhoneNumber(phone_number1)
-# sign_up_action.inputPassword("4321Lupaa")
-# login_action.clickSubmitLogin()
+    phone_number1 = cache.get("phone_number1", None)
+    sign_up_action.inputPhoneNumber(phone_number1)
+    sign_up_action.inputPassword("4321Lupaa")
+    time.sleep(300)
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.assertSendOtpViaMessage()
+    sign_up_action.clickSendViaSms()
+    otp = print_last_otp(phone_number1)
+    time.sleep(2)
+    sign_up_action.inputOTP(otp)
+    login_action.clickBtnSavePassword()
+    time.sleep(5)
+    login_action.assertLoginPage()
+    sign_up_action.inputPhoneNumber(phone_number1)
+    sign_up_action.inputPassword("4321Lupaa")
+    login_action.clickSubmitLogin()
 
-# time.sleep(5)
-# driver.quit()
-# print(
-#     "test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number DONE"
-# )
+    time.sleep(5)
+    print(
+        "test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number DONE"
+    )
 
 
 def test_TC_Forgot_Password_Request_OTP_First_Time_Email(
     driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin, cache
 ):
-    try:
-        random_email = Register_with_email(driver)
-        print(f"Generated Email: {random_email}")
-    except Exception as e:
-        pytest.fail(f"Failed during email registration: {e}")
-    finally:
-        driver.quit()
+    random_email = Register_with_email(driver)
+    print(f"Generated Email: {random_email}")
 
-    try:
-        new_driver = SetupAppium().driver
-        if not new_driver:
-            pytest.fail("Failed to reinitialize driver.")
-        time.sleep(3)
-        login_action = PagesLogin(new_driver)
-        sign_up_action = SignUp(new_driver)
-        login_action.clickLogin()
-        login_action.assertLoginPage()
-        login_action.clickBtnForgotPassword()
-        login_action.assertForgotPasswordPage()
-        login_action.clickEmailSection()
-        sign_up_action.inputEmail(random_email)
-        sign_up_action.inputPassword("4321Lupaa")
-        # sign_up_action.clickButtonSendOtp()
-        # sign_up_action.assertSendOtpFirstTime()
+    time.sleep(3)
+    login_action.clickLogin()
+    login_action.assertLoginPage()
+    login_action.clickBtnForgotPassword()
+    login_action.assertForgotPasswordPage()
+    login_action.clickEmailSection()
+    sign_up_action.inputEmail(random_email)
+    sign_up_action.inputPassword("4321Lupaa")
+    sign_up_action.clickButtonSendOtp()
+    sign_up_action.assertSendOtpFirstTime()
 
-        cache.set("email_1", random_email)
-    except Exception as e:
-        pytest.fail(f"Test execution failed: {e}")
-    finally:
-        print("This email for next step " + random_email)
-        print("test_TC_Forgot_Password_Request_OTP_First_Time_Email DONE")
-        # time.sleep(125)
+    cache.set("email_1", random_email)
+    time.sleep(125)
 
 
 def test_TC_Forgot_Password_Request_Second_OTP_Email(
-    sign_up_action: SignUp, login_action: PagesLogin, cache
+    driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin, cache
 ):
     sign_up_action.clickButtonSendOtp()
-    sign_up_action.assertSendOtpFirstTime()
-    # sign_up_action.clickButtonSendOtp()
-    # sign_up_action.assertSendOtpSecondTime()
-
-    print("In Second OTP")
+    sign_up_action.assertSendOtpSecondTime()

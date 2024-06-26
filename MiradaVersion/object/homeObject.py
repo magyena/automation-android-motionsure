@@ -1,5 +1,23 @@
 class homeObject:
     def __init__(self):
         self.txt_Hello = "label == 'Hello! Who's watching?'"
-        self.txt_vision_logo ="com.zte.iptvclient.android.idmnc:id/appLogo"
-        
+        self.txt_vision_logo = "com.zte.iptvclient.android.idmnc:id/appLogo"
+        self.btn_menu_button = "com.zte.iptvclient.android.idmnc:id/menuButton"
+        self.btn_search = "com.zte.iptvclient.android.idmnc:id/search_button"
+        self.btn_voice_search = "com.zte.iptvclient.android.idmnc:id/voiceSearchButton"
+        self.img_home = "//*[contains(@text,'Home')]"
+        self.img_originals = "//*[contains(@text,'Originals')]"
+        self.img_Sports = "//*[contains(@text,'Sports')]"
+        self.img_movies = "//*[contains(@text,'Movies')]"
+        self.img_tv_shows = "//*[contains(@text,'TV Shows')]"
+        self.img_live_tv = "//*[contains(@text,'Live TV')]"
+        self.img_program_guide = "//*[contains(@text,'Program Guide')]"
+        self.img_buy_package = "//*[contains(@text,'Buy Package')]"
+        self.img_my_downloads = "//*[contains(@text,'My Downloads')]"
+        self.btn_settings_button = "com.zte.iptvclient.android.idmnc:id/settings_button"
+        self.txt_settings_page = "//*[contains(@text,'Settings')]"
+        self.txt_settings_account_profile = '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.zte.iptvclient.android.idmnc:id/recycler_view"]/android.view.ViewGroup[3]'
+        self.txt_account_page = "//*[contains(@text,'Account')]"
+        self.txt_account_page_change_password = "//*[contains(@text,'Change password')]"
+        self.txt_account_page_delete_account = "//*[contains(@text,'Delete account')]"
+        self.btn_logout = "com.zte.iptvclient.android.idmnc:id/close_session_button"
