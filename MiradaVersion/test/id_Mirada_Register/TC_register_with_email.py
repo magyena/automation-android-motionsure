@@ -50,6 +50,7 @@ def Register_with_email(driver: WebDriver):
     otp = print_last_otp(random_email)
     time.sleep(2)
     register.inputOTP(otp)
+    time.sleep(3)
     register.clickSubmitRegister()
     register.assertDiscoverProfiles()
     register.clickBtnSkipDiscoverProfiles()
