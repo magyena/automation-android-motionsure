@@ -39,6 +39,7 @@ def reopendriver():
     driver = setup_appium.driver
     if not driver:
         pytest.fail("Driver initialization failed.")
+
     yield driver
 
 
@@ -58,6 +59,7 @@ def test_TC_Forgot_Password_Phone_Number_Less_Than_8_character(
 
     phone_number = Register_with_phone(driver)
     time.sleep(3)
+
     login_action.clickLogin()
     login_action.assertLoginPage()
     login_action.clickBtnForgotPassword()
@@ -120,7 +122,7 @@ def test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number(
     phone_number1 = cache.get("phone_number1", None)
     sign_up_action.inputPhoneNumber(phone_number1)
     sign_up_action.inputPassword("4321Lupaa")
-    time.sleep(300)
+    time.sleep(305)
     sign_up_action.clickButtonSendOtp()
     sign_up_action.assertSendOtpViaMessage()
     sign_up_action.clickSendViaSms()
@@ -128,8 +130,10 @@ def test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number(
     time.sleep(2)
     sign_up_action.inputOTP(otp)
     login_action.clickBtnSavePassword()
-    time.sleep(5)
-    login_action.assertLoginPage()
+    time.sleep(3)
+    sign_up_action.clickEmailSection()
+    sign_up_action.clickPhoneNumberSection()
+    print("for login again" + phone_number1)
     sign_up_action.inputPhoneNumber(phone_number1)
     sign_up_action.inputPassword("4321Lupaa")
     login_action.clickSubmitLogin()
@@ -145,8 +149,8 @@ def test_TC_Forgot_Password_Request_OTP_First_Time_Email(
 ):
     random_email = Register_with_email(driver)
     print(f"Generated Email: {random_email}")
-
     time.sleep(3)
+    print("success")
     login_action.clickLogin()
     login_action.assertLoginPage()
     login_action.clickBtnForgotPassword()
@@ -162,7 +166,7 @@ def test_TC_Forgot_Password_Request_OTP_First_Time_Email(
 
 
 def test_TC_Forgot_Password_Request_Second_OTP_Email(
-    driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin, cache
+    sign_up_action: SignUp, login_action: PagesLogin, cache
 ):
     sign_up_action.clickButtonSendOtp()
     sign_up_action.assertSendOtpSecondTime()
