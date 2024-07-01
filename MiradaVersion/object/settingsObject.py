@@ -20,4 +20,17 @@ class settingsObject:
         self.default_video_quality = "//*[contains(@text,'Default video quality')]"
         self.manage_devices = "//*[contains(@text,'Manage devices')]"
         self.help = "//*[contains(@text,'Help')]"
-        self.legal_information = "//*[contains(@text,'Legal information"
+        self.legal_information = "//*[contains(@text,'Legal information')]"
+        self.txt_terms_of_use = "//*[contains(@text,'Terms of Use')]"
+        self.txt_privacy_policy = "//*[contains(@text,'Privacy Policy')]"
+        self.txt_software_licences = "//*[contains(@text,'Software Licenses')]"
+        self.btn_back = "com.zte.iptvclient.android.idmnc:id/back"
+        self.help_center_page = "//*[contains(@text,'Help Center')]"
+        self.help_center_email = "//*[contains(@text,'Email')]"
+        self.help_center_whatsapp = "//*[contains(@text,'Whatsapp')]"
+        self.help_center_about_us = "//*[contains(@text,'About Us')]"
+        self.help_center_subscription = "//*[contains(@text,'Subscription ')]"
+        self.call_center = '//android.view.View[@content-desc="Whatsapp Live Chat"]'
+        self.help_center_close_webview = "com.zte.iptvclient.android.idmnc:id/close"
+        self.manage_profiles_add_profiles = "//*[contains(@text,'Add profile')]"
+        self.back_to_settings = '//android.widget.ImageButton[@content-desc="Back"]'
