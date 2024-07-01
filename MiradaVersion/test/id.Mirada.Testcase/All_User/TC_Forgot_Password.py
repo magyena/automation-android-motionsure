@@ -4,6 +4,8 @@ from appium.webdriver.webdriver import WebDriver
 from MiradaVersion.utils.setup import SetupAppium
 from MiradaVersion.pages.signUpPage import SignUp
 from MiradaVersion.pages.loginPages import PagesLogin
+from MiradaVersion.pages.profilesPages import Profiles
+from MiradaVersion.pages.homepagePages import HomePage
 from MiradaVersion.test.id_Mirada_Register.TC_register_with_phone import (
     Register_with_phone,
     generate_random_phone_number,
@@ -51,6 +53,16 @@ def sign_up_action(driver):
 @pytest.fixture(scope="module")
 def login_action(driver):
     return PagesLogin(driver)
+
+
+@pytest.fixture(scope="module")
+def profiles_action(driver):
+    return Profiles(driver)
+
+
+@pytest.fixture(scope="module")
+def homepage_action(driver):
+    return HomePage(driver)
 
 
 def test_TC_Forgot_Password_Phone_Number_Less_Than_8_character(
@@ -116,7 +128,10 @@ def test_TC_Forgot_Password_OTP_Expired_2minutes(
 
 
 def test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number(
-    sign_up_action: SignUp, login_action: PagesLogin, cache
+    sign_up_action: SignUp,
+    login_action: PagesLogin,
+    homepage_action: HomePage,
+    cache,
 ):
 
     phone_number1 = cache.get("phone_number1", None)
@@ -130,13 +145,21 @@ def test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number(
     time.sleep(2)
     sign_up_action.inputOTP(otp)
     login_action.clickBtnSavePassword()
-    time.sleep(3)
+    time.sleep(10)
+    print("for login again" + phone_number1)
     sign_up_action.clickEmailSection()
     sign_up_action.clickPhoneNumberSection()
-    print("for login again" + phone_number1)
     sign_up_action.inputPhoneNumber(phone_number1)
     sign_up_action.inputPassword("4321Lupaa")
     login_action.clickSubmitLogin()
+    time.sleep(3)
+    homepage_action.clickMenuButton()
+    homepage_action.assertMenu()
+    homepage_action.clickSettingsButton()
+    homepage_action.assertSettingsPage()
+    homepage_action.clickSettingsProfile()
+    homepage_action.assertSettingsAccountPage()
+    homepage_action.clickLogoutButton()
 
     time.sleep(5)
     print(
@@ -145,9 +168,9 @@ def test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number(
 
 
 def test_TC_Forgot_Password_Request_OTP_First_Time_Email(
-    driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin, cache
+    reopendriver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin, cache
 ):
-    random_email = Register_with_email(driver)
+    random_email = Register_with_email(reopendriver)
     print(f"Generated Email: {random_email}")
     time.sleep(3)
     print("success")
