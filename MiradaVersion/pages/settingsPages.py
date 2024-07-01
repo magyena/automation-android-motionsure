@@ -5,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from MiradaVersion.utils.handler import HandlerRemote
 from selenium.common.exceptions import TimeoutException
 from MiradaVersion.object.settingsObject import settingsObject
+from MiradaVersion.object.homeObject import homeObject
 
 
 class SettingsPages:
@@ -13,6 +14,36 @@ class SettingsPages:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 20)
         self.settingsObj = settingsObject()
+        self.homeObj = homeObject()
+    
+    def clickSettingsProfile(self):
+
+        settings_profile = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.txt_settings_account_profile)
+            )
+        )
+        settings_profile.click()
+    
+    def assertSettingsAccountPage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_account_page)
+                )
+            )
+            print("Assert Success : Assert Account Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Account Page Failed")
+    
+    def clickLogoutButton(self):
+
+        logout_button = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.homeObj.btn_logout))
+        )
+        logout_button.click()
+
 
     def clickLegalInformation(self):
 
@@ -198,7 +229,7 @@ class SettingsPages:
         try:
             self.wait.until(
                 EC.visibility_of_element_located(
-                    (By.XPATH, self.settingsObj.manage_profiles)
+                    (By.XPATH, self.settingsObj.txt_notification_centre)
                 )
             )
             print("Assert Success : Assert Notification Centre Page Success")

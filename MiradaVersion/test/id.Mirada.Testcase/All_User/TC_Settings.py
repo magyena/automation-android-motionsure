@@ -51,6 +51,7 @@ def test_TC_User_Can_Direct_to_Term_and_Condition(
     settings_action.clickLegalInformation()
     settings_action.assertLegalInformation()
     settings_action.clickTerms0fUse()
+    time.sleep(5)
     driver.press_keycode(4)
 
 
@@ -60,6 +61,7 @@ def test_TC_User_Can_Direct_to_Privacy_and_Policy(
 ):
     settings_action.assertLegalInformation()
     settings_action.clickPrivacyPolicy()
+    time.sleep(5)
     driver.press_keycode(4)
 
 
@@ -85,14 +87,20 @@ def test_TC_User_Can_Open_Help_Center_Email(
 ):
     settings_action.clickEmailHelpCenter()
     driver.press_keycode(4)
+    time.sleep(2)
+    driver.press_keycode(4)
+    driver.press_keycode(4)
 
 
 def test_TC_User_Can_Open_Help_Center_Whatsapp(
     driver: WebDriver,
     settings_action: SettingsPages,
 ):
+    settings_action.clickHelp()
     settings_action.clickWhatsappHelpCenter()
+    time.sleep(5)
     driver.press_keycode(4)
+    
 
 
 def test_TC_User_Can_Open_Help_Center_AboutUs(
@@ -128,5 +136,12 @@ def test_TC_User_Can_see_Notification(
 ):
     settings_action.clickNotification()
     settings_action.assertNotificationCentre()
-    time.sleep(3)
-    driver.press_keycode(4)
+    settings_action.clickBackSettings()
+    
+def test_TC_User_Can_Logiut(
+    driver: WebDriver, settings_action: SettingsPages
+):
+    
+    settings_action.clickSettingsProfile()
+    settings_action.assertSettingsAccountPage()
+    settings_action.clickLogoutButton()
