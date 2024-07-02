@@ -165,31 +165,3 @@ def test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number(
     print(
         "test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number DONE"
     )
-
-
-# def test_TC_Forgot_Password_Request_OTP_First_Time_Email(
-#     driver: WebDriver, sign_up_action: SignUp, login_action: PagesLogin, cache
-# ):
-#     random_email = Register_with_email(driver)
-#     print(f"Generated Email: {random_email}")
-#     time.sleep(3)
-#     print("success")
-#     login_action.clickLogin()
-#     login_action.assertLoginPage()
-#     login_action.clickBtnForgotPassword()
-#     login_action.assertForgotPasswordPage()
-#     login_action.clickEmailSection()
-#     sign_up_action.inputEmail(random_email)
-#     sign_up_action.inputPassword("4321Lupaa")
-#     sign_up_action.clickButtonSendOtp()
-#     sign_up_action.assertSendOtpFirstTime()
-
-#     cache.set("email_1", random_email)
-#     time.sleep(125)
-
-
-# def test_TC_Forgot_Password_Request_Second_OTP_Email(
-#     sign_up_action: SignUp, login_action: PagesLogin, cache
-# ):
-#     sign_up_action.clickButtonSendOtp()
-#     sign_up_action.assertSendOtpSecondTime()

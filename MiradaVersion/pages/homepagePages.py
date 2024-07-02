@@ -96,3 +96,10 @@ class HomePage:
             EC.element_to_be_clickable((By.XPATH, self.homeObj.img_live_tv))
         )
         live_tv_menu.click()
+
+    def clickBtnProfile(self):
+
+        btn_profile = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.homeObj.btn_profile))
+        )
+        btn_profile.click()

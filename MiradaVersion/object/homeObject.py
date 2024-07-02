@@ -21,3 +21,4 @@ class homeObject:
         self.txt_account_page_change_password = "//*[contains(@text,'Change password')]"
         self.txt_account_page_delete_account = "//*[contains(@text,'Delete account')]"
         self.btn_logout = "com.zte.iptvclient.android.idmnc:id/close_session_button"
+        self.btn_profile = "com.zte.iptvclient.android.idmnc:id/profileButton"
