@@ -64,22 +64,23 @@ class Profiles:
 
         self.driver.swipe(start_x, start_y, end_x, end_y, 800)
 
-    def disable_wifi_connection(self):
+    def disable_wifi_connection(self,emulator_id):
         # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
         adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
 
         try:
-            subprocess.run([adb_path, "shell", "svc", "wifi", "disable"], check=True)
-            print("Wifi data disabled successfully.")
+            subprocess.run([adb_path, "-s", emulator_id, "shell", "svc", "wifi", "disable"], check=True)
+            print(f"WiFi disabled successfully.")
         except subprocess.CalledProcessError as e:
-            print("Error disabling Wifi data:", e)
+            print("Error disabling WiFi:", e)
 
-    def enable_wifi_connection(self):
+
+    def enable_wifi_connection(self,emulator_id):
         # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
         adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
 
         try:
-            subprocess.run([adb_path, "shell", "svc", "wifi", "enable"], check=True)
+            subprocess.run([adb_path, "-s", emulator_id, "shell", "svc", "wifi", "enable"], check=True)
             print("Wifi data enabled successfully.")
         except subprocess.CalledProcessError as e:
             print("Error enabling Wifi data:", e)
