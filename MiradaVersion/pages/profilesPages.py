@@ -11,6 +11,8 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.actions.pointer_input import PointerInput
 from selenium.webdriver.common.actions import interaction
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.common.action_chains import ActionChains
+from appium.webdriver.common.appiumby import AppiumBy
 
 
 class Profiles:
@@ -24,12 +26,22 @@ class Profiles:
         finger = PointerInput(interaction.POINTER_TOUCH, "finger")
         actions = ActionChains(self.driver)
 
-        actions.w3c_actions.pointer_action.move_to_location(587, 1733)
+        actions.w3c_actions.pointer_action.move_to_location(570, 1730)
         actions.w3c_actions.pointer_action.pointer_down()
-        actions.w3c_actions.pointer_action.move_to_location(587, 599)
+        actions.w3c_actions.pointer_action.move_to_location(570, 590)
         actions.w3c_actions.pointer_action.pointer_up()
 
         actions.perform()
+
+    def scroll_down(self):
+
+        size = self.driver.get_window_size()
+        start_x = size["width"] // 5
+        start_y = size["height"] * 6 // 7
+        end_x = size["width"] // 5
+        end_y = size["height"] // 7
+
+        self.driver.swipe(start_x, start_y, end_x, end_y, 800)
 
     def scrollUp(self):
         finger = PointerInput(interaction.POINTER_TOUCH, "finger")
@@ -42,9 +54,19 @@ class Profiles:
 
         actions.perform()
 
+    def scroll_up(self):
+        size = self.driver.get_window_size()
+
+        start_x = size["width"] // 5
+        start_y = size["height"] // 7
+        end_x = size["width"] // 5
+        end_y = size["height"] * 6 // 7
+
+        self.driver.swipe(start_x, start_y, end_x, end_y, 800)
+
     def disable_wifi_connection(self):
-        # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
-        adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
+        adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
+        # adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
 
         try:
             subprocess.run([adb_path, "shell", "svc", "wifi", "disable"], check=True)
@@ -53,8 +75,8 @@ class Profiles:
             print("Error disabling Wifi data:", e)
 
     def enable_wifi_connection(self):
-        # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
-        adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
+        adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
+        # adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
 
         try:
             subprocess.run([adb_path, "shell", "svc", "wifi", "enable"], check=True)
