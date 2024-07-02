@@ -7,7 +7,6 @@ from MiradaVersion.pages.loginPages import PagesLogin
 from MiradaVersion.pages.profilesPages import Profiles
 from MiradaVersion.pages.homepagePages import HomePage
 from MiradaVersion.test.id_Mirada_Register.TC_register_with_phone import (
-    Register_with_phone,
     generate_random_phone_number,
 )
 from MiradaVersion.test.id_Mirada_Register.TC_register_with_email import (
@@ -21,8 +20,6 @@ domains = ["visionplus.id"]
 
 first_names = ["Testing"]
 random_email = generate_random_email(domains, first_names)
-
-phone_number = generate_random_phone_number()
 
 
 @pytest.fixture(scope="module")

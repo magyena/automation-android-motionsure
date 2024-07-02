@@ -64,23 +64,28 @@ class Profiles:
 
         self.driver.swipe(start_x, start_y, end_x, end_y, 800)
 
-    def disable_wifi_connection(self,emulator_id):
+    def disable_wifi_connection(self, emulator_id):
         # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
         adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
 
         try:
-            subprocess.run([adb_path, "-s", emulator_id, "shell", "svc", "wifi", "disable"], check=True)
+            subprocess.run(
+                [adb_path, "-s", emulator_id, "shell", "svc", "wifi", "disable"],
+                check=True,
+            )
             print(f"WiFi disabled successfully.")
         except subprocess.CalledProcessError as e:
             print("Error disabling WiFi:", e)
 
-
-    def enable_wifi_connection(self,emulator_id):
+    def enable_wifi_connection(self, emulator_id):
         # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
         adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
 
         try:
-            subprocess.run([adb_path, "-s", emulator_id, "shell", "svc", "wifi", "enable"], check=True)
+            subprocess.run(
+                [adb_path, "-s", emulator_id, "shell", "svc", "wifi", "enable"],
+                check=True,
+            )
             print("Wifi data enabled successfully.")
         except subprocess.CalledProcessError as e:
             print("Error enabling Wifi data:", e)
@@ -115,3 +120,189 @@ class Profiles:
 
         txt_fld_phone_number.click()
         txt_fld_phone_number.send_keys(phone)
+
+    def clickAddProfile(self):
+
+        btn_add_profile = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.profileobj.add_profile_button))
+        )
+        btn_add_profile.click()
+
+    def clickCancelAddProfile(self):
+
+        btn_cancel = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.profileobj.btn_cancel_create_profile)
+            )
+        )
+        btn_cancel.click()
+
+    def clickOKAddProfile(self):
+
+        btn_ok = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.profileobj.btn_ok_create_profile)
+            )
+        )
+        btn_ok.click()
+
+    def assertCreateProfilePage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.ID, self.profileobj.txt_create_profile)
+                )
+            )
+            print("Assert Success : Assert Create Profile Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Create Profile Page Failed")
+
+    def inputProfile(self, profile):
+        self.wait = WebDriverWait(self.driver, 20)
+
+        input_profile = self.driver.find_element(
+            By.ID, self.profileobj.fld_create_profile
+        )
+
+        input_profile.clear()
+        input_profile.click()
+        input_profile.send_keys(profile)
+
+    def assertSuccessCreateProfile(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.ID, self.profileobj.txt_success_create_profile)
+                )
+            )
+            print("Assert Success : Assert Done Create Profile Success")
+        except AssertionError:
+            print("Assert Failed : Assert Done Create Profile Failed")
+
+    def clickBtnDoneSuccessCreateProfile(self):
+
+        btn_done = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.ID, self.profileobj.btn_done_success_create_profile)
+            )
+        )
+        btn_done.click()
+
+    def assertCreateProfileSatu(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.profileobj.txt_create_profile_satu)
+                )
+            )
+            print("Assert Success : Assert Create Profile Satu Success")
+        except AssertionError:
+            print("Assert Failed : Assert Create Profile Satu Failed")
+
+    def assertCreateProfileDua(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.profileobj.txt_create_profile_dua)
+                )
+            )
+            print("Assert Success : Assert Create Profile Dua Success")
+        except AssertionError:
+            print("Assert Failed : Assert Create Profile Dua Failed")
+
+    def assertCreateProfileTiga(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.profileobj.txt_create_profile_tiga)
+                )
+            )
+            print("Assert Success : Assert Create Profile Tiga Success")
+        except AssertionError:
+            print("Assert Failed : Assert Create Profile Tiga Failed")
+
+    def assertCreateProfileEmpat(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.profileobj.txt_create_profile_empat)
+                )
+            )
+            print("Assert Success : Assert Create Profile Empat Success")
+        except AssertionError:
+            print("Assert Failed : Assert Create Profile Empat Failed")
+
+    def assertCreateProfileLima(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.profileobj.txt_create_profile_lima)
+                )
+            )
+            print("Assert Success : Assert Create Profile Lima Success")
+        except AssertionError:
+            print("Assert Failed : Assert Create Profile Lima Failed")
+
+    def assertCreateProfileEnam(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.profileobj.txt_create_profile_enam)
+                )
+            )
+            print("Assert Success : Assert Create Profile Enam Success")
+        except AssertionError:
+            print("Assert Failed : Assert Create Profile Enam Failed")
+
+    def assertCreateProfileTujuh(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.profileobj.txt_create_profile_tujuh)
+                )
+            )
+            print("Assert Success : Assert Create Profile Tujuh Success")
+        except AssertionError:
+            print("Assert Failed : Assert Create Profile Tujuh Failed")
+
+    def clickChangeAvatar(self):
+
+        img_avatar = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.profileobj.img_avatar))
+        )
+        img_avatar.click()
+
+    def clickChooseAvatar(self):
+
+        choose_avatar = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.profileobj.img_avatar_second))
+        )
+        choose_avatar.click()
+
+    def clickBtnOkChooseAvatar(self):
+
+        btn_ok_avatar = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.profileobj.btn_ok_change_avatar))
+        )
+        btn_ok_avatar.click()
+
+    def assertAvatarPage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.ID, self.profileobj.txt_avatar_page)
+                )
+            )
+            print("Assert Success : Assert Avatar Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Avatar Page Failed")
