@@ -60,7 +60,7 @@ def test_TC_User_Cant_Watching_Live_TV_Channel_Premium(
 def test_TC_User_Cant_Watching_Live_TV_Channel_Sports(
     livetv_action: LiveTV, profiles_action: Profiles
 ):
-    for _ in range(6):
+    for _ in range(7):
         profiles_action.scroll_down()
 
     livetv_action.clickSportChannel()
