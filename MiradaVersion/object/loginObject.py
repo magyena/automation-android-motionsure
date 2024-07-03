@@ -13,7 +13,7 @@ class loginObject:
         self.resend_otp = "//*[contains(@text,'Resend in')]"
         self.btn_register = "//*/android.view.View[2]/android.widget.Button"
         self.email_section = "//*[contains(@text,'Email')]"
-        self.phone_section = '(//android.widget.TextView[@text="Phone Number"])[1]'
+        self.phone_section = "//*[contains(@text,'Phone Number')]"
         self.txt_discover_profiles = (
             "com.zte.iptvclient.android.idmnc:id/profiles_discover"
         )
