@@ -61,7 +61,9 @@ def test_TC_User_Watch_Live_TV_Channel_and_Disconnect_Internet(
     livetv_action: LiveTV, profiles_action: Profiles
 ):
     profiles_action.disable_wifi_connection("emulator-5554")
+    time.sleep(3)
     livetv_action.assertNoInternetConnection()
+    time.sleep(3)
     profiles_action.enable_wifi_connection("emulator-5554")
     time.sleep(5)
 
