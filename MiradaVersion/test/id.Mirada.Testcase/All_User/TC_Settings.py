@@ -89,14 +89,12 @@ def test_TC_User_Can_Open_Help_Center_Email(
     driver.press_keycode(4)
     time.sleep(2)
     driver.press_keycode(4)
-    driver.press_keycode(4)
 
 
 def test_TC_User_Can_Open_Help_Center_Whatsapp(
     driver: WebDriver,
     settings_action: SettingsPages,
 ):
-    settings_action.clickHelp()
     settings_action.clickWhatsappHelpCenter()
     time.sleep(5)
     driver.press_keycode(4)
