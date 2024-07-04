@@ -48,8 +48,11 @@ def test_TC_User_Can_Direct_to_Term_and_Condition(
     homepage_action.assertMenu()
     homepage_action.clickSettingsButton()
     homepage_action.assertSettingsPage()
+    time.sleep(2)
     settings_action.clickLegalInformation()
+    time.sleep(2)
     settings_action.assertLegalInformation()
+    time.sleep(2)
     settings_action.clickTerms0fUse()
     time.sleep(5)
     driver.press_keycode(4)
@@ -59,7 +62,9 @@ def test_TC_User_Can_Direct_to_Privacy_and_Policy(
     driver: WebDriver,
     settings_action: SettingsPages,
 ):
+    time.sleep(2)
     settings_action.assertLegalInformation()
+    time.sleep(2)
     settings_action.clickPrivacyPolicy()
     time.sleep(5)
     driver.press_keycode(4)
@@ -69,14 +74,18 @@ def test_TC_User_Can_Direct_to_Software_Licenses(
     settings_action: SettingsPages,
 ):
     settings_action.assertLegalInformation()
+    time.sleep(2)
     settings_action.clickSoftwareLicenses()
+    time.sleep(2)
     settings_action.clickBacktoSettingsPage()
+    time.sleep(2)
     settings_action.clickBacktoSettingsPage()
 
 
 def test_TC_User_Can_Open_Help_Center(
     settings_action: SettingsPages,
-):
+):  
+    time.sleep(2)
     settings_action.clickHelp()
     settings_action.assertHelpCenterPage()
 
@@ -119,12 +128,15 @@ def test_TC_User_Can_Open_Help_Center_Subscription(
 def test_TC_User_Can_Open_Call_Center(
     settings_action: SettingsPages,
 ):
+    time.sleep(2)
     settings_action.clickCallCenter()
     settings_action.clickCloseToSettings()
+    time.sleep(2)
 
 
 def test_TC_User_Can_see_Manage_Profiles(settings_action: SettingsPages):
     settings_action.clickManageProfiles()
+    time.sleep(2)
     settings_action.assertManageProfiles()
     settings_action.clickBacktoSettingsPage()
 
@@ -133,8 +145,11 @@ def test_TC_User_Can_see_Notification(
     driver: WebDriver, settings_action: SettingsPages
 ):
     settings_action.clickNotification()
+    time.sleep(2)
     settings_action.assertNotificationCentre()
+    time.sleep(2)
     settings_action.clickBackSettings()
+    time.sleep(2)
     
 def test_TC_User_Can_Logiut(
     driver: WebDriver, settings_action: SettingsPages
@@ -142,4 +157,5 @@ def test_TC_User_Can_Logiut(
     
     settings_action.clickSettingsProfile()
     settings_action.assertSettingsAccountPage()
+    time.sleep(2)
     settings_action.clickLogoutButton()
