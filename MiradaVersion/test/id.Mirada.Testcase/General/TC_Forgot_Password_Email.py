@@ -72,10 +72,15 @@ def test_TC_Forgot_Password_Request_OTP_First_Time_Email(
     login_action.clickLogin()
     login_action.assertLoginPage()
     login_action.clickBtnForgotPassword()
+    time.sleep(2)
     login_action.assertForgotPasswordPage()
+    time.sleep(2)
     login_action.clickEmailSection()
+    time.sleep(2)
     sign_up_action.inputEmail(random_email)
+    time.sleep(2)
     sign_up_action.inputPassword("4321Lupaa")
+    time.sleep(2)
     sign_up_action.clickButtonSendOtp()
 
     sign_up_action.assertSendOtpFirstTime()
@@ -91,7 +96,7 @@ def test_TC_Forgot_Password_Request_Second_OTP_Email(
     if random_email is None:
         print("Email not found in cache")
         return
-
+    
     sign_up_action.clickButtonSendOtp()
     otp = print_last_otp(random_email)
     print("cache1 " + otp)
@@ -115,5 +120,6 @@ def test_TC_Forgot_Password_with_Email_OTP_Expired_2_minutes_Same_Otp(
     sign_up_action.inputOTP(otp)
     time.sleep(3)
     login_action.clickBtnSavePassword()
+    time.sleep(2)
     sign_up_action.assertOTPExpired()
     time.sleep(5)
