@@ -15,7 +15,7 @@ class SettingsPages:
         self.wait = WebDriverWait(self.driver, 20)
         self.settingsObj = settingsObject()
         self.homeObj = homeObject()
-    
+
     def clickSettingsProfile(self):
 
         settings_profile = WebDriverWait(self.driver, 20).until(
@@ -24,7 +24,7 @@ class SettingsPages:
             )
         )
         settings_profile.click()
-    
+
     def assertSettingsAccountPage(self):
         self.wait = WebDriverWait(self.driver, 20)
         try:
@@ -36,14 +36,13 @@ class SettingsPages:
             print("Assert Success : Assert Account Page Success")
         except AssertionError:
             print("Assert Failed : Assert Account Page Failed")
-    
+
     def clickLogoutButton(self):
 
         logout_button = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.ID, self.homeObj.btn_logout))
         )
         logout_button.click()
-
 
     def clickLegalInformation(self):
 
@@ -242,3 +241,106 @@ class SettingsPages:
             EC.element_to_be_clickable((By.XPATH, self.settingsObj.back_to_settings))
         )
         back.click()
+
+    def clickChangePassword(self):
+
+        change_password = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.txt_account_page_change_password)
+            )
+        )
+        change_password.click()
+
+    def assertChangePasswordPage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.settingsObj.txt_account_page_change_password_page)
+                )
+            )
+            print("Assert Success : Assert Change Password Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Change Password Page Failed")
+
+    def inputCurrentPassword(self, currentpassword):
+        self.wait = WebDriverWait(self.driver, 20)
+
+        fld_current_password = self.driver.find_element(
+            By.XPATH, self.settingsObj.fld_change_password_current_password
+        )
+        fld_current_password.clear()
+        fld_current_password.click()
+        fld_current_password.send_keys(currentpassword)
+        self.driver.press_keycode(4)
+
+    def inputNewPassword(self, currentpassword):
+        self.wait = WebDriverWait(self.driver, 20)
+
+        fld_new_password = self.driver.find_element(
+            By.XPATH, self.settingsObj.fld_change_password_new_password
+        )
+        fld_new_password.clear()
+        fld_new_password.click()
+        fld_new_password.send_keys(currentpassword)
+        self.driver.press_keycode(4)
+
+    def assertChangePasswordInvalidCurrentPassword(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.settingsObj.txt_notif_invalid_current_password)
+                )
+            )
+            print("Assert Success : Assert Invalid Current Password Success")
+        except AssertionError:
+            print("Assert Failed : Assert Invalid Current Password Failed")
+
+    def clickBtnOKInvalidCurrentPassword(self):
+
+        btn_ok = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.btn_ok_invalid_password)
+            )
+        )
+        btn_ok.click()
+
+    def clickBtnNextChangePassword(self):
+
+        btn_next = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.btn_next_change_password)
+            )
+        )
+        btn_next.click()
+
+    def assertChangePasswordLess8Charracter(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_change_password_invalid_format_8_charracter,
+                    )
+                )
+            )
+            print("Assert Success : Assert Password must be at least 8 Success")
+        except AssertionError:
+            print("Assert Failed : Assert Password must be at least 8 Failed")
+
+    def assertSuccessChangePassword(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_success_change_password,
+                    )
+                )
+            )
+            print("Assert Success : Assert Sucessfully Change Password Success")
+        except AssertionError:
+            print("Assert Failed : Assert Sucessfully Change Password Failed")
