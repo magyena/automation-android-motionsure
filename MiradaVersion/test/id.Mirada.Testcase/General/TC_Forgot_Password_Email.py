@@ -96,7 +96,7 @@ def test_TC_Forgot_Password_Request_Second_OTP_Email(
     if random_email is None:
         print("Email not found in cache")
         return
-    
+    time.sleep(2)
     sign_up_action.clickButtonSendOtp()
     otp = print_last_otp(random_email)
     print("cache1 " + otp)
