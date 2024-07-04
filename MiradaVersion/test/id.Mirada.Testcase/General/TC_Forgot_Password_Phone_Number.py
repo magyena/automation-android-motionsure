@@ -132,6 +132,7 @@ def test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number(
     login_action: PagesLogin,
     homepage_action: HomePage,
     cache,
+    driver:WebDriver,
 ):
 
     phone_number1 = cache.get("phone_number1", None)
@@ -147,8 +148,9 @@ def test_TC_Forgot_Password_User_Login_After_do_Forgot_Password_Phone_Number(
     login_action.clickBtnSavePassword()
     time.sleep(10)
     print("for login again" + phone_number1)
-    sign_up_action.clickEmailSection()
-    sign_up_action.clickPhoneNumberSection()
+    time.sleep(3)
+    driver.press_keycode(4)
+    login_action.clickLogin()
     sign_up_action.inputPhoneNumber(phone_number1)
     sign_up_action.inputPassword("4321Lupaa")
     login_action.clickSubmitLogin()

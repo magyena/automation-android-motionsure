@@ -41,7 +41,7 @@ class Profiles:
         end_x = size["width"] // 5
         end_y = size["height"] // 7
 
-        self.driver.swipe(start_x, start_y, end_x, end_y, 700)
+        self.driver.swipe(start_x, start_y, end_x, end_y, 600)
 
     def scrollUp(self):
         finger = PointerInput(interaction.POINTER_TOUCH, "finger")
