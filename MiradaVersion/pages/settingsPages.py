@@ -434,3 +434,147 @@ class SettingsPages:
             print("Assert Success : Assert Delete Account Failed Success")
         except AssertionError:
             print("Assert Failed : Assert Delete Account Failed Failed")
+
+    def clickVoucher(self):
+
+        menu_voucher = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.txt_voucher))
+        )
+        menu_voucher.click()
+
+    def assertVoucherPage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_voucher,
+                    )
+                )
+            )
+            print("Assert Success : Assert Voucer Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Voucer Page Failed")
+
+    def inputRedeemVoucher(self, voucher):
+        self.wait = WebDriverWait(self.driver, 20)
+
+        fld_voucher = self.driver.find_element(
+            By.XPATH, self.settingsObj.fld_enter_voucher
+        )
+        fld_voucher.clear()
+        fld_voucher.click()
+        fld_voucher.send_keys(voucher)
+        self.driver.press_keycode(4)
+
+    def clickBtnRedeemVoucher(self):
+
+        btn_reedem = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.btn_redeem_voucher))
+        )
+        btn_reedem.click()
+
+    def assertSuccessReedem(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_success_reedem,
+                    )
+                )
+            )
+            print("Assert Success : Assert Successfully Reedem Voucher Success")
+        except AssertionError:
+            print("Assert Failed : Assert Successfully Reedem Voucher Failed")
+
+    def clickBtnSeeMyStatus(self):
+
+        btn_transaction_details = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.txt_see_my_status))
+        )
+        btn_transaction_details.click()
+
+    def assertTransactionDetailsVoucher(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_transaction_details_voucher,
+                    )
+                )
+            )
+            print("Assert Success : Assert Details Transactions Voucher Success")
+        except AssertionError:
+            print("Assert Failed : Assert Details Transactions Voucher Failed")
+
+    def assertVoucherExpired(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_voucher_expired,
+                    )
+                )
+            )
+            print("Assert Success : Assert Voucher Expired Success")
+        except AssertionError:
+            print("Assert Failed : Assert Voucher Expired Failed")
+
+    def assertVoucherInvalid(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_voucher_invalid,
+                    )
+                )
+            )
+            print("Assert Success : Assert Voucher Invalid Success")
+        except AssertionError:
+            print("Assert Failed : Assert Voucher Invalid Failed")
+
+    def clickMarketPlaceTokopedia(self):
+
+        tokopedia = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.img_tokopedia))
+        )
+        tokopedia.click()
+
+    def clickMarketPlaceLazada(self):
+
+        lazada = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.img_lazada))
+        )
+        lazada.click()
+
+    def clickMarketPlaceBlibli(self):
+
+        blibli = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.img_blibli))
+        )
+        blibli.click()
+
+    def clickMarketPlaceCoda(self):
+
+        coda = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.img_coda))
+        )
+        coda.click()
+
+    def clickHelpCenterVoucher(self):
+
+        help_center = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.txt_help_center_voucher)
+            )
+        )
+        help_center.click()
