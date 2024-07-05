@@ -8,6 +8,7 @@ class settingsObject:
             "//*[contains(@text,'Change Password')]"
         )
         self.txt_account_page_delete_account = "//*[contains(@text,'Delete account')]"
+        self.txt_delete_account_page = "//*[contains(@text,'Delete Account')]"
         self.btn_logout = "com.zte.iptvclient.android.idmnc:id/close_session_button"
         self.txt_transaction_history = "//*[contains(@text,'Transaction history')]"
         self.txt_voucher = "//*[contains(@text,'Voucher')]"
@@ -60,4 +61,17 @@ class settingsObject:
         self.btn_ok_invalid_password = '//android.widget.Button[@text="Close"]'
         self.txt_success_change_password = (
             "//*[contains(@text,'Password Succesfully Changed')]"
+        )
+        self.checkbox_accept_delete_account = '//android.widget.CheckBox[@text="I understand the information and I want to delete my account"]'
+        self.btn_keep_account = '//android.widget.Button[@text="Keep Account"]'
+        self.btn_process_delete_account = (
+            '//android.widget.Button[@text="Proceed to Delete Account"]'
+        )
+        self.fld_password_delete_account = "//android.widget.EditText"
+        self.btn_delete_account = '//android.widget.Button[@text="Delete Account"]'
+        self.txt_delete_account_failed = (
+            '//android.widget.TextView[@text="Delete Account Failed"]'
+        )
+        self.txt_success_delete_account = (
+            '//android.view.View[@text="Your account is deleted"]'
         )

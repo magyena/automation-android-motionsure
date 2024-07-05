@@ -344,3 +344,93 @@ class SettingsPages:
             print("Assert Success : Assert Sucessfully Change Password Success")
         except AssertionError:
             print("Assert Failed : Assert Sucessfully Change Password Failed")
+
+    def clickDeleteAccount(self):
+
+        delete_account = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.txt_account_page_delete_account)
+            )
+        )
+        delete_account.click()
+
+    def clickAcceptDeleteAccount(self):
+
+        chbx_delete = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.checkbox_accept_delete_account)
+            )
+        )
+        chbx_delete.click()
+
+    def clickProceedDeleteAccount(self):
+
+        btn_proceed_delete = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.btn_process_delete_account)
+            )
+        )
+        btn_proceed_delete.click()
+
+    def assertDeleteAccountPage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_delete_account_page,
+                    )
+                )
+            )
+            print("Assert Success : Assert Delete Account Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Delete Account Page Failed")
+
+    def inputPasswordDeleteAccount(self, currentpassword):
+        self.wait = WebDriverWait(self.driver, 20)
+
+        fld_password_delete = self.driver.find_element(
+            By.XPATH, self.settingsObj.fld_password_delete_account
+        )
+        fld_password_delete.clear()
+        fld_password_delete.click()
+        fld_password_delete.send_keys(currentpassword)
+        self.driver.press_keycode(4)
+
+    def clickBtnDeleteAccount(self):
+
+        btn_delete = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.btn_delete_account))
+        )
+        btn_delete.click()
+
+    def assertDeleteAccountSuccess(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_success_delete_account,
+                    )
+                )
+            )
+            print("Assert Success : Assert Succes Delete Account Success")
+        except AssertionError:
+            print("Assert Failed : Assert Succes Delete Account Failed")
+
+    def assertInvalidDeleteAccount(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_delete_account_failed,
+                    )
+                )
+            )
+            print("Assert Success : Assert Delete Account Failed Success")
+        except AssertionError:
+            print("Assert Failed : Assert Delete Account Failed Failed")
