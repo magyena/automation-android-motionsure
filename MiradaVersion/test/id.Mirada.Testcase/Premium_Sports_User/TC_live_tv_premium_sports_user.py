@@ -85,9 +85,14 @@ def test_TC_User_Can_Watching_Live_TV_Channel_Premium(
 def test_TC_User_Can_Watching_Live_TV_Channel_Premium_Sports(
     livetv_action: LiveTV,
     profiles_action: Profiles,
+    driver:WebDriver,
 ):
-    for _ in range(5):
-        profiles_action.scroll_down()
+    element_xpath = "//*[contains(@text,'113')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except Exception as e:
+        print(e)
 
     livetv_action.clickSportChannel()
 

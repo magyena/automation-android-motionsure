@@ -100,7 +100,7 @@ class SignUp:
 
     def clickEmailSection(self):
         btn_email = WebDriverWait(self.driver, 20).until(
-            EC.element_to_be_clickable((By.XPATH, self.loginObj.btn_email_section))
+            EC.element_to_be_clickable((By.XPATH, self.loginObj.email_section))
         )
         btn_email.click()
 

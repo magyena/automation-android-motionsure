@@ -47,9 +47,13 @@ def test_TC_Login_Email_User_not_able_login_User_Not_Registered(
 
     login_action.clickLogin()
     login_action.clickEmailSection()
+    time.sleep(2)
     sign_up_action.inputEmail(email_not_registered)
+    time.sleep(2)
     sign_up_action.inputPassword("4321Lupa")
+    time.sleep(2)
     login_action.clickSubmitLogin()
+    time.sleep(2)
     login_action.assertAccountHasNotBeenRegistered()
     driver.press_keycode(4)
     driver.press_keycode(4)

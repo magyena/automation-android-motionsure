@@ -52,8 +52,11 @@ def test_TC_Unverified_Account_Email(driver: WebDriver, sign_up_action: SignUp):
     sign_up_action.clickSignUp()
     sign_up_action.assertRegisterPage()
     sign_up_action.clickEmailSection()
+    time.sleep(2)
     sign_up_action.inputEmail("freetest38@visionplus.id")
+    time.sleep(2)
     sign_up_action.inputPassword(password)
+    time.sleep(2)
     sign_up_action.clickButtonSendOtp()
     sign_up_action.assertRegisterHasBeenRegistered()
     driver.press_keycode(4)
@@ -79,20 +82,28 @@ def test_TC_Register_with_Email_User_fill_Create_Password_field_less_than_8_char
     driver: WebDriver, sign_up_action: SignUp
 ):
     sign_up_action.clickPhoneNumberSection()
+    time.sleep(2)
     sign_up_action.clickEmailSection()
+    time.sleep(2)
     sign_up_action.inputEmail("freetest40@visionplus.id")
+    time.sleep(2)
     sign_up_action.inputPassword(wrong_password)
     sign_up_action.assertPasswordDoesntMatch()
 
 
 def test_TC_Register_with_Email_Wrong_OTP(driver: WebDriver, sign_up_action: SignUp):
     sign_up_action.clickPhoneNumberSection()
+    time.sleep(2)
     sign_up_action.clickEmailSection()
+    time.sleep(2)
     sign_up_action.inputEmail(email)
+    time.sleep(2)
     sign_up_action.inputPassword(password)
+    time.sleep(2)
     sign_up_action.clickButtonSendOtp()
     time.sleep(2)
     sign_up_action.inputOTP("0000")
+    time.sleep(2)
     sign_up_action.clickSubmitRegister()
     sign_up_action.assertWrongOtp()
 
@@ -119,8 +130,11 @@ def test_TC_Register_with_Email_Account_has_Been_Registered(
     sign_up_action.clickSignUp()
     sign_up_action.assertRegisterPage()
     sign_up_action.clickEmailSection()
+    time.sleep(2)
     sign_up_action.inputEmail("freetest38@visionplus.id")
+    time.sleep(2)
     sign_up_action.inputPassword(password)
+    time.sleep(2)
     sign_up_action.clickButtonSendOtp()
     sign_up_action.assertRegisterHasBeenRegistered()
 
