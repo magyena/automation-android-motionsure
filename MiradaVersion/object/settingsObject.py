@@ -3,8 +3,12 @@ class settingsObject:
         self.txt_settings_page = "//*[contains(@text,'Settings')]"
         self.txt_settings_account_profile = '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.zte.iptvclient.android.idmnc:id/recycler_view"]/android.view.ViewGroup[3]'
         self.txt_account_page = "//*[contains(@text,'Account')]"
-        self.txt_account_page_change_password = "//*[contains(@text,'Change password')]"
+        self.txt_account_page_change_password = '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.zte.iptvclient.android.idmnc:id/recycler_view"]/android.widget.LinearLayout[3]'
+        self.txt_account_page_change_password_page = (
+            "//*[contains(@text,'Change Password')]"
+        )
         self.txt_account_page_delete_account = "//*[contains(@text,'Delete account')]"
+        self.txt_delete_account_page = "//*[contains(@text,'Delete Account')]"
         self.btn_logout = "com.zte.iptvclient.android.idmnc:id/close_session_button"
         self.txt_transaction_history = "//*[contains(@text,'Transaction history')]"
         self.txt_voucher = "//*[contains(@text,'Voucher')]"
@@ -34,3 +38,40 @@ class settingsObject:
         self.help_center_close_webview = "com.zte.iptvclient.android.idmnc:id/close"
         self.manage_profiles_add_profiles = "//*[contains(@text,'Add profile')]"
         self.back_to_settings = '//android.widget.ImageButton[@content-desc="Back"]'
+        self.fld_change_password_current_password = (
+            "//*[contains(@text,'Enter Current Password')]/following::*[2]"
+        )
+        self.fld_change_password_new_password = (
+            "//*[contains(@text,'Enter Current Password')]/following::*[6]"
+        )
+        self.btn_next_change_password = '//android.widget.Button[@text="Next"]'
+
+        self.txt_change_password_invalid_format_8_charracter = (
+            "//*[contains(@text,'Password must be at least')]"
+        )
+        self.txt_change_password_invalid_format_uppercase = (
+            "//*[contains(@text,'Password must contain at least one uppercase')]"
+        )
+        self.txt_change_password_invalid_format_6_charracter = (
+            "//*[contains(@text,'Password must be at least 6')]"
+        )
+        self.txt_notif_invalid_current_password = (
+            '//android.widget.TextView[@text="Invalid password"]'
+        )
+        self.btn_ok_invalid_password = '//android.widget.Button[@text="Close"]'
+        self.txt_success_change_password = (
+            "//*[contains(@text,'Password Succesfully Changed')]"
+        )
+        self.checkbox_accept_delete_account = '//android.widget.CheckBox[@text="I understand the information and I want to delete my account"]'
+        self.btn_keep_account = '//android.widget.Button[@text="Keep Account"]'
+        self.btn_process_delete_account = (
+            '//android.widget.Button[@text="Proceed to Delete Account"]'
+        )
+        self.fld_password_delete_account = "//android.widget.EditText"
+        self.btn_delete_account = '//android.widget.Button[@text="Delete Account"]'
+        self.txt_delete_account_failed = (
+            '//android.widget.TextView[@text="Delete Account Failed"]'
+        )
+        self.txt_success_delete_account = (
+            '//android.view.View[@text="Your account is deleted"]'
+        )
