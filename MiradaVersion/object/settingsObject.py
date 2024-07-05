@@ -75,3 +75,17 @@ class settingsObject:
         self.txt_success_delete_account = (
             '//android.view.View[@text="Your account is deleted"]'
         )
+        self.fld_enter_voucher = "//android.widget.EditText"
+        self.btn_redeem_voucher = '//android.widget.Button[@text="Reedem"]'
+        self.img_tokopedia = '//android.view.View[@text="Tokopedia"]'
+        self.img_lazada = '//android.view.View[@text="Lazada"]'
+        self.img_blibli = '//android.view.View[@text="Blibli"]'
+        self.img_coda = '//android.view.View[@text="Coda"]'
+        self.txt_success_reedem = '//android.widget.TextView[@text="Voucher Redeemed"]'
+        self.txt_see_my_status = '//android.widget.Button[@text="See my status"]'
+        self.txt_transaction_details_voucher = (
+            '//android.widget.TextView[@text="IKINGGH2WFXO3PREM"]'
+        )
+        self.txt_voucher_expired = '//android.view.View[@text="Voucher code expired"]'
+        self.txt_voucher_invalid = '//android.view.View[@text="Invalid code"]'
+        self.txt_help_center_voucher = '//android.widget.TextView[@text="Help Center"]'
