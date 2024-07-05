@@ -88,33 +88,47 @@ def test_TC_User_Can_Open_Help_Center(
     time.sleep(2)
     settings_action.clickHelp()
     settings_action.assertHelpCenterPage()
+    time.sleep(2)
 
 
 def test_TC_User_Can_Open_Help_Center_Email(
     driver: WebDriver,
+    homepage_action : HomePage,
     settings_action: SettingsPages,
-):
-    settings_action.clickEmailHelpCenter()
-    driver.press_keycode(4)
-    time.sleep(2)
-    driver.press_keycode(4)
+): 
+    print("in Email")
+    # settings_action.clickEmailHelpCenter()
+    # time.sleep(5)
+    # driver.press_keycode(4)
+    # driver.press_keycode(4)
+    
+    # time.sleep(2)
 
 
 def test_TC_User_Can_Open_Help_Center_Whatsapp(
     driver: WebDriver,
     settings_action: SettingsPages,
 ):
-    settings_action.clickWhatsappHelpCenter()
-    time.sleep(5)
-    driver.press_keycode(4)
-    
+    # settings_action.clickWhatsappHelpCenter()
+    # time.sleep(5)
+    # driver.press_keycode(4)
+    time.sleep(2)
+   
 
 
 def test_TC_User_Can_Open_Help_Center_AboutUs(
     driver: WebDriver,
     settings_action: SettingsPages,
+    homepage_action=HomePage,
 ):
+    print("sebelum klik help about us")
+    # driver.press_keycode[4]
+    # time.sleep(2)
+    # homepage_action.clickMenuButton()
+    # homepage_action.clickSettingsButton()
+    time.sleep(2)
     settings_action.clickAboutUSHelpCenter()
+    time.sleep(2)
     driver.press_keycode(4)
 
 

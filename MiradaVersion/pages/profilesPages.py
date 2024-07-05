@@ -13,7 +13,8 @@ from selenium.webdriver.common.actions import interaction
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 from appium.webdriver.common.appiumby import AppiumBy
-
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 
 class Profiles:
 
@@ -41,8 +42,28 @@ class Profiles:
         end_x = size["width"] // 5
         end_y = size["height"] // 7
 
-        self.driver.swipe(start_x, start_y, end_x, end_y, 600)
+        self.driver.swipe(start_x, start_y, end_x, end_y, 790)
+    
+    @staticmethod
+    def scroll_to_element(driver, element_xpath, max_swipes=10):
+        size = driver.get_window_size()
+        start_x = size["width"] // 5
+        start_y = size["height"] * 6 // 7
+        end_x = start_x
+        end_y = size["height"] // 7
 
+        for _ in range(max_swipes):
+            try:
+                element = driver.find_element(By.XPATH, element_xpath)
+                if element.is_displayed():
+                    return element
+            except NoSuchElementException:
+                driver.swipe(start_x, start_y, end_x, end_y, 800)
+            else:
+                break  # Stop swiping if element is found
+        
+        raise Exception("Element not found after maximum swipes")
+    
     def scrollUp(self):
         finger = PointerInput(interaction.POINTER_TOUCH, "finger")
         actions = ActionChains(self.driver)
