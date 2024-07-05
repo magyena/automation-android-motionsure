@@ -110,5 +110,6 @@ def test_TC_User_Cant_be_Deleted_Account_Success(
 ):
 
     delay(lambda: settings_action.inputPasswordDeleteAccount(current_password))
+    time.sleep(3)
     delay(settings_action.clickBtnDeleteAccount)
     delay(settings_action.assertDeleteAccountSuccess)
