@@ -62,7 +62,7 @@ def homepage_action(driver):
     return HomePage(driver)
 
 
-def delay(action, delay=2):
+def delay(action, delay=3):
     if callable(action):
         action()
         time.sleep(delay)
@@ -108,8 +108,7 @@ def test_TC_User_Cant_be_Deleted_Account_Wrong_Password(
 def test_TC_User_Cant_be_Deleted_Account_Success(
     settings_action: SettingsPages,
 ):
-
+    
     delay(lambda: settings_action.inputPasswordDeleteAccount(current_password))
-    time.sleep(3)
     delay(settings_action.clickBtnDeleteAccount)
     delay(settings_action.assertDeleteAccountSuccess)

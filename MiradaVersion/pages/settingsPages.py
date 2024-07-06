@@ -6,7 +6,7 @@ from MiradaVersion.utils.handler import HandlerRemote
 from selenium.common.exceptions import TimeoutException
 from MiradaVersion.object.settingsObject import settingsObject
 from MiradaVersion.object.homeObject import homeObject
-
+import time
 
 class SettingsPages:
 
@@ -270,8 +270,11 @@ class SettingsPages:
             By.XPATH, self.settingsObj.fld_change_password_current_password
         )
         fld_current_password.clear()
+        time.sleep(3)
         fld_current_password.click()
+        time.sleep(3)
         fld_current_password.send_keys(currentpassword)
+        time.sleep(3)
         self.driver.press_keycode(4)
 
     def inputNewPassword(self, currentpassword):
@@ -281,8 +284,11 @@ class SettingsPages:
             By.XPATH, self.settingsObj.fld_change_password_new_password
         )
         fld_new_password.clear()
+        time.sleep(3)
         fld_new_password.click()
+        time.sleep(3)
         fld_new_password.send_keys(currentpassword)
+        time.sleep(3)
         self.driver.press_keycode(4)
 
     def assertChangePasswordInvalidCurrentPassword(self):
@@ -394,8 +400,11 @@ class SettingsPages:
             By.XPATH, self.settingsObj.fld_password_delete_account
         )
         fld_password_delete.clear()
+        time.sleep(2)
         fld_password_delete.click()
+        time.sleep(2)
         fld_password_delete.send_keys(currentpassword)
+        time.sleep(2)
         self.driver.press_keycode(4)
 
     def clickBtnDeleteAccount(self):
@@ -464,8 +473,11 @@ class SettingsPages:
             By.XPATH, self.settingsObj.fld_enter_voucher
         )
         fld_voucher.clear()
+        time.sleep(3)
         fld_voucher.click()
+        time.sleep(3)
         fld_voucher.send_keys(voucher)
+        time.sleep(3)
         self.driver.press_keycode(4)
 
     def clickBtnRedeemVoucher(self):

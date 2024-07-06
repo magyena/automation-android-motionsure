@@ -35,6 +35,7 @@ class PagesLogin:
         txt_fld_email = self.driver.find_element(By.XPATH, self.loginObj.txt_fld_email)
 
         txt_fld_email.click()
+        time.sleep(3)
         txt_fld_email.send_keys(email)
 
     def inputPass(self, password):
@@ -45,7 +46,9 @@ class PagesLogin:
         )
 
         txt_fld_password.click()
+        time.sleep(3)
         txt_fld_password.send_keys(password)
+        time.sleep(3)
         self.driver.press_keycode(4)
 
     def clickSubmitLogin(self):

@@ -52,7 +52,9 @@ class SignUp:
             By.XPATH, self.loginObj.txt_fld_phone_number
         )
         txt_fld_phone_number.clear()
+        time.sleep(3)
         txt_fld_phone_number.click()
+        time.sleep(3)
         txt_fld_phone_number.send_keys(phone)
 
     def inputPassword(self, password):
@@ -62,7 +64,9 @@ class SignUp:
             By.XPATH, self.loginObj.txt_fld_password
         )
         txt_fld_password.clear()
+        time.sleep(3)
         txt_fld_password.click()
+        time.sleep(3)
         txt_fld_password.send_keys(password)
 
         self.driver.press_keycode(4)
@@ -79,7 +83,7 @@ class SignUp:
         txt_fld_phone_number = self.driver.find_element(
             By.XPATH, self.loginObj.txt_fld_phone_number
         )
-
+        time.sleep(3)
         txt_fld_phone_number.clear()
 
     def inputOTP(self, otp):
@@ -88,8 +92,11 @@ class SignUp:
         fld_otp = self.driver.find_element(By.XPATH, self.loginObj.fld_otp)
 
         fld_otp.clear()
+        time.sleep(3)
         fld_otp.click()
+        time.sleep(3)
         fld_otp.send_keys(otp)
+        time.sleep(3)
         self.driver.press_keycode(4)
 
     def clickSubmitRegister(self):
@@ -116,7 +123,9 @@ class SignUp:
         input_email = self.driver.find_element(By.XPATH, self.loginObj.txt_fld_email)
 
         input_email.clear()
+        time.sleep(3)
         input_email.click()
+        time.sleep(3)
         input_email.send_keys(email)
 
     def assertDiscoverProfiles(self):

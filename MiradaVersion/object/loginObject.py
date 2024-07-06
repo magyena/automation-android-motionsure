@@ -71,3 +71,4 @@ class loginObject:
         self.btn_forgot_password = "//*[contains(@text,'Forgot Password?')]"
         self.txt_forgot_password = "//*[contains(@text,'Forgot Password')]"
         self.btn_save_password = "//*[contains(@text,'Save Password')]"
+        self.txt_error_login="//*[contains(@text,'Expected response')]"

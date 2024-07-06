@@ -140,6 +140,7 @@ class Profiles:
         )
 
         txt_fld_phone_number.click()
+        time.sleep(3)
         txt_fld_phone_number.send_keys(phone)
 
     def clickAddProfile(self):
@@ -187,7 +188,9 @@ class Profiles:
         )
 
         input_profile.clear()
+        time.sleep(3)
         input_profile.click()
+        time.sleep(3)
         input_profile.send_keys(profile)
 
     def assertSuccessCreateProfile(self):
