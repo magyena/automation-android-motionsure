@@ -6,6 +6,7 @@ from MiradaVersion.utils.handler import HandlerRemote
 from selenium.common.exceptions import TimeoutException
 from MiradaVersion.object.loginObject import loginObject
 from MiradaVersion.object.homeObject import homeObject
+import time
 
 
 class HomePage:
@@ -103,3 +104,60 @@ class HomePage:
             EC.element_to_be_clickable((By.ID, self.homeObj.btn_profile))
         )
         btn_profile.click()
+
+    def clickBtnSearch(self):
+
+        btn_search = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.btn_search))
+        )
+        btn_search.click()
+
+    def assertSearchPage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_search_page)
+                )
+            )
+            print("Assert Success : Assert Search Success")
+        except AssertionError:
+            print("Assert Failed : Assert Search Failed")
+
+    def inputSearch(self, keyword):
+        self.wait = WebDriverWait(self.driver, 20)
+
+        fld_search = self.driver.find_element(By.ID, self.homeObj.fld_search)
+
+        fld_search.clear()
+        fld_search.click()
+        time.sleep(3)
+        fld_search.send_keys(keyword)
+        time.sleep(3)
+        self.driver.press_keycode(4)
+
+    def clickResultOne(self):
+
+        result = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.result_search_one))
+        )
+        result.click()
+
+    def clickResultLiveTV(self):
+
+        result_tv = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.result_search_livetv))
+        )
+        result_tv.click()
+
+    def assertSearchNoResult(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.ID, self.homeObj.txt_search_no_result)
+                )
+            )
+            print("Assert Success : Assert Search  No Result Success")
+        except AssertionError:
+            print("Assert Failed : Assert Search  No Result  Failed")
