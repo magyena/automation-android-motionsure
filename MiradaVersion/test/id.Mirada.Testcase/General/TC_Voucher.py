@@ -68,7 +68,7 @@ def homepage_action(driver):
     return HomePage(driver)
 
 
-def delay(action, delay=2):
+def delay(action, delay=0):
     if callable(action):
         action()
         time.sleep(delay)
@@ -131,3 +131,26 @@ def test_TC_User_Can_Direct_to_Help_Center(
     delay(settings_action.clickHelpCenterVoucher)
     delay(settings_action.assertHelpCenterPage)
     driver.press_keycode(4)
+
+
+def test_TC_User_Success_Reedem_Voucher(
+    driver: WebDriver,
+    settings_action: SettingsPages,
+):
+    delay(lambda: settings_action.inputRedeemVoucher(voucher))
+    delay(settings_action.clickBtnRedeemVoucher)
+    delay(settings_action.assertSuccessReedemVoucher)
+    delay(settings_action.clickBtnSeeMyStatus)
+    delay(settings_action.assertTransactionDetailsVoucher)
+    delay(settings_action.clickCloseToSettings)
+
+
+def test_TC_User_Success_Reedem_Again_With_Same_Voucher(
+    driver: WebDriver,
+    settings_action: SettingsPages,
+):
+    delay(settings_action.clickVoucher)
+    time.sleep(5)
+    delay(settings_action.assertVoucherPage)
+    delay(lambda: settings_action.inputRedeemVoucher(voucher))
+    delay(settings_action.clickBtnRedeemVoucher)

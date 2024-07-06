@@ -8,6 +8,7 @@ from MiradaVersion.object.settingsObject import settingsObject
 from MiradaVersion.object.homeObject import homeObject
 import time
 
+
 class SettingsPages:
 
     def __init__(self, driver):
@@ -487,7 +488,7 @@ class SettingsPages:
         )
         btn_reedem.click()
 
-    def assertSuccessReedem(self):
+    def assertSuccessReedemVoucher(self):
         self.wait = WebDriverWait(self.driver, 20)
         try:
             self.wait.until(
