@@ -62,7 +62,7 @@ def homepage_action(driver):
     return HomePage(driver)
 
 
-def delay(action, delay=3):
+def delay(action, delay=4):
     if callable(action):
         action()
         time.sleep(delay)
