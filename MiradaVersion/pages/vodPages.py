@@ -25,13 +25,6 @@ class VOD:
         except AssertionError:
             print("Assert Failed : Assert Detail VOD Failed")
 
-    def clickMenuButton(self):
-
-        btn_menu = WebDriverWait(self.driver, 20).until(
-            EC.element_to_be_clickable((By.ID, self.homeObj.btn_menu_button))
-        )
-        btn_menu.click()
-
     def inputSearch(self, keyword):
         self.wait = WebDriverWait(self.driver, 20)
 
@@ -43,3 +36,43 @@ class VOD:
         fld_search.send_keys(keyword)
         time.sleep(3)
         self.driver.press_keycode(4)
+
+    def clickEpisode2(self):
+
+        eps2 = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.vod.btn_eps2))
+        )
+        eps2.click()
+
+    def clickBtnDownload(self):
+
+        btn_download = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.vod.btn_download))
+        )
+        btn_download.click()
+
+    def assertDownloadProgress(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.ID, self.vod.txt_download_progress)
+                )
+            )
+            print("Assert Success : Assert Download in Progress Success")
+        except AssertionError:
+            print("Assert Failed : Assert Download in Progress Failed")
+
+    def clickBtnCancelDownload(self):
+
+        btn_cancel_download = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.vod.txt_download_progress))
+        )
+        btn_cancel_download.click()
+
+    def clickAcceptCancelDownload(self):
+
+        btn_acc_cancel_download = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.vod.btn_accept_cancel_download))
+        )
+        btn_acc_cancel_download.click()
