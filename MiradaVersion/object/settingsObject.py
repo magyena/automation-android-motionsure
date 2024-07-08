@@ -89,3 +89,6 @@ class settingsObject:
         self.txt_voucher_expired = '//android.view.View[@text="Voucher code expired"]'
         self.txt_voucher_invalid = '//android.view.View[@text="Invalid code"]'
         self.txt_help_center_voucher = '//android.widget.TextView[@text="Help Center"]'
+        self.btn_profile_one = "//*[contains(@text,'ProfileSatu')]"
+        self.btn_delete_profiles = '//android.widget.TextView[@resource-id="android:id/title" and @text="Delete profile"]'
+        self.btn_accept_delete_profiles = "android:id/button1"

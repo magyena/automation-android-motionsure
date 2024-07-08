@@ -42,3 +42,8 @@ class profileObject:
             '//android.widget.Button[@resource-id="android:id/button1"]'
         )
         self.txt_avatar_page = "com.zte.iptvclient.android.idmnc:id/chooseAvatarTitle"
+        self.txt_name_already_exist = (
+            "com.zte.iptvclient.android.idmnc:id/popup_message"
+        )
+        self.btn_ok = "android:id/button1"
+        self.btn_cancel = "android:id/button2"
