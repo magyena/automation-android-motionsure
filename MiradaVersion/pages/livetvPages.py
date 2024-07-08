@@ -26,6 +26,16 @@ class LiveTV:
         except AssertionError:
             print("Assert Failed : Assert Live TV Page Failed")
 
+    def assertLiveTVInews(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located((By.XPATH, self.livetvObj.img_inews))
+            )
+            print("Assert Success : Assert Live TV Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Live TV Page Failed")
+
     def clickTrans7Channel(self):
 
         trans7_channel = WebDriverWait(self.driver, 20).until(

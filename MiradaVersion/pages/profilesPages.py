@@ -16,6 +16,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
+
 class Profiles:
 
     def __init__(self, driver):
@@ -43,7 +44,7 @@ class Profiles:
         end_y = size["height"] // 7
 
         self.driver.swipe(start_x, start_y, end_x, end_y, 790)
-    
+
     @staticmethod
     def scroll_to_element(driver, element_xpath, max_swipes=10):
         size = driver.get_window_size()
@@ -61,9 +62,9 @@ class Profiles:
                 driver.swipe(start_x, start_y, end_x, end_y, 800)
             else:
                 break  # Stop swiping if element is found
-        
+
         raise Exception("Element not found after maximum swipes")
-    
+
     def scrollUp(self):
         finger = PointerInput(interaction.POINTER_TOUCH, "finger")
         actions = ActionChains(self.driver)
@@ -330,3 +331,38 @@ class Profiles:
             print("Assert Success : Assert Avatar Page Success")
         except AssertionError:
             print("Assert Failed : Assert Avatar Page Failed")
+
+    def clickBtnOk(self):
+
+        btn_ok = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.profileobj.btn_ok))
+        )
+        btn_ok.click()
+
+    def assertProfileError(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.ID, self.profileobj.txt_name_already_exist)
+                )
+            )
+            print("Assert Success : Assert Profile already exist Success")
+        except AssertionError:
+            print("Assert Failed : Assert Profile already exist Failed")
+
+    def clickCancelSuccessAddProfile(self):
+
+        btn_cancel = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.ID, self.profileobj.btn_cancel_success_create_profile)
+            )
+        )
+        btn_cancel.click()
+
+    def clickBtnCancelAvatar(self):
+
+        btn_cancel = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.profileobj.btn_cancel))
+        )
+        btn_cancel.click()

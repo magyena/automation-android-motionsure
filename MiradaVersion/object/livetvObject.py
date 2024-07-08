@@ -1,6 +1,7 @@
 class livetvObject:
     def __init__(self):
         self.img_rcti = "//*[contains(@text,'001')]"
+        self.img_inews = "//*[contains(@text,'004')]"
         self.img_transtv = "//*[contains(@text,'006')]"
         self.img_trans7 = "//*[contains(@text,'007')]"
         self.btn_subscribe = "//*[contains(@text,'SUBSCRIBE')]"

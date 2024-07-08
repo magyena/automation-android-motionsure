@@ -8,6 +8,7 @@ from MiradaVersion.object.settingsObject import settingsObject
 from MiradaVersion.object.homeObject import homeObject
 import time
 
+
 class SettingsPages:
 
     def __init__(self, driver):
@@ -204,6 +205,53 @@ class SettingsPages:
             print("Assert Success : Assert Manage Profiles Page Success")
         except AssertionError:
             print("Assert Failed : Assert Manage Profiles Page Failed")
+
+    def assertFirstProfile(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.settingsObj.btn_profile_one)
+                )
+            )
+            print("Assert Success : Assert Profile One Success")
+        except AssertionError:
+            print("Assert Failed : Assert Profile One Failed")
+
+    def clickFirstProfiles(self):
+
+        profile_one = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.btn_profile_one))
+        )
+        profile_one.click()
+
+    def assertDetailProfile(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.settingsObj.btn_profile_one)
+                )
+            )
+            print("Assert Success : Assert Detail Profiles Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Detail Profiles Page Failed")
+
+    def clickDeleteProfile(self):
+
+        delete_profile = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.btn_delete_profiles))
+        )
+        delete_profile.click()
+
+    def clickAcceptDeleteProfile(self):
+
+        acc_delete = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.ID, self.settingsObj.btn_accept_delete_profiles)
+            )
+        )
+        acc_delete.click()
 
     def clickAddProfileManageProfiles(self):
 
@@ -487,7 +535,7 @@ class SettingsPages:
         )
         btn_reedem.click()
 
-    def assertSuccessReedem(self):
+    def assertSuccessReedemVoucher(self):
         self.wait = WebDriverWait(self.driver, 20)
         try:
             self.wait.until(
