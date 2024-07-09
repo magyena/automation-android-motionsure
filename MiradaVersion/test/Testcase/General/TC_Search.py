@@ -34,7 +34,7 @@ def livetv_action(driver):
     return LiveTV(driver)
 
 
-def delay(action, delay=1):
+def delay(action, delay=2):
     if callable(action):
         action()
         time.sleep(delay)

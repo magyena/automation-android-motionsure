@@ -54,7 +54,7 @@ def homepage_action(driver):
     return HomePage(driver)
 
 
-def delay(action, delay=1):
+def delay(action, delay=3):
     if callable(action):
         action()
         time.sleep(delay)
@@ -165,7 +165,7 @@ def test_TC_User_Create_Profile_Already_Exist(
     delay(profiles_action.clickBtnDoneSuccessCreateProfile)
     delay(profiles_action.assertProfileError)
     delay(profiles_action.clickBtnOk)
-    delay(profiles_action.clickCancelSuccessAddProfile)
+    # delay(profiles_action.clickCancelSuccessAddProfile)
 
 
 def test_TC_User_Can_Create_Profile_Max_15_Character(
