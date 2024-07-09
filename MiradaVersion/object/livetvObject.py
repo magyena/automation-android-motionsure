@@ -17,3 +17,5 @@ class livetvObject:
             "//*[contains(@text,'113')]/following::*[11]"
         )
         self.txt_detail_channel_sportstars = "//*[contains(@text,'Sportstars 2')]"
+        self.txt_broadcast = "//*[contains(@text,'Broadcast')]"
+        self.txt_broadcasted = "//*[contains(@text,'Broadcasted')]"

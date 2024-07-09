@@ -76,3 +76,30 @@ class VOD:
             EC.element_to_be_clickable((By.ID, self.vod.btn_accept_cancel_download))
         )
         btn_acc_cancel_download.click()
+
+    def assertBtnWatch(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located((By.ID, self.vod.btn_watch))
+            )
+            print("Assert Success :  Button Watch Showing ")
+        except AssertionError:
+            print("Assert Failed :  Button Watch not Showing ")
+
+    def clickBtnWatch(self):
+
+        btn_watch = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.vod.btn_watch))
+        )
+        btn_watch.click()
+
+    def assertListPackages(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located((By.ID, self.vod.list_packages))
+            )
+            print("Assert Success :  Assert List Packages Showing ")
+        except AssertionError:
+            print("Assert Failed :  Assert List Packages not Showing ")

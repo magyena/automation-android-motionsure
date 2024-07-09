@@ -94,3 +94,27 @@ class LiveTV:
             print("Assert Success : Assert Detail Sportstars Channel Success")
         except AssertionError:
             print("Assert Failed : Assert Detail Sportstars Channel Failed")
+
+    def assertLiveTVBroadcast(self):
+        self.wait = WebDriverWait(self.driver, 40)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.livetvObj.txt_broadcast)
+                )
+            )
+            print("Assert Success : Assert Live tv Broadcast Success")
+        except AssertionError:
+            print("Assert Failed : Assert Live tv Broadcast Failed")
+
+    def assertLiveTVBroadcasted(self):
+        self.wait = WebDriverWait(self.driver, 40)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.livetvObj.txt_broadcasted)
+                )
+            )
+            print("Assert Success : Assert Live tv Broadcasted Success")
+        except AssertionError:
+            print("Assert Failed : Assert Live tv Broadcasted Failed")
