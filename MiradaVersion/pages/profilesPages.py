@@ -65,6 +65,68 @@ class Profiles:
 
         raise Exception("Element not found after maximum swipes")
 
+    def scroll_left(
+        self,
+        start_x=None,
+        start_y=None,
+        end_x=None,
+        end_y=None,
+        start_x_ratio=None,
+        start_y_ratio=None,
+        end_x_ratio=None,
+        end_y_ratio=None,
+        duration=300,
+    ):
+
+        size = self.driver.get_window_size()
+
+        if start_x is None and start_x_ratio is not None:
+            start_x = int(size["width"] * start_x_ratio)
+        if start_y is None and start_y_ratio is not None:
+            start_y = int(size["height"] * start_y_ratio)
+        if end_x is None and end_x_ratio is not None:
+            end_x = int(size["width"] * end_x_ratio)
+        if end_y is None and end_y_ratio is not None:
+            end_y = int(size["height"] * end_y_ratio)
+
+        if None in [start_x, start_y, end_x, end_y]:
+            raise ValueError(
+                "You must provide either absolute positions or relative ratios for all start and end points."
+            )
+
+        self.driver.swipe(start_x, start_y, end_x, end_y, duration)
+
+    def scroll_right(
+        self,
+        start_x=None,
+        start_y=None,
+        end_x=None,
+        end_y=None,
+        start_x_ratio=None,
+        start_y_ratio=None,
+        end_x_ratio=None,
+        end_y_ratio=None,
+        duration=300,
+    ):
+
+        size = self.driver.get_window_size()
+
+        if start_x is None and start_x_ratio is not None:
+            start_x = int(size["width"] * start_x_ratio)
+        if start_y is None and start_y_ratio is not None:
+            start_y = int(size["height"] * start_y_ratio)
+        if end_x is None and end_x_ratio is not None:
+            end_x = int(size["width"] * end_x_ratio)
+        if end_y is None and end_y_ratio is not None:
+            end_y = int(size["height"] * end_y_ratio)
+
+        if None in [start_x, start_y, end_x, end_y]:
+            raise ValueError(
+                "You must provide either absolute positions or relative ratios for all start and end points."
+            )
+
+        self.driver.swipe(start_x, start_y, end_x, end_y, duration)
+
     def scrollUp(self):
         finger = PointerInput(interaction.POINTER_TOUCH, "finger")
         actions = ActionChains(self.driver)

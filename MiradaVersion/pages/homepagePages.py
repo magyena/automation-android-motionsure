@@ -161,3 +161,10 @@ class HomePage:
             print("Assert Success : Assert Search  No Result Success")
         except AssertionError:
             print("Assert Failed : Assert Search  No Result  Failed")
+
+    def clickProgramGuide(self):
+
+        guide = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.img_program_guide))
+        )
+        guide.click()
