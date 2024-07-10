@@ -11,6 +11,7 @@ class settingsObject:
         self.txt_delete_account_page = "//*[contains(@text,'Delete Account')]"
         self.btn_logout = "com.zte.iptvclient.android.idmnc:id/close_session_button"
         self.txt_transaction_history = "//*[contains(@text,'Transaction history')]"
+        self.txt_transaction_history_page = "//*[contains(@text,'Transaction History')]"
         self.txt_voucher = "//*[contains(@text,'Voucher')]"
         self.txt_pay_tv_account = "//*[contains(@text,'Pay TV account')]"
         self.txt_notification_centre = "//*[contains(@text,'Notification centre')]"
@@ -98,3 +99,20 @@ class settingsObject:
         self.txt_no_devices_connected = (
             "com.zte.iptvclient.android.idmnc:id/errorTextView"
         )
+        self.txt_transaction_history_pending = "//*[contains(@text,'Pending')]"
+        self.txt_transaction_history_allstatus = "//*[contains(@text,'All Status')]"
+        self.txt_transaction_history_success = "//*[contains(@text,'Success')]"
+        self.txt_transaction_history_failed = "//*[contains(@text,'Failed')]"
+        self.txt_transaction_history_no_transaction = (
+            "//*[contains(@text,'No Transaction')]"
+        )
+        self.txt_transaction_history_failed_tab = "//*[contains(@text,'FAILED')]"
+        self.txt_transaction_history_success_tab = "//*[contains(@text,'SUCCESS')]"
+        self.txt_transaction_history_detail = (
+            "//*[contains(@text,'Success')]/following::*[3]"
+        )
+        self.txt_transaction_history_detail_page = "//*[contains(@text,'Order ID')]"
+        self.txt_server_error_transaction_history = (
+            '(//android.widget.TextView[@text="Server Error"])[1]'
+        )
+        self.btn_close_server_error = '//android.widget.Button[@text="Close"]'

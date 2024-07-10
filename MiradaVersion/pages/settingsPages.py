@@ -684,3 +684,123 @@ class SettingsPages:
             print("Assert Success : Assert No devices Connected Success")
         except AssertionError:
             print("Assert Failed : Assert No devices Connected Failed")
+
+    def clickTransactionHistory(self):
+
+        transaction_history = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.txt_transaction_history)
+            )
+        )
+        transaction_history.click()
+
+    def assertTransactionHistoryPage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_transaction_history_page,
+                    )
+                )
+            )
+            print("Assert Success : Assert Transaction History Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Transaction History Page Failed")
+
+    def clickTabSuccessTransactionHistory(self):
+
+        transaction_history_success = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.txt_transaction_history_success)
+            )
+        )
+        transaction_history_success.click()
+
+    def clickTabFailedTransactionHistory(self):
+
+        transaction_history_failed = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.txt_transaction_history_failed)
+            )
+        )
+        transaction_history_failed.click()
+
+    def clickTabPendingTransactionHistory(self):
+
+        transaction_history_pending = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.txt_transaction_history_pending)
+            )
+        )
+        transaction_history_pending.click()
+
+    def assertTransactionHistorySuccess(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_transaction_history_success_tab,
+                    )
+                )
+            )
+            print("Assert Success : Assert Transaction History Success Success")
+        except AssertionError:
+            print("Assert Failed : Assert Transaction History Success Failed")
+
+    def assertTransactionHistoryFailed(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_transaction_history_failed_tab,
+                    )
+                )
+            )
+            print("Assert Success : Assert Transaction History Failed Success")
+        except AssertionError:
+            print("Assert Failed : Assert Transaction History Failed Failed")
+
+    def assertNoTransactionHistory(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_transaction_history_no_transaction,
+                    )
+                )
+            )
+            print("Assert Success : Assert No Transaction History Success")
+        except AssertionError:
+            print("Assert Failed : Assert  NO Transaction History Failed")
+
+    def clickDetailTransaction(self):
+
+        transaction_detail = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.settingsObj.txt_transaction_history_detail)
+            )
+        )
+        transaction_detail.click()
+
+    def assertTransactionDetails(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_transaction_history_detail_page,
+                    )
+                )
+            )
+            print("Assert Success : Assert Detail Transaction Success")
+        except AssertionError:
+            print("Assert Failed : Assert  Detail Transaction Failed")
