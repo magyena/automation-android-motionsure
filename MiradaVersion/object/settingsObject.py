@@ -92,3 +92,9 @@ class settingsObject:
         self.btn_profile_one = "//*[contains(@text,'ProfileSatu')]"
         self.btn_delete_profiles = '//android.widget.TextView[@resource-id="android:id/title" and @text="Delete profile"]'
         self.btn_accept_delete_profiles = "android:id/button1"
+        self.btn_disconnect_all_manage_devices = (
+            "com.zte.iptvclient.android.idmnc:id/disconnect_devices_button"
+        )
+        self.txt_no_devices_connected = (
+            "com.zte.iptvclient.android.idmnc:id/errorTextView"
+        )

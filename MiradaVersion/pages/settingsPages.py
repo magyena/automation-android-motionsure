@@ -638,3 +638,49 @@ class SettingsPages:
             )
         )
         help_center.click()
+
+    def clickManageDevices(self):
+
+        manage_devices = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.settingsObj.manage_devices))
+        )
+        manage_devices.click()
+
+    def assertManageDevicesPage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.manage_devices,
+                    )
+                )
+            )
+            print("Assert Success : Assert Manage Devices Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Manage Devices Page Failed")
+
+    def clickDiscconnectManageDevices(self):
+
+        disconnect_all = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.ID, self.settingsObj.btn_disconnect_all_manage_devices)
+            )
+        )
+        disconnect_all.click()
+
+    def assertNoDevicesConnected(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.ID,
+                        self.settingsObj.txt_no_devices_connected,
+                    )
+                )
+            )
+            print("Assert Success : Assert No devices Connected Success")
+        except AssertionError:
+            print("Assert Failed : Assert No devices Connected Failed")
