@@ -168,3 +168,38 @@ class HomePage:
             EC.element_to_be_clickable((By.XPATH, self.homeObj.img_program_guide))
         )
         guide.click()
+
+    def clickBanner(self):
+
+        banner = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.homeObj.detail_banner))
+        )
+        banner.click()
+
+    def clickViewlAllVplusOriginals(self):
+
+        view_all = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.ID, self.homeObj.txt_viewl_all_cluster_originals)
+            )
+        )
+        view_all.click()
+
+    def assertBannerInfo(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located((By.ID, self.homeObj.detail_banner))
+            )
+            print("Assert Success : Assert Banner Info Success")
+        except AssertionError:
+            print("Assert Failed : Assert Banner Info Failed")
+
+    def clickContent(self):
+
+        content = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.txt_first_view_all_cluster_originals)
+            )
+        )
+        content.click()

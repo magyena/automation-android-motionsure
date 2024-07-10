@@ -28,3 +28,10 @@ class homeObject:
         self.result_search_one = '//android.view.View[@content-desc="Montir Cantik"]'
         self.result_search_livetv = '(//android.view.View[@content-desc="iNews"])[2]'
         self.txt_search_no_result = "com.zte.iptvclient.android.idmnc:id/errorTextView"
+        self.detail_banner = "com.zte.iptvclient.android.idmnc:id/container_banner_info"
+        self.txt_viewl_all_cluster_originals = (
+            "com.zte.iptvclient.android.idmnc:id/stripActionButton"
+        )
+        self.txt_first_view_all_cluster_originals = (
+            "//*[contains(@text,'Teenage')]/following::*[2]"
+        )
