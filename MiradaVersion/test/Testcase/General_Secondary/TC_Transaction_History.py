@@ -1,4 +1,4 @@
-import pytest
+import pytest # type: ignore
 import time
 from appium.webdriver.webdriver import WebDriver
 from MiradaVersion.utils.setup import SetupAppium
