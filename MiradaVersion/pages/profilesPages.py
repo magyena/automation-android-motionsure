@@ -59,7 +59,7 @@ class Profiles:
                 if element.is_displayed():
                     return element
             except NoSuchElementException:
-                driver.swipe(start_x, start_y, end_x, end_y, 800)
+                driver.swipe(start_x, start_y, end_x, end_y, 550)
             else:
                 break  # Stop swiping if element is found
 
