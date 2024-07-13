@@ -122,3 +122,4 @@ def test_TC_Transaction_History_Detail(
     delay(settings_action.clickTabSuccessTransactionHistory)
     delay(settings_action.clickDetailTransaction)
     delay(settings_action.assertTransactionDetails)
+
