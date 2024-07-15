@@ -131,3 +131,53 @@ class VOD:
             EC.element_to_be_clickable((By.ID, self.vod.btn_add_to_list))
         )
         btn_add_list.click()
+
+    def clickEps3Premium(self):
+
+        content_premium = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.vod.btn_eps3))
+        )
+        content_premium.click()
+
+    def assertContentPremium(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located((By.ID, self.vod.btn_subscribe))
+            )
+            print("Assert Success :  Assert Content Premium Subscribe Showing ")
+        except AssertionError:
+            print("Assert Failed :  Assert Content Premium Subscribe Not Showing ")
+
+    def clickBtnSubscribe(self):
+
+        btn_subscribe = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.vod.btn_subscribe))
+        )
+        btn_subscribe.click()
+
+    def clickPremiumSportsPackage(self):
+
+        btn_premium_sports = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.vod.premium_sports))
+        )
+        btn_premium_sports.click()
+
+    def assertDetailPackage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.ID, self.vod.txt_subscription_detail)
+                )
+            )
+            print("Assert Success :  Assert Detail Subscription Showing ")
+        except AssertionError:
+            print("Assert Failed :  Assert Detail Subscription Not Showing ")
+
+    def clickBtnBack(self):
+
+        btn_back = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.vod.btn_back))
+        )
+        btn_back.click()

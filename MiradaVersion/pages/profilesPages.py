@@ -138,16 +138,6 @@ class Profiles:
 
         actions.perform()
 
-    def scroll_up(self):
-        size = self.driver.get_window_size()
-
-        start_x = size["width"] // 5
-        start_y = size["height"] // 7
-        end_x = size["width"] // 5
-        end_y = size["height"] * 6 // 7
-
-        self.driver.swipe(start_x, start_y, end_x, end_y, 800)
-
     def disable_wifi_connection(self, emulator_id):
         # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
         adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"

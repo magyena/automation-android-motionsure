@@ -29,3 +29,5 @@ class vodObject:
         self.txt_download_progress = (
             "com.zte.iptvclient.android.idmnc:id/progressBarDownloaded"
         )
+        self.btn_eps3 = "//*[contains(@text,'Season ')]/following::*[4]"
+        self.btn_back = "com.zte.iptvclient.android.idmnc:id/backButton"

@@ -212,3 +212,40 @@ class HomePage:
             )
         )
         content.click()
+
+    def clickChannelClusterLivetv(self):
+
+        clusterLivetv = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.txt_channel_cluster_live_tv)
+            )
+        )
+        clusterLivetv.click()
+
+    def assertClusterLiveTV(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_channel_cluster_live_tv)
+                )
+            )
+            print("Assert Success : Assert Cluster Live TV Success")
+        except AssertionError:
+            print("Assert Failed : Assert Cluster Live TV  Failed")
+
+    def clickMenuHome(self):
+
+        home = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.img_home))
+        )
+        home.click()
+
+    def clickContentClusterTop10(self):
+
+        content_cluster_top10 = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.txt_content_cluster_10_this_week)
+            )
+        )
+        content_cluster_top10.click()
