@@ -103,3 +103,31 @@ class VOD:
             print("Assert Success :  Assert List Packages Showing ")
         except AssertionError:
             print("Assert Failed :  Assert List Packages not Showing ")
+
+    def clickLike(self):
+
+        btn_like = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.vod.btn_like))
+        )
+        btn_like.click()
+
+    def clickDislike(self):
+
+        btn_dislike = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.vod.btn_dislike))
+        )
+        btn_dislike.click()
+
+    def clickShare(self):
+
+        btn_share = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.vod.btn_share))
+        )
+        btn_share.click()
+
+    def clickAddtoList(self):
+
+        btn_add_list = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.vod.btn_add_to_list))
+        )
+        btn_add_list.click()

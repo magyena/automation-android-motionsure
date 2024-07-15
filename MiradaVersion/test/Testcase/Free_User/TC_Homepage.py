@@ -8,7 +8,7 @@ from MiradaVersion.pages.livetvPages import LiveTV
 from MiradaVersion.pages.profilesPages import Profiles
 from MiradaVersion.test.id_Mirada_Login.login_by_phone import login_free_by_phone
 from MiradaVersion.test.open_app import free_phone_data
-from MiradaVersion.pages.profilesPages import Profiles
+from MiradaVersion.pages.vodPages import VOD
 
 
 @pytest.fixture(scope="module")
@@ -32,8 +32,8 @@ def homepage_action(driver):
 
 
 @pytest.fixture(scope="module")
-def livetv_action(driver):
-    return LiveTV(driver)
+def vod_action(driver):
+    return VOD(driver)
 
 
 @pytest.fixture(scope="module")
@@ -77,10 +77,44 @@ def test_TC_User_Can_Click_View_All_Vplus_Originals_Cluster(
 
 def test_TC_User_Can_Slide_list_Cluster_Vision_Originals(
     driver: WebDriver,
-    homepage_action: HomePage,
     profiles_action: Profiles,
 ):
     for _ in range(7):
         profiles_action.scroll_left(
             start_x=889, start_y=1608, end_x=285, end_y=1608, duration=300
         )
+
+
+def test_TC_UserCan_See_Detail_VOD_Vision_Original(
+    driver: WebDriver,
+    homepage_action: HomePage,
+    vod_action: VOD,
+):
+    delay(homepage_action.clickContentClusterVplusOriginals)
+    delay(vod_action.assertDetailVod)
+
+
+def test_TC_User_Can_Play_Vod(
+    driver: WebDriver,
+    vod_action: VOD,
+):
+    delay(vod_action.clickBtnWatch)
+    driver.press_keycode(4)
+
+
+def test_TC_User_Can_Like_Vod(
+    vod_action: VOD,
+):
+    delay(vod_action.clickLike)
+
+
+def test_TC_User_Can_disLike_Vod(
+    vod_action: VOD,
+):
+    delay(vod_action.clickDislike)
+
+
+def test_TC_User_Can_Share_Vod(
+    vod_action: VOD,
+):
+    delay(vod_action.clickShare)

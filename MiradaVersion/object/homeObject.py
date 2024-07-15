@@ -35,3 +35,6 @@ class homeObject:
         self.txt_first_view_all_cluster_originals = (
             "//*[contains(@text,'Teenage')]/following::*[2]"
         )
+        self.txt_content_detail_cluster_vplus_originals = (
+            "//*[contains(@text,'VIEW ALL')]/following::*[3]"
+        )

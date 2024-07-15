@@ -203,3 +203,12 @@ class HomePage:
             )
         )
         content.click()
+
+    def clickContentClusterVplusOriginals(self):
+
+        content = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.txt_content_detail_cluster_vplus_originals)
+            )
+        )
+        content.click()
