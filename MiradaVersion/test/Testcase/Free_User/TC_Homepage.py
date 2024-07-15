@@ -8,7 +8,7 @@ from MiradaVersion.pages.livetvPages import LiveTV
 from MiradaVersion.pages.profilesPages import Profiles
 from MiradaVersion.test.id_Mirada_Login.login_by_phone import login_free_by_phone
 from MiradaVersion.test.open_app import free_phone_data
-from MiradaVersion.pages.profilesPages import Profiles
+from MiradaVersion.pages.vodPages import VOD
 
 
 @pytest.fixture(scope="module")
@@ -32,13 +32,18 @@ def homepage_action(driver):
 
 
 @pytest.fixture(scope="module")
-def livetv_action(driver):
-    return LiveTV(driver)
+def vod_action(driver):
+    return VOD(driver)
 
 
 @pytest.fixture(scope="module")
 def profiles_action(driver):
     return Profiles(driver)
+
+
+@pytest.fixture(scope="module")
+def livetv_action(driver):
+    return LiveTV(driver)
 
 
 def delay(action, delay=4):
@@ -58,10 +63,10 @@ def test_TC_User_Can_See_Detail_Banner(
     login_free_by_phone(driver, free_phone_data)
 
     delay(homepage_action.assertHomePage)
-    # for _ in range(5):
-    #     profiles_action.scroll_left(
-    #         start_x=732, start_y=511, end_x=362, end_y=515, duration=300
-    #     )
+    for _ in range(5):
+        profiles_action.scroll_left(
+            start_x=732, start_y=511, end_x=362, end_y=515, duration=300
+        )
     delay(homepage_action.clickBanner)
     driver.press_keycode(4)
 
@@ -77,10 +82,129 @@ def test_TC_User_Can_Click_View_All_Vplus_Originals_Cluster(
 
 def test_TC_User_Can_Slide_list_Cluster_Vision_Originals(
     driver: WebDriver,
-    homepage_action: HomePage,
     profiles_action: Profiles,
 ):
     for _ in range(7):
         profiles_action.scroll_left(
             start_x=889, start_y=1608, end_x=285, end_y=1608, duration=300
         )
+
+
+def test_TC_UserCan_See_Detail_VOD_Vision_Original(
+    driver: WebDriver,
+    homepage_action: HomePage,
+    vod_action: VOD,
+):
+    delay(homepage_action.clickContentClusterVplusOriginals)
+    delay(vod_action.assertDetailVod)
+
+
+def test_TC_User_Can_Play_Vod(
+    driver: WebDriver,
+    vod_action: VOD,
+):
+    delay(vod_action.clickBtnWatch)
+    driver.press_keycode(4)
+
+
+def test_TC_User_Can_Like_Vod(
+    vod_action: VOD,
+):
+    delay(vod_action.clickLike)
+
+
+def test_TC_User_Can_disLike_Vod(
+    vod_action: VOD,
+):
+    delay(vod_action.clickDislike)
+
+
+def test_TC_User_Can_Share_Vod(
+    vod_action: VOD,
+    driver: WebDriver,
+):
+    delay(vod_action.clickShare)
+    driver.press_keycode(4)
+
+
+def test_TC_User_Free_Play_Premium_VOD(
+    vod_action: VOD,
+):
+    delay(vod_action.clickEps3Premium)
+    delay(vod_action.assertContentPremium)
+    delay(vod_action.clickBtnSubscribe)
+    delay(vod_action.assertListPackages)
+
+
+def test_TC_User_Click_any_Upgrade_Package_Subscribe(
+    vod_action: VOD,
+):
+    delay(vod_action.clickPremiumSportsPackage)
+    delay(vod_action.assertDetailPackage)
+    delay(vod_action.clickBtnBack)
+    delay(vod_action.clickBtnBack)
+    delay(vod_action.clickBtnBack)
+
+
+def test_TC_User_Can_Slide_list_Cluster_Live_TV_Channels(
+    homepage_action: HomePage,
+    driver: WebDriver,
+    livetv_action: LiveTV,
+):
+    element_xpath = "//*[contains(@text,'Your Favorite TV Channel')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except Exception as e:
+        print(e)
+
+    delay(homepage_action.clickViewlAllVplusOriginals)
+    delay(homepage_action.assertClusterLiveTV)
+
+    element_xpath = "//*[contains(@text,'Lifestyle')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except Exception as e:
+        print(e)
+
+
+def test_TC_User_Click_Any_Live_Channels(
+    homepage_action: HomePage,
+    driver: WebDriver,
+    livetv_action: LiveTV,
+):
+    profile = Profiles(driver)
+    for _ in range(2):
+        profile.scrollUp()
+
+    delay(homepage_action.clickChannelClusterLivetv)
+    delay(livetv_action.assertLiveTV)
+
+
+def test_TC_User_Can_Slide_Cluster_VOD_in_Indonesia_Top_10_This_Week(
+    homepage_action: HomePage,
+    driver: WebDriver,
+    profiles_action: Profiles,
+):
+    delay(homepage_action.clickMenuButton)
+    delay(homepage_action.clickMenuHome)
+    element_xpath = "//*[contains(@text,'Top 10 This Week')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except Exception as e:
+        print(e)
+
+    for _ in range(5):
+        profiles_action.scroll_left(
+            start_x=985, start_y=1846, end_x=197, end_y=1841, duration=100
+        )
+
+
+def test_TC_User_Can_Click_Cluster_VOD_in_Indonesia_Top_10_This_Week(
+    homepage_action: HomePage,
+    vod_action: VOD,
+):
+    delay(homepage_action.clickContentClusterTop10)
+    delay(vod_action.assertDetailVod)

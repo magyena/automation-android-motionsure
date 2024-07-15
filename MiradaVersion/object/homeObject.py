@@ -35,3 +35,14 @@ class homeObject:
         self.txt_first_view_all_cluster_originals = (
             "//*[contains(@text,'Teenage')]/following::*[2]"
         )
+        self.txt_content_detail_cluster_vplus_originals = (
+            "//*[contains(@text,'VIEW ALL')]/following::*[3]"
+        )
+        self.txt_cluster_livetv = "//*[contains(@text,'Your Favorite TV Channel')]"
+        self.txt_channel_cluster_live_tv = (
+            "//*[contains(@text,'National TV')]/following::*[2]"
+        )
+        self.txt_cluster_top_10_this_week = "//*[contains(@text,'Top 10 This Week')]"
+        self.txt_content_cluster_10_this_week = (
+            "//*[contains(@text,'Top 10 This Week')]/following::*[3]"
+        )
