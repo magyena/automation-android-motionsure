@@ -249,3 +249,95 @@ class HomePage:
             )
         )
         content_cluster_top10.click()
+
+    def assertClusterWatchlist(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_cluster_watchlist)
+                )
+            )
+            print("Assert Success : Assert Cluster Watchlist Success")
+        except AssertionError:
+            print("Assert Failed : Assert Cluster Watchlist Failed")
+
+    def clickBtnProfile(self):
+
+        btn_profile = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.homeObj.btn_profile))
+        )
+        btn_profile.click()
+
+    def assertClusterNewReleases(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_cluster_new_releases)
+                )
+            )
+            print("Assert Success : Assert Cluster New Releases Success")
+        except AssertionError:
+            print("Assert Failed : Assert Cluster New Releases Failed")
+
+    def clickContentClusterNewReleases(self):
+
+        content__new_release = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.content_cluster_new_releases)
+            )
+        )
+        content__new_release.click()
+
+    def clickActionGenre(self):
+
+        action_genre = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.txt_genre_action))
+        )
+        action_genre.click()
+
+    def clickContentActionGenre(self):
+
+        content_action_genre = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.content_genre_action))
+        )
+        content_action_genre.click()
+
+    def clickTheActors(self):
+
+        actors = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.btn_popular_actors))
+        )
+        actors.click()
+
+    def clickContentPopularActors(self):
+
+        content_actors = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.content_popular_actors))
+        )
+        content_actors.click()
+
+    def assertClusterExplorebyGenre(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.cluster_genre_action)
+                )
+            )
+            print("Assert Success : Assert Cluster Explore by Genre Success")
+        except AssertionError:
+            print("Assert Failed : Assert Cluster Explore by Genre Failed")
+
+    def assertClusterPopularActors(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.cluster_popular_actors)
+                )
+            )
+            print("Assert Success : Assert Cluster Popular Actors Success")
+        except AssertionError:
+            print("Assert Failed : Assert Cluster Popular Actors Failed")

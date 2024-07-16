@@ -46,7 +46,7 @@ class Profiles:
         self.driver.swipe(start_x, start_y, end_x, end_y, 790)
 
     @staticmethod
-    def scroll_to_element(driver, element_xpath, max_swipes=10):
+    def scroll_to_element(driver, element_xpath, max_swipes=15):
         size = driver.get_window_size()
         start_x = size["width"] // 5
         start_y = size["height"] * 6 // 7
@@ -418,3 +418,10 @@ class Profiles:
             EC.element_to_be_clickable((By.ID, self.profileobj.btn_cancel))
         )
         btn_cancel.click()
+
+    def clickSecondProfile(self):
+
+        btn_second_profile = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.profileobj.second_profile))
+        )
+        btn_second_profile.click()
