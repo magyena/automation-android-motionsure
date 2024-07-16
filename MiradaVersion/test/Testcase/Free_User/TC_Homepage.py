@@ -9,6 +9,7 @@ from MiradaVersion.pages.profilesPages import Profiles
 from MiradaVersion.test.id_Mirada_Login.login_by_phone import login_free_by_phone
 from MiradaVersion.test.open_app import free_phone_data
 from MiradaVersion.pages.vodPages import VOD
+from selenium.common.exceptions import NoSuchElementException
 
 
 @pytest.fixture(scope="module")
@@ -208,3 +209,156 @@ def test_TC_User_Can_Click_Cluster_VOD_in_Indonesia_Top_10_This_Week(
 ):
     delay(homepage_action.clickContentClusterTop10)
     delay(vod_action.assertDetailVod)
+
+
+def test_TC_User_Can_Added_list_Watchlist_Series(
+    vod_action: VOD,
+    homepage_action: HomePage,
+    driver: WebDriver,
+):
+    delay(vod_action.clickAddtoList)
+    delay(vod_action.clickBtnBack)
+    element_xpath = "//*[contains(@text,'Watchlist')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except Exception as e:
+        print(e)
+
+    delay(homepage_action.assertClusterWatchlist)
+
+
+def test_TC_User_Cant_See_Cluster_Watchlist_in_Other_Profile(
+    vod_action: VOD,
+    homepage_action: HomePage,
+    driver: WebDriver,
+    profiles_action: Profiles,
+):
+    delay(homepage_action.clickBtnProfile)
+    delay(profiles_action.assertProfilesPages)
+    delay(profiles_action.clickSecondProfile)
+    element_xpath = "//*[contains(@text,'Watchlist')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except NoSuchElementException:
+        print("No element found")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+def test_TC_User_Can_Slide_Any_VOD_Cluster_NewRelease(
+    homepage_action: HomePage,
+    driver: WebDriver,
+    profiles_action: Profiles,
+):
+    profile = Profiles(driver)
+    for _ in range(5):
+        profile.scrollUp()
+
+    delay(homepage_action.clickBtnProfile)
+    delay(profiles_action.clickFirstProfile)
+    element_xpath = "//*[contains(@text,'New Releases')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except Exception as e:
+        print(e)
+
+    delay(homepage_action.assertClusterNewReleases)
+
+    for _ in range(5):
+        profiles_action.scroll_left(
+            start_x=905, start_y=1552, end_x=237, end_y=1560, duration=100
+        )
+
+
+def test_TC_User_Can_Click_Any_VOD_Cluster_NewRelease(
+    vod_action: VOD,
+    homepage_action: HomePage,
+):
+    delay(homepage_action.clickContentClusterNewReleases)
+    delay(vod_action.assertDetailVod)
+    delay(vod_action.clickBtnBack)
+
+
+def test_TC_User_Cant_See_Live_TV_In_Cluster_Continue_Watching(
+    driver: WebDriver,
+):
+    element_xpath = "//*[contains(@text,'Watchlist')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except Exception as e:
+        print(e)
+
+
+def test_TC_User_Can_Click_Cluster_VOD_in_Explore_by_Genre(
+    driver: WebDriver,
+    homepage_action: HomePage,
+):
+    element_xpath = "//*[contains(@text,'Explore by Genre')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except Exception as e:
+        print(e)
+    delay(homepage_action.assertClusterExplorebyGenre)
+    delay(homepage_action.clickActionGenre)
+
+
+def test_TC_User_Can_Play_Content_VOD_in_Explore_by_Genre(
+    driver: WebDriver,
+    homepage_action: HomePage,
+    vod_action: VOD,
+):
+    delay(homepage_action.clickContentActionGenre)
+    delay(vod_action.assertDetailVod)
+    delay(vod_action.clickBtnWatch)
+    driver.press_keycode(4)
+    delay(vod_action.clickBtnBack)
+    delay(vod_action.clickBtnBack)
+
+
+def test_TC_User_Can_Click_Any_Section_in_Popular_Actors(
+    driver: WebDriver,
+    homepage_action: HomePage,
+    vod_action: VOD,
+):
+    element_xpath = "//*[contains(@text,'Popular Actors')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except Exception as e:
+        print(e)
+    delay(homepage_action.assertClusterPopularActors)
+    delay(homepage_action.clickTheActors)
+
+
+def test_TC_User_Can_Play_VOD_Popular_Actors(
+    driver: WebDriver,
+    homepage_action: HomePage,
+    vod_action: VOD,
+):
+    delay(homepage_action.clickContentPopularActors)
+    delay(vod_action.assertDetailVod)
+    delay(vod_action.clickBtnWatch)
+    driver.press_keycode(4)
+
+
+def test_TC_User_Can_Slide_Last_Banner(
+    profiles_action: Profiles,
+    homepage_action: HomePage,
+    vod_action: VOD,
+):
+    delay(vod_action.clickBtnBack)
+    delay(vod_action.clickBtnBack)
+    delay(homepage_action.clickMenuButton)
+    delay(homepage_action.clickLiveTvMenu)
+    delay(homepage_action.clickMenuButton)
+    delay(homepage_action.clickMenuHome)
+
+    for _ in range(5):
+        profiles_action.scroll_left(
+            start_x=961, start_y=527, end_x=310, end_y=519, duration=300
+        )

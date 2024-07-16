@@ -46,3 +46,20 @@ class homeObject:
         self.txt_content_cluster_10_this_week = (
             "//*[contains(@text,'Top 10 This Week')]/following::*[3]"
         )
+        self.txt_cluster_watchlist = "//*[contains(@text,'Watchlist')]"
+        self.txt_cluster_new_releases = "//*[contains(@text,'New Releases')]"
+        self.content_cluster_new_releases = (
+            "//*[contains(@text,'New Releases')]/following::*[2]"
+        )
+        self.txt_genre_action = (
+            "//*[contains(@text,'Explore by Genre')]/following::*[2]"
+        )
+        self.cluster_genre_action = "//*[contains(@text,'Explore by Genre')]"
+        self.content_genre_action = '//android.view.View[@content-desc="12 Hari"]'
+        self.btn_popular_actors = (
+            "//*[contains(@text,'Popular Actors')]/following::*[2]"
+        )
+        self.cluster_popular_actors = "//*[contains(@text,'Popular Actors')]"
+        self.content_popular_actors = (
+            '//android.view.View[@content-desc="2 Tahun Ikatan Cinta"]'
+        )
