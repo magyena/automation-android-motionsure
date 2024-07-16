@@ -186,7 +186,6 @@ def test_TC_User_Click_Any_Live_Channels(
 def test_TC_User_Can_Slide_Cluster_VOD_in_Indonesia_Top_10_This_Week(
     homepage_action: HomePage,
     driver: WebDriver,
-    profiles_action: Profiles,
 ):
     delay(homepage_action.clickMenuButton)
     delay(homepage_action.clickMenuHome)
@@ -197,18 +196,18 @@ def test_TC_User_Can_Slide_Cluster_VOD_in_Indonesia_Top_10_This_Week(
     except Exception as e:
         print(e)
 
-    for _ in range(5):
-        profiles_action.scroll_left(
-            start_x=985, start_y=1846, end_x=197, end_y=1841, duration=100
-        )
-
 
 def test_TC_User_Can_Click_Cluster_VOD_in_Indonesia_Top_10_This_Week(
     homepage_action: HomePage,
     vod_action: VOD,
+    profiles_action: Profiles,
 ):
+    for _ in range(5):
+        profiles_action.scroll_left(
+            start_x=985, start_y=1846, end_x=197, end_y=1841, duration=100
+        )
     delay(homepage_action.clickContentClusterTop10)
-    delay(vod_action.assertDetailVod)
+    
 
 
 def test_TC_User_Can_Added_list_Watchlist_Series(
@@ -216,6 +215,7 @@ def test_TC_User_Can_Added_list_Watchlist_Series(
     homepage_action: HomePage,
     driver: WebDriver,
 ):
+    delay(vod_action.assertDetailVod)
     delay(vod_action.clickAddtoList)
     delay(vod_action.clickBtnBack)
     element_xpath = "//*[contains(@text,'Watchlist')]"
