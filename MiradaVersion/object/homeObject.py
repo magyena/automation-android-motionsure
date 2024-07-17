@@ -26,6 +26,7 @@ class homeObject:
         self.txt_back = "com.zte.iptvclient.android.idmnc:id/back"
         self.fld_search = "com.zte.iptvclient.android.idmnc:id/search_edit_text"
         self.result_search_one = '//android.view.View[@content-desc="Montir Cantik"]'
+        self.result_search_two = '//android.view.View[@content-desc="Arab Maklum"]'
         self.result_search_livetv = '(//android.view.View[@content-desc="iNews"])[2]'
         self.txt_search_no_result = "com.zte.iptvclient.android.idmnc:id/errorTextView"
         self.detail_banner = "com.zte.iptvclient.android.idmnc:id/container_banner_info"

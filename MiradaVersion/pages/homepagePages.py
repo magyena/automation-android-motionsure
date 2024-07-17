@@ -143,6 +143,13 @@ class HomePage:
         )
         result.click()
 
+    def clickResultTwo(self):
+
+        result_two = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.result_search_two))
+        )
+        result_two.click()
+
     def clickResultLiveTV(self):
 
         result_tv = WebDriverWait(self.driver, 20).until(
