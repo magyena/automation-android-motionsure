@@ -1,7 +1,7 @@
 class mediaplayerObject:
     def __init__(self):
         self.btn_skip_add = "//*[contains(@text,'Skip Ad')]"
-        self.txt_restart = "//*[contains(@text,'00:00:01')]"
+        self.txt_restart = "//*[contains(@text,'00:00:00')]"
         self.txt_forward = "//*[contains(@text,'00:00:10')]"
         self.txt_settings = "//*[contains(@text,'Audio')]"
         self.txt_tittle_media_playerpage = (
