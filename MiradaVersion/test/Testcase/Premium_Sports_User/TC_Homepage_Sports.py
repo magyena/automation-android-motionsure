@@ -146,3 +146,71 @@ def test_TC_User_Click_Any_Live_Channels(
 ):
     delay(homepage_action.clickChannelClusterLivetv)
     delay(livetv_action.assertLiveTV)
+
+
+def test_TC_User_Can_Click_Any_Section_in_Popular_Actors(
+    homepage_action: HomePage,
+    driver: WebDriver,
+):
+    delay(homepage_action.clickMenuButton)
+    delay(homepage_action.clickMenuHome)
+
+    element_xpath = "//*[contains(@text,'Popular Actors')]"
+    try:
+        element = Profiles.scroll_to_element(driver, element_xpath)
+        print("Element found")
+    except Exception as e:
+        print(e)
+    delay(homepage_action.assertClusterPopularActors)
+    delay(homepage_action.clickTheActors)
+    delay(homepage_action.clickContentPopularActors)
+
+
+def test_TC_User_Can_Play_VOD_in_Popular_Actors(
+    player_action: mediaplayer,
+    driver: WebDriver,
+    vod_action: VOD,
+):
+    delay(vod_action.assertDetailVod)
+    delay(vod_action.clickBtnWatch)
+    delay(player_action.assertMediaPlayer)
+    driver.press_keycode(4)
+    driver.press_keycode(4)
+    driver.press_keycode(4)
+
+
+def test_TC_User_Can_Click_Cluster_VOD_in_Short_and_Movie(
+    player_action: mediaplayer,
+    homepage_action: HomePage,
+    driver: WebDriver,
+    vod_action: VOD,
+):
+    delay(homepage_action.clickBanner)
+    delay(vod_action.assertDetailVod)
+
+
+def test_TC_User_Can_Play_Cluster_VOD_in_Short_and_Movie(
+    player_action: mediaplayer,
+    homepage_action: HomePage,
+    driver: WebDriver,
+    vod_action: VOD,
+):
+    delay(vod_action.clickBtnWatch)
+    delay(player_action.assertMediaPlayer)
+    driver.press_keycode(4)
+    driver.press_keycode(4)
+
+
+def test_TC_User_Can_Slide_Cluster_VOD_in_Short_and_Movie(
+    profiles_action: Profiles,
+):
+    for _ in range(5):
+        profiles_action.scroll_left(
+            start_x=889, start_y=519, end_x=221, end_y=527, duration=500
+        )
+
+
+def test_TC_User_Can_Auto_Slide_Cluster_VOD_in_Short_and_Movie(
+    driver: WebDriver,
+):
+    time.sleep(10)
