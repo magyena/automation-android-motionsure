@@ -11,7 +11,8 @@ def get_otp_from_db(identity):
         tunnel = SSHTunnelForwarder(
             ("108.137.34.236", 22),
             ssh_username="ubuntu",
-            ssh_pkey="/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/p-kp-jumphost-db.pem",  # Path to your private key
+            ssh_pkey="/Users/visionplus/Documents/Automation/automation-android-python/MiradaVersion/utils/p-kp-jumphost-db.pem",  # Path to your private key
+            # ssh_pkey="/Users/fatahalim/Documents/Vision+/automation-android-python/MiradaVersion/utils/p-kp-jumphost-db.pem",  # Path to your private key
             remote_bind_address=(
                 "p-bss-cluster.cluster-crghkxvi5das.ap-southeast-3.rds.amazonaws.com",
                 5432,
