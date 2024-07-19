@@ -804,3 +804,18 @@ class SettingsPages:
             print("Assert Success : Assert Detail Transaction Success")
         except AssertionError:
             print("Assert Failed : Assert  Detail Transaction Failed")
+
+    def assertError500TransactionHistory(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_error_transaction_history,
+                    )
+                )
+            )
+            print("Assert Success : Assert Transaction History Error 500 Success")
+        except AssertionError:
+            print("Assert Failed : Assert Transaction History Error 500 Failed")
