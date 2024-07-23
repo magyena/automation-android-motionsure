@@ -348,3 +348,69 @@ class HomePage:
             print("Assert Success : Assert Cluster Popular Actors Success")
         except AssertionError:
             print("Assert Failed : Assert Cluster Popular Actors Failed")
+
+    def clickPaymentPackage(self):
+
+        buy_package = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.img_buy_package))
+        )
+        buy_package.click()
+
+    def assertBuyPackageMenu(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_buy_package)
+                )
+            )
+            print("Assert Success : Assert Buy Package Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert Buy Package Page Failed")
+
+    def clickPackagePremium30(self):
+
+        premium_30 = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.package_premium_30))
+        )
+        premium_30.click()
+
+    def clickPackagePremiumSports30(self):
+
+        premium_sports_30 = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.package_premium_sports_30)
+            )
+        )
+        premium_sports_30.click()
+
+    def clickBtnAccept(self):
+
+        btn_accept = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.homeObj.btn_accept_google))
+        )
+        btn_accept.click()
+
+    def assertFirstEntitlement(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.first_entitlement)
+                )
+            )
+            print("Assert Success : Assert Entitlement Package Premium Success")
+        except AssertionError:
+            print("Assert Failed : Assert  Entitlement Package Premium Failed")
+
+    def assertSecondEntitlement(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.second_entitlement)
+                )
+            )
+            print("Assert Success : Assert Entitlemnet Package Sports Success")
+        except AssertionError:
+            print("Assert Failed : Assert  Entitlemnet Package Sports Failed")
