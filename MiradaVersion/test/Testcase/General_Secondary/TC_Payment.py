@@ -78,8 +78,8 @@ def delay(action, delay=1):
 
 
 def open_play_store(emulator_id):
-    # adb = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
-    adb = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
+    adb = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
+    # adb = "/users/visionplus/Library/Android/sdk/platform-tools/adb"
     command = f"{adb} -s {emulator_id} shell am start -a android.intent.action.VIEW -d 'https://play.google.com/store'"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     return result.stdout, result.stderr
@@ -89,8 +89,8 @@ emulator_id = "cisoeqnjnnhqmr5l"
 
 
 def bring_app_to_foreground(package_name: str):
-    # adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
-    adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"  # Uncomment this line if needed
+    adb_path = "/Users/fatahalim/Library/Android/sdk/platform-tools/adb"
+    # adb_path = "/users/visionplus/Library/Android/sdk/platform-tools/adb"  # Uncomment this line if needed
 
     """Function to bring a specific app to the foreground."""
     subprocess.run(
@@ -242,6 +242,14 @@ def test_TC_Free_User_Payment_Premium_Sports(
     delay(homepage_action.clickPackagePremiumSports30)
     delay(vod_action.assertDetailPackage)
     delay(vod_action.clickBtnSubscribe)
+    for _ in range(5):
+        try:
+            # Perform the actions
+            delay(homepage_action.assertErrorBuyPackage)
+            delay(homepage_action.BtnGotIt)
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            break
     delay(playstore_action.clickBtnSubscribePlaystore)
     time.sleep(3)
     delay(homepage_action.clickBtnAccept)

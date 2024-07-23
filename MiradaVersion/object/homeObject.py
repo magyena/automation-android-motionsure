@@ -89,3 +89,5 @@ class homeObject:
         )
         self.btn_subscribe_google = '//android.widget.Button[@resource-id="com.android.vending:id/0_resource_name_obfuscated"]'
         self.btn_accept_google = "android:id/button1"
+        self.txt_error_buy_package = "//*[contains(@text,'Error')]"
+        self.btn_got_it = "//*[contains(@text,'Got it')]"

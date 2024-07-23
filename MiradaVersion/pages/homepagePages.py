@@ -414,3 +414,22 @@ class HomePage:
             print("Assert Success : Assert Entitlemnet Package Sports Success")
         except AssertionError:
             print("Assert Failed : Assert  Entitlemnet Package Sports Failed")
+
+    def assertErrorBuyPackage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_error_buy_package)
+                )
+            )
+            print("Assert Success : Assert error buy package Success")
+        except AssertionError:
+            print("Assert Failed : Assert  error buy package Failed")
+
+    def BtnGotIt(self):
+
+        btn_got_it = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.btn_got_it))
+        )
+        btn_got_it.click()
