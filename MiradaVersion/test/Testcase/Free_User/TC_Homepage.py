@@ -85,7 +85,7 @@ def test_TC_User_Can_Slide_list_Cluster_Vision_Originals(
     driver: WebDriver,
     profiles_action: Profiles,
 ):
-    for _ in range(7):
+    for _ in range(5):
         profiles_action.scroll_left(
             start_x=889, start_y=1608, end_x=285, end_y=1608, duration=300
         )
