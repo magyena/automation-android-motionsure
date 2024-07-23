@@ -64,3 +64,28 @@ class homeObject:
         self.content_popular_actors = (
             '//android.view.View[@content-desc="2 Tahun Ikatan Cinta"]'
         )
+        self.txt_buy_package = "//*[contains(@text,'Your current package')]"
+        self.package_premium_30 = "//*[contains(@text,'Packages')]//following::*[1]"
+        self.package_premium_90 = "//*[contains(@text,'Packages')]//following::*[2]"
+        self.package_premium_365 = "//*[contains(@text,'Packages')]//following::*[3]"
+        self.package_premium_sports_30 = (
+            "//*[contains(@text,'Packages')]//following::*[4]"
+        )
+        self.package_premium_sports_90 = (
+            "//*[contains(@text,'Packages')]//following::*[5]"
+        )
+        self.package_premium_sports_365 = (
+            "//*[contains(@text,'Packages')]//following::*[6]"
+        )
+        self.first_entitlement = (
+            "//*[contains(@text,'Your current package')]/following::*[2]"
+        )
+        self.second_entitlement = (
+            "//*[contains(@text,'Your current package')]/following::*[3]"
+        )
+        self.txt_package_premium_30_google = "//*[contains(@text,'Premium 30 Days')]"
+        self.txt_package_sports_30_google = (
+            "//*[contains(@text,'Premium Sports 30 Days')]"
+        )
+        self.btn_subscribe_google = '//android.widget.Button[@resource-id="com.android.vending:id/0_resource_name_obfuscated"]'
+        self.btn_accept_google = "android:id/button1"
