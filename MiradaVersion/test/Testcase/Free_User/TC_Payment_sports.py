@@ -155,7 +155,7 @@ def Cancel_Subscriptions(
         print("No active package")
 
 
-def test_TC_Free_User_Payment_Premium(
+def test_TC_Free_User_Payment_Premiu_Sports(
     driver: WebDriver,
     login_action: PagesLogin,
     homepage_action: HomePage,
@@ -181,7 +181,7 @@ def test_TC_Free_User_Payment_Premium(
     delay(homepage_action.clickMenuButton)
     delay(homepage_action.clickPaymentPackage)
     delay(homepage_action.assertBuyPackageMenu)
-    delay(homepage_action.clickPackagePremium30)
+    delay(homepage_action.clickPackagePremiumSports30)
     delay(vod_action.assertDetailPackage)
     delay(vod_action.clickBtnSubscribe)
     delay(playstore_action.clickBtnSubscribePlaystore)
@@ -193,29 +193,3 @@ def test_TC_Free_User_Payment_Premium(
     delay(homepage_action.clickPaymentPackage)
     delay(homepage_action.assertBuyPackageMenu)
     delay(homepage_action.assertFirstEntitlement)
-
-
-def test_TC_Premium_User_Payment_Premium_Sports(
-    driver: WebDriver,
-    login_action: PagesLogin,
-    homepage_action: HomePage,
-    setting_action: SettingsPages,
-    vod_action: VOD,
-    playstore_action: playstore,
-):
-    delay(homepage_action.clickPackagePremium30)
-    delay(vod_action.assertDetailPackage)
-    delay(vod_action.clickBtnSubscribe)
-    delay(playstore_action.clickBtnSubscribePlaystore)
-    time.sleep(3)
-    delay(homepage_action.clickBtnAccept)
-    delay(homepage_action.clickMenuButton)
-    delay(homepage_action.clickMenuHome)
-    delay(homepage_action.clickMenuButton)
-    delay(homepage_action.clickPaymentPackage)
-    delay(homepage_action.assertBuyPackageMenu)
-    delay(homepage_action.assertSecondEntitlement)
-    delay(homepage_action.clickMenuButton)
-    delay(homepage_action.clickSettingsButton)
-    delay(setting_action.clickSettingsProfile)
-    delay(setting_action.clickLogoutButton)
