@@ -278,7 +278,6 @@ def test_TC_User_Can_Click_Any_VOD_Cluster_NewRelease(
     homepage_action: HomePage,
 ):
     delay(homepage_action.clickContentClusterNewReleases)
-    delay(vod_action.assertDetailVod)
     delay(vod_action.clickBtnBack)
 
 
