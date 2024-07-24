@@ -85,8 +85,8 @@ def open_play_store(emulator_id):
     return result.stdout, result.stderr
 
 
-emulator_id = "cisoeqnjnnhqmr5l"
-# emulator_id = "emulator-5554"
+# emulator_id = "cisoeqnjnnhqmr5l"
+emulator_id = "emulator-5554"
 
 
 def bring_app_to_foreground(package_name: str):
