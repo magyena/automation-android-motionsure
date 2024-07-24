@@ -819,3 +819,33 @@ class SettingsPages:
             print("Assert Success : Assert Transaction History Error 500 Success")
         except AssertionError:
             print("Assert Failed : Assert Transaction History Error 500 Failed")
+
+    def assertTransactionHistoryPremium(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_transaction_history_premium,
+                    )
+                )
+            )
+            print("Assert Success : Assert Transaction History Premium Success")
+        except AssertionError:
+            print("Assert Failed : Assert Transaction History Premium Failed")
+
+    def assertTransactionHistoryPremiumSports(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        self.settingsObj.txt_transaction_history_premium_sports,
+                    )
+                )
+            )
+            print("Assert Success : Assert Transaction History Premium Sports Success")
+        except AssertionError:
+            print("Assert Failed : Assert Transaction History Premium  Sports Failed")

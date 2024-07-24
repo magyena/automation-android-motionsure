@@ -217,5 +217,6 @@ def test_TC_Premium_User_Payment_Premium_Sports(
     delay(homepage_action.assertSecondEntitlement)
     delay(homepage_action.clickMenuButton)
     delay(homepage_action.clickSettingsButton)
-    delay(setting_action.clickSettingsProfile)
-    delay(setting_action.clickLogoutButton)
+    delay(setting_action.clickTransactionHistory)
+    delay(setting_action.assertTransactionHistoryPremium)
+    delay(setting_action.assertTransactionHistoryPremiumSports)

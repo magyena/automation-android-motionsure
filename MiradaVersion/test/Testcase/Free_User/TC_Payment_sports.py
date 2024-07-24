@@ -87,6 +87,7 @@ def open_play_store(emulator_id):
 
 # emulator_id = "cisoeqnjnnhqmr5l"
 emulator_id = "emulator-5554"
+#
 
 
 def bring_app_to_foreground(package_name: str):
@@ -162,6 +163,7 @@ def test_TC_Free_User_Payment_Premiu_Sports(
     sign_up_action: SignUp,
     vod_action: VOD,
     playstore_action: playstore,
+    setting_action: SettingsPages,
 ):
     Cancel_Subscriptions(playstore_action)
     vision_plus_package_name = "com.zte.iptvclient.android.idmnc"
@@ -193,3 +195,7 @@ def test_TC_Free_User_Payment_Premiu_Sports(
     delay(homepage_action.clickPaymentPackage)
     delay(homepage_action.assertBuyPackageMenu)
     delay(homepage_action.assertFirstEntitlement)
+    delay(homepage_action.clickMenuButton)
+    delay(homepage_action.clickSettingsButton)
+    delay(setting_action.clickTransactionHistory)
+    delay(setting_action.assertTransactionHistoryPremiumSports)
