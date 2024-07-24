@@ -116,4 +116,10 @@ class settingsObject:
             '(//android.widget.TextView[@text="Server Error"])[1]'
         )
         self.btn_close_server_error = '//android.widget.Button[@text="Close"]'
-        self.txt_error_transaction_history="//*[contains(@text,'Cannot read properties')]"
+        self.txt_error_transaction_history = (
+            "//*[contains(@text,'Cannot read properties')]"
+        )
+        self.txt_transaction_history_premium = "//*[contains(@text,'Premium 30 Days')]"
+        self.txt_transaction_history_premium_sports = (
+            "//*[contains(@text,'Premium + Sports 30 Days')]"
+        )
