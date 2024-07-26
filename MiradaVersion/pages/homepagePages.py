@@ -433,3 +433,188 @@ class HomePage:
             EC.element_to_be_clickable((By.XPATH, self.homeObj.btn_got_it))
         )
         btn_got_it.click()
+
+    def BtnTerms(self):
+
+        BtnTerms = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.homeObj.btn_terms))
+        )
+        BtnTerms.click()
+
+    def BtnPrivacy(self):
+
+        BtnPrivacy = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.homeObj.btn_privacy))
+        )
+        BtnPrivacy.click()
+
+    def assertClusterJustWannaSay(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_cluster_just_wanna_say)
+                )
+            )
+            print("Assert Success : Assert Cluster Success")
+        except AssertionError:
+            print("Assert Failed : Assert Cluster Failed")
+
+    def clickContentClusterJustWannaSay(self):
+
+        content = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.content_cluster_just_wanna_say)
+            )
+        )
+        content.click()
+
+    def clickSearchResultThree(self):
+
+        search_result = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.result_search_three))
+        )
+        search_result.click()
+
+    def assertSearchResultThreeinWatchlist(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.result_search_three)
+                )
+            )
+            print("Assert Success : Assert Result in Watchlist Success")
+        except AssertionError:
+            print("Assert Failed : Assert Result in Watchlist Failed")
+
+    def clickContentClusterWatchlist(self):
+
+        content_watchlist = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.content_cluster_watchlist)
+            )
+        )
+        content_watchlist.click()
+
+    def clickContentClusterComedy(self):
+
+        content_comedy = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.content_cluster_comedy))
+        )
+        content_comedy.click()
+
+    def assertClusterComedy(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_cluster_comedy)
+                )
+            )
+            print("Assert Success : Assert Cluster Comedy Success")
+        except AssertionError:
+            print("Assert Failed : Assert Cluster Comedy Failed")
+
+    def assertClusterBecauseYouWatched(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_cluster_because_youwatched)
+                )
+            )
+            print("Assert Success : Assert Cluster Because You Watched Success")
+        except AssertionError:
+            print("Assert Failed : Assert Cluster Because You Watched Failed")
+
+    def clickContentClusterBecauseYouWatched(self):
+
+        content_because = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.content_cluster_because_you_watched)
+            )
+        )
+        content_because.click()
+
+    def clickCategoryMovies(self):
+
+        category_film = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.txt_category_movies))
+        )
+        category_film.click()
+
+    def assertCategoryMovies(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, self.homeObj.txt_category_movies)
+                )
+            )
+            print("Assert Success : Assert Category Movies Success")
+        except AssertionError:
+            print("Assert Failed : Assert Category Movies Failed")
+
+    def clickContentCategoryMovies(self):
+
+        category_film_content = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.content_category_movies))
+        )
+        category_film_content.click()
+
+    def clickCategoryLiveTV(self):
+
+        category_liveTV = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.txt_category_livetv))
+        )
+        category_liveTV.click()
+
+    def clickResultSportsChannel(self):
+
+        sports_channel = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, self.homeObj.result_search_sportschannel)
+            )
+        )
+        sports_channel.click()
+
+    def clickCategorySeries(self):
+
+        category_series = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.txt_category_series))
+        )
+        category_series.click()
+
+    def clickContentCategorySeries(self):
+
+        content_category_series = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.content_category_series))
+        )
+        content_category_series.click()
+
+    def clickMyDownloadsMenu(self):
+
+        my_download = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.homeObj.img_my_downloads))
+        )
+        my_download.click()
+
+    def assertMyDownloadsPage(self):
+        self.wait = WebDriverWait(self.driver, 20)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(
+                    (By.ID, self.homeObj.img_upgrade_download)
+                )
+            )
+            print("Assert Success : Assert My Download Page Success")
+        except AssertionError:
+            print("Assert Failed : Assert My Download Page Failed")
+
+    def clickSubscribeMyDownloads(self):
+
+        btn_subscribe_my_download = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.homeObj.btn_subscribe_my_downloads))
+        )
+        btn_subscribe_my_download.click()

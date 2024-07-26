@@ -118,3 +118,10 @@ class LiveTV:
             print("Assert Success : Assert Live tv Broadcasted Success")
         except AssertionError:
             print("Assert Failed : Assert Live tv Broadcasted Failed")
+
+    def clickBtnSubscribe(self):
+
+        btn_subscribe = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.livetvObj.btn_subscribe))
+        )
+        btn_subscribe.click()
