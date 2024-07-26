@@ -181,3 +181,38 @@ class VOD:
             EC.element_to_be_clickable((By.ID, self.vod.btn_back))
         )
         btn_back.click()
+
+    def clickSinopsis(self):
+
+        txt_sinopsis = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.vod.txt_sinopsis))
+        )
+        txt_sinopsis.click()
+
+    def clickPremiumPackage(self):
+
+        btn_premium = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.vod.premium))
+        )
+        btn_premium.click()
+
+    def clickChooseSeason(self):
+
+        btn_choose_season = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, self.vod.btn_choose_season))
+        )
+        btn_choose_season.click()
+
+    def clickSeason1(self):
+
+        btn_season1 = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.vod.btn_season_1))
+        )
+        btn_season1.click()
+
+    def clickSeason0(self):
+
+        btn_season0 = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.vod.btn_season_0))
+        )
+        btn_season0.click()

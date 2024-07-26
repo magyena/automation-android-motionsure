@@ -1,5 +1,7 @@
 class homeObject:
     def __init__(self):
+        self.btn_terms = "com.zte.iptvclient.android.idmnc:id/terms_of_use"
+        self.btn_privacy = "com.zte.iptvclient.android.idmnc:id/privacy_policy"
         self.txt_Hello = "label == 'Hello! Who's watching?'"
         self.txt_vision_logo = "com.zte.iptvclient.android.idmnc:id/appLogo"
         self.btn_menu_button = "com.zte.iptvclient.android.idmnc:id/menuButton"
@@ -28,6 +30,9 @@ class homeObject:
         self.result_search_one = '//android.view.View[@content-desc="Montir Cantik"]'
         self.result_search_two = '//android.view.View[@content-desc="Arab Maklum"]'
         self.result_search_livetv = '(//android.view.View[@content-desc="iNews"])[2]'
+        self.result_search_sportschannel = (
+            '//android.view.View[@content-desc="Soccer Channel"]'
+        )
         self.txt_search_no_result = "com.zte.iptvclient.android.idmnc:id/errorTextView"
         self.detail_banner = "com.zte.iptvclient.android.idmnc:id/container_banner_info"
         self.txt_viewl_all_cluster_originals = (
@@ -91,3 +96,34 @@ class homeObject:
         self.btn_accept_google = "android:id/button1"
         self.txt_error_buy_package = "//*[contains(@text,'Error')]"
         self.btn_got_it = "//*[contains(@text,'Got it')]"
+        self.txt_cluster_just_wanna_say = (
+            "//*[contains(@text,'Just Wanna Say I Love U')]"
+        )
+        self.content_cluster_just_wanna_say = (
+            "//*[contains(@text,'Just Wanna Say I Love U')]/following::*[2]"
+        )
+        self.result_search_three = (
+            '//android.view.View[@content-desc="Roy & Marten Sahabat Sehidup Semati"]'
+        )
+        self.content_cluster_watchlist = (
+            "//*[contains(@text,'Watchlist')]/following::*[2]"
+        )
+        self.content_cluster_comedy = (
+            "//*[contains(@text,'Indonesian Comedy Series')]/following::*[2]"
+        )
+        self.txt_cluster_comedy = "//*[contains(@text,'Indonesian Comedy Series')]"
+        self.txt_cluster_because_youwatched = (
+            "//*[contains(@text,'Because you watched')]"
+        )
+        self.content_cluster_because_you_watched = (
+            "//*[contains(@text,'Because you watched')]/following::*[4]"
+        )
+        self.txt_category_movies = "//*[contains(@text,'Vision')]/preceding::*[1]"
+        self.content_category_movies = '//android.view.ViewGroup[@resource-id="com.zte.iptvclient.android.idmnc:id/container_banner_info"]/following::*[16]'
+        self.txt_category_livetv = '//android.view.ViewGroup[@resource-id="com.zte.iptvclient.android.idmnc:id/container_banner_info"]/following::*[14]'
+        self.txt_category_series = '//android.view.ViewGroup[@resource-id="com.zte.iptvclient.android.idmnc:id/container_banner_info"]/following::*[14]'
+        self.content_category_series = "//*[contains(@text,'Comedy')]/following::*[2]"
+        self.img_upgrade_download = "com.zte.iptvclient.android.idmnc:id/upgrade_splash"
+        self.btn_subscribe_my_downloads = (
+            "com.zte.iptvclient.android.idmnc:id/subscribe_button"
+        )

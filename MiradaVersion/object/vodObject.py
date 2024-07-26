@@ -31,3 +31,7 @@ class vodObject:
         )
         self.btn_eps3 = "//*[contains(@text,'Season ')]/following::*[4]"
         self.btn_back = "com.zte.iptvclient.android.idmnc:id/backButton"
+        self.txt_sinopsis = "com.zte.iptvclient.android.idmnc:id/descriptionText"
+        self.btn_choose_season = "com.zte.iptvclient.android.idmnc:id/seasonSpinner"
+        self.btn_season_0 = "//*[contains(@text,'Season 0')]"
+        self.btn_season_1 = "//*[contains(@text,'Season 1')]"
