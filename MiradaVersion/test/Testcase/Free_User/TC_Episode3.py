@@ -69,6 +69,7 @@ def test_TC_User_Can_Slide_list_Cluster_Series(
     profiles_action: Profiles,
 ):
     login_free_by_phone(driver, free_phone_data)
+    time.sleep(3)
     delay(homepage_action.clickCategorySeries)
 
     for _ in range(1):
