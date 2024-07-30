@@ -121,7 +121,7 @@ class homeObject:
         self.txt_category_movies = "//*[contains(@text,'Vision')]/preceding::*[1]"
         self.content_category_movies = '//android.view.ViewGroup[@resource-id="com.zte.iptvclient.android.idmnc:id/container_banner_info"]/following::*[16]'
         self.txt_category_livetv = '//android.view.ViewGroup[@resource-id="com.zte.iptvclient.android.idmnc:id/container_banner_info"]/following::*[14]'
-        self.txt_category_series = '//android.view.ViewGroup[@resource-id="com.zte.iptvclient.android.idmnc:id/container_banner_info"]/following::*[14]'
+        self.txt_category_series = '//android.view.ViewGroup[@resource-id="com.zte.iptvclient.android.idmnc:id/container_banner_info"]/following::*[13]'
         self.content_category_series = "//*[contains(@text,'Comedy')]/following::*[2]"
         self.img_upgrade_download = "com.zte.iptvclient.android.idmnc:id/upgrade_splash"
         self.btn_subscribe_my_downloads = (
