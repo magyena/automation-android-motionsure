@@ -12,7 +12,7 @@ password = "4321Lupa"
 
 
 def generate_random_phone_number():
-    return "87770000" + "".join(random.choices(string.digits, k=4))
+    return "81110000" + "".join(random.choices(string.digits, k=4))
 
 
 @pytest.fixture(scope="module")
