@@ -88,7 +88,7 @@ def pytest_sessionfinish(session, exitstatus):
                 message += f"- [FAILED] {test_name} in {script_name}\n"
                 message += f"  - {error_message}\n"
 
-            message += "CC: <@1077483182942863470> <@771451525331025941>\n"
+            message += "CC: <@1077483182942863470> <@771451525331025941> <@1161584629011197972>\n"
 
         if passed_count == total_tests:
             # Include a success message

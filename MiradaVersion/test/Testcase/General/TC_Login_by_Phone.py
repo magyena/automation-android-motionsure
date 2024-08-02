@@ -16,7 +16,7 @@ def driver():
     setup_appium = SetupAppium()
     driver = setup_appium.driver
     yield driver
-    driver.quit()
+    # driver.quit()
 
 
 @pytest.fixture(scope="module")
